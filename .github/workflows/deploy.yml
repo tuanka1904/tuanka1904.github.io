@@ -70,7 +70,20 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build
+      - name: Debug Output Directory
+        run: |
+          echo "Listing current directory:"
+          ls -la
+          if [ -d "out" ]; then
+            echo "out exists:"
+            ls -la out
+          elif [ -d ".next" ]; then
+            echo "out NOT FOUND, but .next exists:"
+            ls -la .next
+          else
+            echo "Neither out nor .next found!"
+          fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
