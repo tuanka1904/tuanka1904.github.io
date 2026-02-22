@@ -48,15 +48,7 @@ jobs:
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        with:
-          # Automatically inject basePath in your Next.js config file, and a
-          # static image prefix should your code need it.
-          #
-          # You can leverage this feature by setting the env variable "NEXT_PUBLIC_BASE_PATH"
-          # in your code and then setting this variable to your desired base path.
-          static_site_generator: next
+
       - name: Restore cache
         uses: actions/cache@v4
         with:
