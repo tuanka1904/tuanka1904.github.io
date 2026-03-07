@@ -4,20 +4,20 @@ import SystemLog from "./SystemLog";
 export default function Skills() {
     const categories = [
         {
-            title: "ENGINES & GRAPHICS",
-            skills: ["Unreal Engine (C++/BP)", "Unity 3D (C#)", "Niagara VFX", "Profiling & Optimization"]
+            title: "CORE ENGINES & TECH",
+            skills: ["Unreal Engine (C++/BP)", "Unity 3D (C#)", "Shader & Rendering Pipelines", "Profiling & Optimization"]
         },
         {
             title: "GAMEPLAY ARCHITECTURE",
-            skills: ["AI & Behavior Trees", "Combat & Weapon Systems", "Boss Mechanics", "State Machines"]
+            skills: ["AI & Behavior Trees", "State Machines", "Core Game Loops", "Data-Driven Design"]
         },
         {
-            title: "IMMERSIVE & HARDWARE",
-            skills: ["AR / VR Integration", "Projection Mapping", "Arduino / Raspberry Pi", "Serial/UDP comms"]
+            title: "CUSTOM TOOLING & AUTOMATION",
+            skills: ["Unity Editor Tooling", "LLM Pipeline Integration", "Python Automation", "Workflow Acceleration"]
         },
         {
-            title: "BACKEND & SYSTEMS",
-            skills: ["PlayFab Backend", "Node.js / WebGL", "Multi-platform Deployment"]
+            title: "SYSTEMS & PERFORMANCE",
+            skills: ["Memory Management", "Multi-platform Deployment", "Algorithm Optimization", "Event-Driven Architecture"]
         }
     ];
 

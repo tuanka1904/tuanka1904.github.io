@@ -5,107 +5,112 @@ import SystemLog from "./SystemLog";
 
 const projectCategories = [
     {
-        categoryTitle: "[ 01 / INTERACTIVE INSTALLATIONS ]",
+        categoryTitle: "[ 01 / CORE ENGINEERING & ARCHITECTURE ]",
         projects: [
             {
-                title: "Volcanic Awakening",
-                subtitle: "AR & Projection Mapping",
-                date: "2023",
-                tags: ["[ Unity Editor ]", "[ C# ]", "[ Real-time ]", "[ Sensors ]"],
-                description: "An immersive projection mapping game combined with an AR volcano experience deployed at Vinpearl Aquarium.",
-                fullDescription: "Architected a large-scale spatial installation. The experience involved blending multi-projector mapping with a custom AR overlay. Overcame significant performance bottlenecks to maintain a stable 60 FPS while handling complex physics and real-time interaction from multiple users simultaneously.",
-                role: "Lead Gameplay Engineer",
-                timeline: "6 Months"
-            },
-            {
-                title: "Kinetic Cycling",
-                subtitle: "AR Mirror Experience",
-                date: "2022",
-                tags: ["[ Unreal Engine ]", "[ C++ ]", "[ Computer Vision ]", "[ IoT ]"],
-                description: "An AR mirror and interactive cycling game developed for the HomeTeam Festival Singapore.",
-                fullDescription: "Developed an interactive physical-digital hybrid game. Connected custom Raspberry Pi sensors on exercise bikes to Unreal Engine via UDP. Integrated real-time computer vision for the AR mirror, establishing a seamless loop between player physical exertion and on-screen visual feedback.",
-                role: "Interactive Developer",
-                timeline: "4 Months"
-            },
-            {
-                title: "Tactile Topography",
-                subtitle: "AR Sandbox Engine",
-                date: "2021",
-                tags: ["[ C++ ]", "[ Depth Sensors ]", "[ Shaders ]"],
-                description: "An interactive AR sandbox experience for the Singapore Discovery Center using depth sensing and real-time mesh deformation.",
-                fullDescription: "Engineered the core logic transforming raw depth-map data from sensors (Kinect) into a dynamic 3D topographical mesh. Wrote custom shaders to simulate real-time water flow and terrain elevation coloring based on the user's physical interaction with the sand.",
-                role: "Graphics Programmer",
-                timeline: "3 Months"
-            },
-            {
-                title: "The Star Tower",
-                subtitle: "Brand Activation",
-                date: "2020",
-                tags: ["[ Unity ]", "[ TouchDesigner ]", "[ DMX ]"],
-                description: "A synchronized sensory installation combining real-time 3D visuals with physical stage lighting for Heineken.",
-                fullDescription: "Led the technical execution of a massive interactive tower. Bridged Unity's real-time rendering engine with lighting protocols to control physical stage lights based on user interactions on touch panels across the venue.",
-                role: "Creative Technologist",
-                timeline: "2 Months"
-            },
-            {
-                title: "Digital Canvas",
-                subtitle: "Interactive WebGL",
-                date: "2019",
-                tags: ["[ WebGL ]", "[ Node.js ]", "[ Websockets ]"],
-                description: "A massive interactive canvas installed at the National Gallery Singapore.",
-                fullDescription: "Built a highly optimized WebGL interactive installation allowing multiple museum-goers to simultaneously 'paint' on a massive 8-meter wall using their smartphones and on-site multi-touch kiosks in real-time.",
-                role: "Fullstack Engineer",
-                timeline: "5 Months"
-            }
-        ]
-    },
-    {
-        categoryTitle: "[ 02 / GAME PROTOTYPES ]",
-        projects: [
-            {
-                title: "Project: NEON",
-                subtitle: "Top-Down Action",
-                date: "2025",
-                tags: ["[ Unreal 5 ]", "[ C++ ]", "[ GAS ]"],
-                description: "A high-speed hack-and-slash prototype featuring complex AI enemies and a robust custom combo system built on GAS.",
-                fullDescription: "Architected the core gameplay loop using Unreal Engine 5's Gameplay Ability System (GAS). Developed non-linear AI behaviors using advanced Behavior Trees and EQ (Environmental Query System) to create dynamic combat encounters. Maintained strict 60fps targets by offloading physics to C++.",
-                role: "Solo Developer",
-                timeline: "Personal Prototype"
-            },
-            {
-                title: "Sector 7",
-                subtitle: "Tactical FPS Simulator",
+                title: "UE C++: Modular Combat Framework",
+                subtitle: "Unreal Engine 5",
                 date: "2024",
-                tags: ["[ Unity ]", "[ C# ]", "[ State Machines ]"],
-                description: "A hardcore tactical FPS prototype focused on realistic weapon handling and intense enemy AI.",
-                fullDescription: "Engineered a custom weapon framework simulating ballistics, recoil animations, and mechanical jamming. Built a robust modular AI state machine for enemy cover-finding, flanking, and group tactics.",
-                role: "Solo Developer",
-                timeline: "Personal Prototype"
+                tags: ["[ Unreal Engine ]", "[ Pure C++ ]", "[ System Architecture ]"],
+                description: "Engineered a scalable, data-driven combat architecture entirely in C++, focusing on modularity and high performance.",
+                fullDescription: "Built a highly resilient core logic framework designed for scalability in complex game environments.",
+                bulletPoints: [
+                    {
+                        title: "Object-Oriented AI Cloning",
+                        desc: "Designed an enemy spawning system where AI adversaries inherit directly from the base Player class, sharing core mechanics while executing custom pursuit and attack logic."
+                    },
+                    {
+                        title: "Data-Driven Weaponry",
+                        desc: "Implemented a dynamic weapon-swapping system that automatically links and updates Animation Blueprints and state machines based on the equipped item."
+                    },
+                    {
+                        title: "Unified Damage System",
+                        desc: "Integrated a robust combat interface supporting both AI combat and environmental destruction (destructible meshes like crates and obstacles)."
+                    }
+                ],
+                role: "Core Engineer",
+                timeline: "Personal Prototype",
+                video: "/videos/combat-system.mp4"
+            },
+            {
+                title: "Unity C#: Action Top-Down Framework",
+                subtitle: "Unity 3D",
+                date: "2025",
+                tags: ["[ Unity 3D ]", "[ Twin-stick Controller ]", "[ AI State Machines ]"],
+                description: "A robust core architecture designed for a fast-paced top-down action shooter, focusing on fluid twin-stick controllers, diverse AI state machines, and dynamic environmental combat events.",
+                fullDescription: "A fully developed C# logic core intended for a fast-paced game environment emphasizing controller responsiveness and modular systems.",
+                bulletPoints: [
+                    {
+                        title: "Responsive Twin-Stick Controller",
+                        desc: "Developed a fluid player character system featuring mouse-driven directional targeting, dynamic health management, and advanced movement mechanics (e.g., dash/evade execution)."
+                    },
+                    {
+                        title: "Modular AI Behavior & Loot Systems",
+                        desc: "Engineered diverse AI state machines, including patrol routines, line-of-sight detection, and pursuit logic (e.g., bat enemies). Implemented a scalable loot generation system triggered upon entity destruction."
+                    },
+                    {
+                        title: "Dynamic Environmental Combat",
+                        desc: "Designed complex, event-driven combat interactions and active hazards. This includes linked spawn points that trigger secondary AoE explosions upon enemy defeat (e.g., exploding graves) and static projectile-firing fixtures."
+                    }
+                ],
+                role: "Lead Gameplay Engineer",
+                timeline: "Core System Setup",
+                video: "/videos/action-rpg.mp4"
             }
         ]
     },
     {
-        categoryTitle: "[ 03 / EXPERIMENTS & R&D ]",
+        categoryTitle: "[ 02 / CUSTOM TOOLING & AUTOMATION ]",
         projects: [
             {
-                title: "Neural Pathfinding",
-                subtitle: "ML-Agents Training",
+                title: "Unity Workflow: Advanced Scene & Workspace Manager",
+                subtitle: "Advanced Scene Manager",
                 date: "2026",
-                tags: ["[ Unity ML-Agents ]", "[ Pytorch ]", "[ AI ]"],
-                description: "An R&D project training AI agents to navigate procedurally generated obstacle courses.",
-                fullDescription: "Set up a reinforcement learning environment using Unity ML-Agents. Trained agents to solve complex maze structures and adapt to dynamic obstacles, experimenting with different reward functions to achieve emergent behaviors.",
-                role: "AI Researcher",
-                timeline: "R&D"
+                tags: ["[ Editor Scripting ]", "[ Workflow Optimization ]", "[ C# ]"],
+                description: "A comprehensive custom Editor utility built to eliminate friction in large-scale, multi-scene environments, drastically reducing context-switching overhead and cognitive load for the development team.",
+                fullDescription: "Built a highly optimized custom GUI integration natively inside the Unity Editor.",
+                bulletPoints: [
+                    {
+                        title: "Visual Context & Rapid Navigation",
+                        desc: "Engineered a quick-switch interface featuring automated visual snapshots (screenshots) and inline contextual notes, allowing developers to instantly identify and transition between complex scenes."
+                    },
+                    {
+                        title: "Workspace State Persistence",
+                        desc: "Implemented a robust layout management system enabling users to save, manage, and instantly restore multi-scene hierarchies and custom editor window configurations."
+                    },
+                    {
+                        title: "Live Dependency Tracking",
+                        desc: "Integrated a real-time dependency analyzer (\"Despen\") to visualize and validate scene-to-asset relationships, preventing broken references, optimizing project cleanliness, and safeguarding the build pipeline."
+                    }
+                ],
+                role: "Tool Developer",
+                timeline: "Ongoing Tooling",
+                video: "/videos/scene-manager.mp4"
             },
             {
-                title: "Spatial Shader Suite",
-                subtitle: "Graphics Programming",
-                date: "2023",
-                tags: ["[ HLSL ]", "[ Shader Graph ]", "[ VR ]"],
-                description: "A collection of custom spatial shaders including volumetric holograms and distortion effects optimized for VR hardware.",
-                fullDescription: "A deep dive into writing custom HLSL shaders for Unity's Universal Render Pipeline. Implemented depth-based scanning effects, glitching volumetric holograms, and interactive particle systems specifically optimized for standalone VR headsets like the Meta Quest.",
-                role: "Technical Artist",
-                timeline: "R&D"
+                title: "AI-Powered Profiler & Automated Remediation",
+                subtitle: "Automation Tool",
+                date: "2026",
+                tags: ["[ Local LLM ]", "[ Automated Remediation ]", "[ C# Tooling ]"],
+                description: "An advanced custom Editor utility integrating local Large Language Models to automate technical auditing, provide actionable optimization insights, and execute one-click fixes for asset configurations.",
+                fullDescription: "A powerful tool chaining local LLM inference via Ollama directly into Unity to act as an automated technical director and asset validator.",
+                bulletPoints: [
+                    {
+                        title: "Local AI Diagnostics (Ollama)",
+                        desc: "Engineered a context-aware scanning system that parses hierarchy and memory data. The local LLM acts as an automated technical director, evaluating scanned metrics to generate actionable, context-specific optimization strategies."
+                    },
+                    {
+                        title: "Automated Asset Remediation",
+                        desc: "Evolved the tool beyond passive validation by implementing a one-click auto-fix pipeline. It dynamically corrects misconfigured import settings, texture compressions, and memory bottlenecks based on AI recommendations."
+                    },
+                    {
+                        title: "Granular Profiling Dashboard",
+                        desc: "Built a comprehensive interface exposing critical metrics—such as precise VRAM footprints and instance counts—allowing developers to instantly identify and resolve assets that violate the project's performance budgets."
+                    }
+                ],
+                role: "Automation Engineer",
+                timeline: "Internal Tool",
+                video: "/videos/logic-validator.mp4"
             }
         ]
     }
@@ -122,7 +127,7 @@ export default function Projects() {
                 {/* Story Transition */}
                 <SystemLog logs={[
                     "> SYSTEM.LOG: ACCESSING CLASSIFIED ARTIFACTS...",
-                    "> DECRYPTING 3 DIRECTORIES: INSTALLATIONS, PROTOTYPES, R&D."
+                    "> DECRYPTING 2 DIRECTORIES: CORE ENGINEERING, CUSTOM TOOLING."
                 ]} />
 
                 <div className="mb-16">
@@ -130,7 +135,7 @@ export default function Projects() {
                         Selected Works
                     </h2>
                     <p className="text-zinc-400 text-lg max-w-2xl">
-                        Projects spanning game systems, rendering experiments, and digital products. Built for high performance, designed for total immersion.
+                        Projects spanning scalable game architectures, optimized systems, and custom editor tooling. Built for high performance, designed to multiply team efficiency.
                     </p>
                 </div>
 
@@ -148,18 +153,29 @@ export default function Projects() {
                                     viewport={{ once: true, margin: "-50px" }}
                                     transition={{ duration: 0.5, delay: idx * 0.1 }}
                                     onClick={() => setSelectedProject(p)}
-                                    className={`group flex flex-col border-2 border-zinc-800 bg-[#121214] rounded-none overflow-hidden cursor-pointer hover:border-orange-500 transition-colors ${idx === 0 && catIdx === 0 ? "lg:col-span-2 lg:flex-row" : ""}`}
+                                    className="group flex flex-col border-2 border-zinc-800 bg-[#121214] rounded-none overflow-hidden cursor-pointer hover:border-orange-500 transition-colors"
                                 >
-                                    <div className={`w-full bg-zinc-900 overflow-hidden relative ${idx === 0 && catIdx === 0 ? "lg:w-1/2 h-64 lg:h-auto" : "h-64"}`}>
-                                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#27272a_1px,_transparent_1px)] bg-[length:16px_16px] opacity-20" />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent flex items-end p-6">
-                                            <span className="font-mono text-xs text-zinc-500 group-hover:text-orange-400 transition-colors">[ Preview Activated ]</span>
+                                    <div className="w-full bg-zinc-900 overflow-hidden relative h-64">
+                                        {p.video ? (
+                                            <video
+                                                src={p.video}
+                                                autoPlay
+                                                muted
+                                                loop
+                                                playsInline
+                                                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500 blur-[2px] group-hover:blur-none"
+                                            />
+                                        ) : (
+                                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#27272a_1px,_transparent_1px)] bg-[length:16px_16px] opacity-20" />
+                                        )}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/20 to-transparent flex items-end p-6 pointer-events-none">
+                                            <span className="font-mono text-xs text-zinc-500 group-hover:text-orange-400 transition-colors bg-zinc-950/50 px-2 py-1 rounded backdrop-blur-sm shadow-[0_0_10px_rgba(0,0,0,0.8)]">[ Preview Activated ]</span>
                                         </div>
                                         {/* Simulated scanline effect on hover */}
-                                        <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                                     </div>
 
-                                    <div className={`p-8 flex flex-col justify-between ${idx === 0 && catIdx === 0 ? "lg:w-1/2" : ""}`}>
+                                    <div className="p-8 flex flex-col justify-between">
                                         <div>
                                             <div className="flex justify-between items-start mb-4">
                                                 <p className="font-mono text-orange-400 text-sm">{p.subtitle}</p>
@@ -214,9 +230,20 @@ export default function Projects() {
                                 <X size={20} />
                             </button>
 
-                            <div className="h-48 sm:h-64 bg-zinc-900 relative flex items-center justify-center overflow-hidden border-b border-zinc-800">
-                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#27272a_1px,_transparent_1px)] bg-[length:16px_16px] opacity-20" />
-                                <div className="w-16 h-16 border border-orange-500 rounded-full animate-pulse shadow-[0_0_20px_rgba(249,115,22,0.2)]" />
+                            <div className="aspect-video w-full bg-black relative flex items-center justify-center overflow-hidden border-b border-zinc-800">
+                                {selectedProject.video ? (
+                                    <video
+                                        src={selectedProject.video}
+                                        controls
+                                        autoPlay
+                                        className="w-full h-full object-contain"
+                                    />
+                                ) : (
+                                    <>
+                                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#27272a_1px,_transparent_1px)] bg-[length:16px_16px] opacity-20" />
+                                        <div className="w-16 h-16 border border-orange-500 rounded-full animate-pulse shadow-[0_0_20px_rgba(249,115,22,0.2)]" />
+                                    </>
+                                )}
                             </div>
 
                             <div className="p-8 sm:p-12 overflow-y-auto">
@@ -253,9 +280,23 @@ export default function Projects() {
 
                                 <div className="prose prose-invert max-w-none">
                                     <h3 className="text-xl font-bold text-white mb-4">The Architecture</h3>
-                                    <p className="text-zinc-400 leading-relaxed overflow-hidden">
+                                    <p className="text-zinc-400 leading-relaxed overflow-hidden mb-6">
                                         {selectedProject.fullDescription}
                                     </p>
+
+                                    {selectedProject.bulletPoints && selectedProject.bulletPoints.length > 0 && (
+                                        <ul className="space-y-4">
+                                            {selectedProject.bulletPoints.map((bullet, idx) => (
+                                                <li key={idx} className="flex gap-4">
+                                                    <span className="text-orange-500 mt-1">▹</span>
+                                                    <div>
+                                                        <strong className="text-zinc-200 block font-mono text-sm mb-1">{bullet.title}</strong>
+                                                        <p className="text-zinc-400 text-sm leading-relaxed m-0">{bullet.desc}</p>
+                                                    </div>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </div>
                             </div>
                         </motion.div>

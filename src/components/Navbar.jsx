@@ -21,9 +21,9 @@ export default function Navbar() {
         >
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
-                    <div className="flex-shrink-0 font-mono tracking-tighter text-lg text-zinc-100 flex items-center gap-2">
+                    <div className="flex-shrink-0 font-mono tracking-widest font-bold text-lg text-white flex items-center gap-2">
                         <div className="w-2 h-2 rounded-none bg-orange-500 animate-pulse shadow-[0_0_10px_#FF5A00]" />
-                        SYS.ID
+                        KIEU ANH TUAN
                     </div>
 
                     <div className="hidden md:block">

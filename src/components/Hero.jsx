@@ -16,14 +16,14 @@ export default function Hero() {
                         transition={{ duration: 0.6 }}
                     >
                         <div className="max-w-[400px]">
-                            <SystemLog logs={["SYS.ROLE: REAL_TIME_3D_&_GAMEPLAY_ENGINEER"]} />
+                            <SystemLog logs={["SYS.ROLE: CORE_ENGINEER_&_TOOL_DEVELOPER"]} />
                         </div>
                         <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-zinc-50 leading-[1.1] mb-6">
-                            Engineering Realities.<br />Compiling Logic.<br />
-                            <span className="text-zinc-500">Spatial Experiences.</span>
+                            Architecting Systems.<br />Automating Workflows.<br />
+                            <span className="text-zinc-500">Core Engineering.</span>
                         </h1>
                         <p className="text-lg text-zinc-400 mb-8 max-w-lg leading-relaxed">
-                            I engineer immersive real-time systems where physical spaces meet digital logic. With 7+ years of experience spanning Unreal Engine, Unity, and interactive hardware, I turn complex technical constraints into seamless, magical interactions.
+                            I engineer robust architectures and custom tooling for real-time engines. Focused on Data-Driven design, AI-integrated pipelines, and workflow automation, I build solid foundations that let teams iterate faster and scale effectively.
                         </p>
 
                         <div className="flex gap-4">
