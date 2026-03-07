@@ -23,13 +23,13 @@ export default function About() {
                             The Builder Ethos
                         </h2>
                         <p>
-                            I am a Real-time 3D and Gameplay Engineer specializing in high-performance interactive systems. For over 7 years, I have lived at the intersection of game engines (Unreal & Unity) and physical spaces.
+                            I am a Core Engineer and Tool Developer specializing in scalable game architectures and workflow automation. For over 7 years, I have architected high-performance systems for Unreal and Unity.
                         </p>
                         <p>
-                            My technical foundation is built on architecting complex gameplay loops&mdash;from state machines and boss mechanics to scalable combat systems. But my execution goes beyond traditional screens. I have engineered projection mapping games, AR ecosystems, and sensory installations for major venues like the Singapore Discovery Center and Vinpearl Aquarium.
+                            My technical foundation is built on architecting complex gameplay loops&mdash;from state machines and data-driven mechanics to scalable combat systems. But my execution goes deeper. I engineer custom Editor workflows and AI-powered automation tooling that act as force multipliers for entire development teams.
                         </p>
                         <p className="text-zinc-200 mt-8 block border-l-2 border-orange-500 pl-4">
-                            &quot;Whether it&apos;s optimizing a massive Niagara VFX scene for 60fps, integrating a PlayFab backend, or wiring an Arduino prototype to communicate with an immersive web app&mdash;I build robust, end-to-end architectures that just work.&quot;
+                            &quot;Whether it&apos;s optimizing complex gameplay abilities for 60fps, designing seamless Unity Editor tools, or integrating LLMs into CI/CD pipelines&mdash;I build robust, scalable architectures that multiply team efficiency.&quot;
                         </p>
                     </div>
 
@@ -41,11 +41,11 @@ export default function About() {
                         <ul className="space-y-6 font-mono text-sm relative z-10">
                             <li className="flex justify-between items-center border-b border-zinc-900 pb-4">
                                 <span className="text-zinc-500">Focus</span>
-                                <span className="text-zinc-200 text-right max-w-[200px]">Gameplay Systems, XR Installations, Optimization</span>
+                                <span className="text-zinc-200 text-right max-w-[200px]">Core Architecture, Custom Tooling, Automation</span>
                             </li>
                             <li className="flex justify-between items-center border-b border-zinc-900 pb-4">
                                 <span className="text-zinc-500">Platforms</span>
-                                <span className="text-zinc-200 text-right max-w-[200px]">PC, Console, Mobile, Web, Hardware</span>
+                                <span className="text-zinc-200 text-right max-w-[200px]">Unreal Engine 5, Unity 3D, Custom Engines</span>
                             </li>
                             <li className="flex justify-between items-center border-b border-zinc-900 pb-4">
                                 <span className="text-zinc-500">Status</span>

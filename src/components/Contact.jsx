@@ -34,21 +34,11 @@ export default function Contact() {
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center font-mono">
                         <a
-                            href="mailto:hello@example.com"
+                            href="mailto:tuanka1904@gmail.com"
                             className="w-full sm:w-auto px-8 py-4 bg-zinc-100 text-zinc-950 font-bold hover:bg-orange-500 rounded-none transition-all outline-none focus:ring-2 focus:ring-orange-500 shadow-[4px_4px_0_0_#FF5A00] active:translate-y-1 active:shadow-[0px_0px_0_0_#FF5A00] flex items-center justify-center gap-3"
                         >
                             <Mail size={18} />
                             Start a Dialogue
-                        </a>
-
-                        <a
-                            href="https://github.com"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="w-full sm:w-auto px-8 py-4 border-2 border-zinc-700 bg-zinc-900 hover:border-orange-500 text-zinc-300 rounded-none transition-all flex items-center justify-center gap-3"
-                        >
-                            <Github size={18} />
-                            Source Code
                         </a>
                     </div>
                 </motion.div>
