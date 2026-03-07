@@ -134,9 +134,13 @@ export default function Projects() {
                     <h2 className="text-3xl lg:text-5xl font-bold tracking-tight mb-4 text-white">
                         Selected Works
                     </h2>
-                    <p className="text-zinc-400 text-lg max-w-2xl">
+                    <p className="text-zinc-400 text-lg max-w-2xl mb-6">
                         Projects spanning scalable game architectures, optimized systems, and custom editor tooling. Built for high performance, designed to multiply team efficiency.
                     </p>
+                    <div className="text-sm font-mono text-zinc-500 border-l-2 border-orange-500 pl-4 py-2 bg-[#121214] inline-block pr-6 rounded-none">
+                        For a comprehensive list of my commercial Interactive Installations<br />
+                        (AR, Hardware & Projection Mapping), please visit my <a href="https://www.linkedin.com/in/tuanka19" target="_blank" rel="noreferrer" className="text-orange-400 hover:text-white hover:underline transition-colors focus:outline-none">LinkedIn Profile</a>.
+                    </div>
                 </div>
 
                 {projectCategories.map((category, catIdx) => (

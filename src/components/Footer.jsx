@@ -5,7 +5,7 @@ export default function Footer() {
                 <p>&gt; _COPYRIGHT 2026 KIEU ANH TUAN. RUNNING AT 60FPS.</p>
                 <div className="flex gap-6 mt-4 md:mt-0">
                     <a href="#" className="hover:text-cyan-400 transition-colors">GitHub</a>
-                    <a href="#" className="hover:text-cyan-400 transition-colors">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/tuanka19" target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors">LinkedIn</a>
                     <a href="#" className="hover:text-cyan-400 transition-colors">Itch.io</a>
                 </div>
             </div>
