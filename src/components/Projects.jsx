@@ -76,6 +76,23 @@ const projectCategories = [
                 role: "Automation Engineer",
                 timeline: "Internal Tool",
                 video: "/videos/logic-validator.mp4"
+            },
+            {
+                title: "Catfe Vault Inventory (Catfe.InvPro)",
+                subtitle: "Unity Editor & Architecture",
+                date: "v1.2.0",
+                tags: ["Editor Scripting", "C#", "Clean Architecture", "NUnit"],
+                description: "Built a highly decoupled, scalable inventory and equipment system with a custom Architect dashboard for streamlined Unity Editor workflows.",
+                fullDescription: "Built a highly decoupled, scalable inventory and equipment system with a custom Architect dashboard for streamlined Unity Editor workflows.",
+                bulletPoints: [
+                    { title: "Inventory Architect Window", desc: "Custom Editor GUI dashboard centralizing data configuration (Items, Loot, UI) for designers." },
+                    { title: "Clean Architecture", desc: "Strict separation of C# logic models and UI components, communicating entirely through Interfaces." },
+                    { title: "Advanced Core Mechanics", desc: "Implemented robust item pickup, crafting with rollback support, and an equipment system that preserves instance data." },
+                    { title: "Reliable Stability", desc: "Maintained system integrity with comprehensive NUnit test suites for all core logic and health systems." }
+                ],
+                role: "System Designer & Programmer",
+                timeline: "Completed",
+                video: ""
             }
         ]
     }
