@@ -39,6 +39,23 @@ const projectCategories = [
                 role: "Lead Gameplay Engineer",
                 timeline: "Core System Setup",
                 video: "/videos/action-rpg.mp4"
+            },
+            {
+                title: "PolyWorld: Dynamic World Streaming & Runtime Navigation",
+                subtitle: "Unity Engine Architecture",
+                date: "2026",
+                tags: ["Unity 3D", "C#", "Async Optimization", "Architecture"],
+                description: "Built a highly optimized, modular framework for seamless infinite chunk streaming and real-time asynchronous background NavMesh baking inside the Unity Engine.",
+                fullDescription: "Built a highly optimized, modular framework for seamless infinite chunk streaming and real-time asynchronous background NavMesh baking inside the Unity Engine.",
+                bulletPoints: [
+                    { title: "Zero-Stutter Infinite Streaming", desc: "Advanced object pooling architecture that recycles environment chunks using active state toggles to prevent garbage collection spikes and main-thread CPU hiccups." },
+                    { title: "Asynchronous Background Baking", desc: "Real-time navigation mesh generation running on background worker threads, achieving 12ms average bake times per chunk without blocking game thread execution." },
+                    { title: "Interactive Zone Painting", desc: "A specialized Unity Scene View tool allowing level designers to paint area-specific gameplay behaviors, AI spawn rules, and travel costs visually on the grid." },
+                    { title: "Observer-Pattern Events", desc: "A decoupled event API (PolyWorldEvents) facilitating clean, modular integrations with custom gameplay controllers and AI behavior scripts." }
+                ],
+                role: "Core Engineer",
+                timeline: "Completed",
+                video: "/videos/polyworld-streaming.mp4"
             }
         ]
     },
