@@ -1,5 +1,3 @@
-"use client";
-
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -10,7 +8,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#09090b] text-zinc-50 font-sans selection:bg-cyan-500/30">
+    <main className="min-h-screen bg-[#0c0a09] text-stone-200 font-sans">
       <Navbar />
       <Hero />
       <About />

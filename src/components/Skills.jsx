@@ -1,62 +1,59 @@
+"use client";
+
 import { motion } from "framer-motion";
-import SystemLog from "./SystemLog";
 
 export default function Skills() {
     const categories = [
         {
-            title: "CORE ENGINES & TECH",
-            skills: ["Unreal Engine (C++/BP)", "Unity 3D (C#)", "Shader & Rendering Pipelines", "Profiling & Optimization"]
+            title: "Core Tech",
+            skills: ["Unreal Engine (C++/BP)", "Unity 3D (C#)", "Rendering Pipelines", "Optimization"]
         },
         {
-            title: "GAMEPLAY ARCHITECTURE",
+            title: "Architecture",
             skills: ["AI & Behavior Trees", "State Machines", "Core Game Loops", "Data-Driven Design"]
         },
         {
-            title: "CUSTOM TOOLING & AUTOMATION",
-            skills: ["Unity Editor Tooling", "LLM Pipeline Integration", "Python Automation", "Workflow Acceleration"]
+            title: "Tooling",
+            skills: ["Unity Editor Tooling", "LLM Pipeline", "Python Automation", "Workflow Accel"]
         },
         {
-            title: "SYSTEMS & PERFORMANCE",
-            skills: ["Memory Management", "Multi-platform Deployment", "Algorithm Optimization", "Event-Driven Architecture"]
+            title: "Systems",
+            skills: ["Memory Management", "Multi-platform", "Algorithms", "Event-Driven"]
         }
     ];
 
     return (
-        <section id="skills" className="py-24 border-t border-zinc-900 bg-[#09090b]">
-            <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                {/* Story Transition */}
-                <SystemLog logs={[
-                    "> SYSTEM.LOG: SCANNING ENGINEERING ARSENAL...",
-                    "> STATUS: ALL SYSTEMS NOMINAL. VALID FOR HIGH PERFORMANCE DEPLOYMENT."
-                ]} />
+        <section id="skills" className="py-32 bg-[#0c0a09]">
+            <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                <div className="border-t border-stone-800/50 pt-24">
+                    <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-20 text-stone-100">
+                        Capabilities.
+                    </h2>
 
-                <h2 className="text-3xl lg:text-5xl font-bold tracking-tight mb-16 text-center text-white">
-                    The Technical Arsenal
-                </h2>
-
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {categories.map((category, idx) => (
-                        <motion.div
-                            key={category.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.5, delay: idx * 0.1 }}
-                            className="bg-[#121214]/50 border-2 border-zinc-800/50 rounded-none p-6 hover:border-orange-500 transition-colors"
-                        >
-                            <h3 className="font-mono text-cyan-400 text-sm mb-6 pb-4 border-b border-zinc-800">
-                                [ {category.title} ]
-                            </h3>
-                            <ul className="space-y-4">
-                                {category.skills.map(skill => (
-                                    <li key={skill} className="flex items-center gap-3 text-zinc-300">
-                                        <div className="w-2 h-2 bg-orange-500 rounded-none shadow-[2px_2px_0_0_#A1A1AA]" />
-                                        {skill}
-                                    </li>
-                                ))}
-                            </ul>
-                        </motion.div>
-                    ))}
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {categories.map((category, idx) => (
+                            <motion.div
+                                key={category.title}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.8, delay: idx * 0.1 }}
+                                className="bg-[#1c1917]/30 border border-stone-800/40 rounded-3xl p-8 hover:bg-[#1c1917]/50 hover:border-stone-700/60 transition-colors"
+                            >
+                                <h3 className="text-amber-600 text-sm uppercase tracking-widest font-mono mb-8 border-b border-stone-800/50 pb-4">
+                                    {category.title}
+                                </h3>
+                                <ul className="space-y-4">
+                                    {category.skills.map(skill => (
+                                        <li key={skill} className="text-stone-300 font-light text-sm flex items-center gap-3">
+                                            <span className="w-1 h-1 bg-stone-600 rounded-full"></span>
+                                            {skill}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

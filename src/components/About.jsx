@@ -1,67 +1,56 @@
+"use client";
+
 import { motion } from "framer-motion";
-import SystemLog from "./SystemLog";
 
 export default function About() {
     return (
-        <section id="about" className="py-24 border-t border-zinc-900 bg-[#09090b]">
-            <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                {/* Story Transition */}
-                <SystemLog logs={[
-                    "> SYSTEM.LOG: ANALYZING ENGINEER PROFILE...",
-                    "> DECRYPTING CORE PHILOSOPHY..."
-                ]} />
-
+        <section id="about" className="py-32 bg-[#0c0a09]">
+            <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8 }}
-                    className="grid md:grid-cols-2 gap-16 items-start"
+                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                    className="grid md:grid-cols-12 gap-12 lg:gap-24 items-start"
                 >
-                    <div>
-                        <h2 className="text-3xl lg:text-5xl font-bold tracking-tight mb-8">
-                            The Builder Ethos
+                    <div className="md:col-span-5">
+                        <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-stone-100 mb-8">
+                            The Ethos.
                         </h2>
-                        <p>
-                            I am a Core Engineer and Tool Developer specializing in scalable game architectures and workflow automation. For over 7 years, I have architected high-performance systems for Unreal and Unity.
-                        </p>
-                        <p>
-                            My technical foundation is built on architecting complex gameplay loops&mdash;from state machines and data-driven mechanics to scalable combat systems. But my execution goes deeper. I engineer custom Editor workflows and AI-powered automation tooling that act as force multipliers for entire development teams.
-                        </p>
-                        <p className="text-zinc-200 mt-8 block border-l-2 border-orange-500 pl-4">
-                            &quot;Whether it&apos;s optimizing complex gameplay abilities for 60fps, designing seamless Unity Editor tools, or integrating LLMs into CI/CD pipelines&mdash;I build robust, scalable architectures that multiply team efficiency.&quot;
-                        </p>
+                        
+                        <div className="bg-[#1c1917]/40 border border-stone-800/60 rounded-3xl p-8 backdrop-blur-sm">
+                            <ul className="space-y-6 text-sm text-stone-400 font-sans">
+                                <div>
+                                    <span className="block text-xs uppercase tracking-widest text-amber-600 mb-1 font-mono">Focus</span>
+                                    <span className="text-stone-200 text-base font-medium">Core Architecture, Automation</span>
+                                </div>
+                                <div className="h-px w-full bg-stone-800/50"></div>
+                                <div>
+                                    <span className="block text-xs uppercase tracking-widest text-amber-600 mb-1 font-mono">Platforms</span>
+                                    <span className="text-stone-200 text-base font-medium">Unreal Engine 5, Unity</span>
+                                </div>
+                                <div className="h-px w-full bg-stone-800/50"></div>
+                                <div>
+                                    <span className="block text-xs uppercase tracking-widest text-amber-600 mb-1 font-mono">Location</span>
+                                    <span className="text-stone-200 text-base font-medium">Global</span>
+                                </div>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div className="bg-[#121214] border-2 border-zinc-800 rounded-none p-8 lg:p-12 relative overflow-hidden group">
-                        <div className="absolute opacity-10 top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[length:24px_24px] pointer-events-none" />
-
-                        <h3 className="text-xl font-medium text-white mb-6">Execution Output</h3>
-
-                        <ul className="space-y-6 font-mono text-sm relative z-10">
-                            <li className="flex justify-between items-center border-b border-zinc-900 pb-4">
-                                <span className="text-zinc-500">Focus</span>
-                                <span className="text-zinc-200 text-right max-w-[200px]">Core Architecture, Custom Tooling, Automation</span>
-                            </li>
-                            <li className="flex justify-between items-center border-b border-zinc-900 pb-4">
-                                <span className="text-zinc-500">Platforms</span>
-                                <span className="text-zinc-200 text-right max-w-[200px]">Unreal Engine 5, Unity 3D, Custom Engines</span>
-                            </li>
-                            <li className="flex justify-between items-center border-b border-zinc-900 pb-4">
-                                <span className="text-zinc-500">Status</span>
-                                <span className="text-emerald-400 flex items-center gap-2">
-                                    <span className="relative flex h-2 w-2">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-emerald-400 opacity-75"></span>
-                                        <span className="relative inline-flex rounded-none h-2 w-2 bg-emerald-500 shadow-[0_0_5px_#10B981]"></span>
-                                    </span>
-                                    Accepting Contracts
-                                </span>
-                            </li>
-                            <li className="flex justify-between items-center pb-2">
-                                <span className="text-zinc-500">Location</span>
-                                <span className="text-zinc-200">Remote / Global</span>
-                            </li>
-                        </ul>
+                    <div className="md:col-span-7 prose prose-invert prose-lg max-w-none pt-4 md:pt-16">
+                        <p className="text-2xl text-stone-200 font-light leading-relaxed mb-8">
+                            I am a Core Engineer and Tool Developer specializing in scalable game architectures and workflow automation. For over 7 years, I have architected high-performance systems for Unreal and Unity.
+                        </p>
+                        <p className="text-stone-400 font-light leading-relaxed">
+                            My technical foundation is built on architecting complex gameplay loops&mdash;from state machines and data-driven mechanics to scalable combat systems. But my execution goes deeper. I engineer custom Editor workflows and AI-powered automation tooling that act as force multipliers for entire development teams.
+                        </p>
+                        
+                        <div className="mt-12 bg-[#1c1917]/20 border-l-2 border-amber-600 pl-6 py-2">
+                            <p className="text-stone-300 font-light italic text-lg leading-relaxed m-0">
+                                &quot;Whether it&apos;s optimizing complex gameplay abilities for 60fps, designing seamless Unity Editor tools, or integrating LLMs into CI/CD pipelines&mdash;I build robust, scalable architectures that multiply team efficiency.&quot;
+                            </p>
+                        </div>
                     </div>
                 </motion.div>
             </div>

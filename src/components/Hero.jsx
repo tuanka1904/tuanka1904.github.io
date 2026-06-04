@@ -1,56 +1,47 @@
+"use client";
+
 import { motion } from "framer-motion";
-import AutoTetris from "./AutoTetris";
-import SystemLog from "./SystemLog";
 
 export default function Hero() {
     return (
-        <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-            {/* Background glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
-
-            <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <div className="max-w-[400px]">
-                            <SystemLog logs={["SYS.ROLE: CORE_ENGINEER_&_TOOL_DEVELOPER"]} />
-                        </div>
-                        <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-zinc-50 leading-[1.1] mb-6">
-                            Architecting Systems.<br />Automating Workflows.<br />
-                            <span className="text-zinc-500">Core Engineering.</span>
-                        </h1>
-                        <p className="text-lg text-zinc-400 mb-8 max-w-lg leading-relaxed">
-                            I engineer robust architectures and custom tooling for real-time engines. Focused on Data-Driven design, AI-integrated pipelines, and workflow automation, I build solid foundations that let teams iterate faster and scale effectively.
-                        </p>
-
-                        <div className="flex gap-4">
-                            <a
-                                href="#projects"
-                                className="px-6 py-3 bg-zinc-100 text-zinc-950 font-mono text-sm hover:bg-white font-bold hover:scale-105 active:scale-95 transition-all outline-none focus:ring-2 focus:ring-orange-500 rounded-none shadow-[4px_4px_0_0_#FF5A00]"
-                            >
-                                Initialize Mission
-                            </a>
-                            <a
-                                href="#contact"
-                                className="px-6 py-3 border border-zinc-800 text-zinc-300 font-mono text-sm hover:text-white hover:border-orange-500 transition-all font-bold rounded-none"
-                            >
-                                View Architecture
-                            </a>
-                        </div>
-                    </motion.div>
-                </div>
-
-                {/* Synthetic Game/AI visualization */}
+        <section className="min-h-screen flex items-center pt-24 bg-[#0c0a09] relative overflow-hidden">
+            {/* Subtle warm glow background */}
+            <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-amber-900/10 rounded-full blur-[120px] pointer-events-none translate-x-1/3" />
+            
+            <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="flex justify-center md:justify-end"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                    className="max-w-4xl"
                 >
-                    <AutoTetris />
+                    <p className="text-amber-600 font-mono text-sm tracking-widest uppercase mb-8 flex items-center gap-3">
+                        <span className="w-8 h-px bg-amber-600/50"></span>
+                        Core Engineer & Tool Developer
+                    </p>
+                    
+                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-medium tracking-tighter text-stone-100 leading-[0.9] mb-12">
+                        System.<br />
+                        Logic.<br />
+                        Architecture.
+                    </h1>
+                    
+                    <div className="flex flex-col md:flex-row gap-8 md:gap-16 mt-20 border-t border-stone-800/60 pt-12">
+                        <p className="text-lg text-stone-400 max-w-md leading-relaxed font-light">
+                            I engineer scalable game architectures and automation tools for real-time engines. Focused on data-driven design and workflow multipliers.
+                        </p>
+                        
+                        <div className="flex flex-col gap-6 justify-start">
+                            <a href="#projects" className="group flex items-center gap-4 text-stone-200 hover:text-amber-500 transition-colors w-fit">
+                                <span className="text-sm font-medium">Selected Works</span>
+                                <span className="h-px w-12 bg-stone-700 group-hover:w-20 group-hover:bg-amber-500 transition-all duration-500"></span>
+                            </a>
+                            <a href="#about" className="group flex items-center gap-4 text-stone-500 hover:text-stone-200 transition-colors w-fit">
+                                <span className="text-sm font-medium">The Ethos</span>
+                                <span className="h-px w-12 bg-stone-800 group-hover:w-20 group-hover:bg-stone-500 transition-all duration-500"></span>
+                            </a>
+                        </div>
+                    </div>
                 </motion.div>
             </div>
         </section>
