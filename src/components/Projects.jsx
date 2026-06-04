@@ -91,8 +91,8 @@ const projectCategories = [
                     { title: "Reliable Stability", desc: "Maintained system integrity with comprehensive NUnit test suites for all core logic and health systems." }
                 ],
                 role: "System Designer & Programmer",
-                timeline: "Completed",
-                video: ""
+                timeline: "Completed (v1.2.0)",
+                video: "/videos/catfe-inventory.mp4"
             }
         ]
     }
