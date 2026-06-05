@@ -39,6 +39,23 @@ const projectCategories = [
                 role: "Lead Gameplay Engineer",
                 timeline: "Core System Setup",
                 video: "/videos/action-rpg.mp4"
+            },
+            {
+                title: "UE5: Top-Down Action RPG Framework",
+                subtitle: "Unreal Engine 5 Core Systems",
+                date: "2026",
+                tags: ["Unreal Engine", "C++", "GAS", "Object Pooling"],
+                description: "A high-performance top-down action framework leveraging Unreal's Gameplay Ability System (GAS) and advanced memory management.",
+                fullDescription: "Engineered a scalable, data-driven core architecture for a top-down action game, focusing heavily on runtime performance and ability modularity using C++ and GAS.",
+                bulletPoints: [
+                    { title: "Gameplay Ability System", desc: "Designed modular abilities, attributes, and precise gameplay effects for complex combat scenarios." },
+                    { title: "Advanced Object Pooling", desc: "Implemented custom C++ object pools for projectiles and FX, completely eliminating garbage collection hitches during intense firefights." },
+                    { title: "Data-Driven Enemy AI", desc: "Constructed lightweight AI behavior trees integrated with GAS for scalable, high-density enemy encounters." },
+                    { title: "Optimized Top-Down Camera", desc: "Engineered a smooth, customizable camera system with occlusion handling and screen-shake integration." }
+                ],
+                role: "Core Gameplay Engineer",
+                timeline: "Completed",
+                video: "/videos/ue5-topdown.mp4"
             }
         ]
     },
