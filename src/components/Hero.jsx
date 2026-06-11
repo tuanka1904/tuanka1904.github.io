@@ -28,7 +28,7 @@ export default function Hero() {
                     
                     <div className="flex flex-col md:flex-row gap-8 md:gap-16 mt-20 border-t border-stone-800/60 pt-12">
                         <p className="text-lg text-stone-400 max-w-md leading-relaxed font-light">
-                            I engineer scalable game architectures and automation tools for real-time engines. Focused on data-driven design and workflow multipliers.
+                            8+ years engineering scalable gameplay systems, cross-platform optimization, and modular toolchains across Unreal Engine (C++) and Unity (C#).
                         </p>
                         
                         <div className="flex flex-col gap-6 justify-start">

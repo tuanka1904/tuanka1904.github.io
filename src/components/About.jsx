@@ -40,15 +40,15 @@ export default function About() {
 
                     <div className="md:col-span-7 prose prose-invert prose-lg max-w-none pt-4 md:pt-16">
                         <p className="text-2xl text-stone-200 font-light leading-relaxed mb-8">
-                            I am a Senior Game & Systems Developer specializing in scalable game architectures and deep performance optimization. For over 8 years, I have architected high-performance systems for Unreal Engine (C++/Blueprints) and Unity (C#).
+                            I am a Senior Game & Systems Developer specializing in scalable game architectures and deep performance optimization. For over 8 years, I have architected high-performance systems across Unreal Engine (C++/Blueprints) and Unity (C#), shipping commercial titles on PC, Mobile, and AR/MR platforms.
                         </p>
                         <p className="text-stone-400 font-light leading-relaxed">
-                            My technical foundation is built on architecting complex gameplay loops&mdash;from state machines and data-driven mechanics to scalable combat systems. But my execution goes deeper. I engineer custom Editor workflows and AI-powered automation tooling that act as force multipliers for entire development teams.
+                            My core expertise spans end-to-end gameplay engineering&mdash;from low-level C++ memory management, GAS ability pipelines, and multi-threaded async systems to high-level state machine architectures and data-driven combat frameworks. Beyond runtime code, I design custom Editor toolchains, CI/CD publishing pipelines, and AI-augmented profiling workflows that compress iteration cycles across entire teams.
                         </p>
                         
                         <div className="mt-12 bg-[#1c1917]/20 border-l-2 border-amber-600 pl-6 py-2">
                             <p className="text-stone-300 font-light italic text-lg leading-relaxed m-0">
-                                &quot;Whether it&apos;s optimizing complex gameplay abilities for 60fps, designing seamless Unity Editor tools, or integrating LLMs into CI/CD pipelines&mdash;I build robust, scalable architectures that multiply team efficiency.&quot;
+                                &quot;From profiling draw-call bottlenecks on constrained mobile GPUs, to designing decoupled interface-driven architectures with full NUnit coverage&mdash;I build systems that scale from prototype to production without rewrites.&quot;
                             </p>
                         </div>
                     </div>
