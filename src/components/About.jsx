@@ -40,7 +40,7 @@ export default function About() {
 
                     <div className="md:col-span-7 prose prose-invert prose-lg max-w-none pt-4 md:pt-16">
                         <p className="text-2xl text-stone-200 font-light leading-relaxed mb-8">
-                            I am a Core Engineer and Tool Developer specializing in scalable game architectures and workflow automation. For over 7 years, I have architected high-performance systems for Unreal and Unity.
+                            I am a Core Engineer and Tool Developer specializing in scalable game architectures and workflow automation. For over 8 years, I have architected high-performance systems for Unreal and Unity.
                         </p>
                         <p className="text-stone-400 font-light leading-relaxed">
                             My technical foundation is built on architecting complex gameplay loops&mdash;from state machines and data-driven mechanics to scalable combat systems. But my execution goes deeper. I engineer custom Editor workflows and AI-powered automation tooling that act as force multipliers for entire development teams.
