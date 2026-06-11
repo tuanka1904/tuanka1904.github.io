@@ -12,13 +12,12 @@ const projectCategories = [
                 title: "Christmas Wonderland Metaverse",
                 subtitle: "Virtual Event Platform",
                 date: "2021",
-                tags: ["Unreal Engine", "Node.js", "Multiplayer", "Mobile Optimization"],
-                description: "A multiplayer metaverse experience for PC & Mobile built during the pandemic lock-down.",
-                fullDescription: "Developed a scalable multiplayer metaverse allowing users to explore, play mini-games, and engage in live virtual events.",
+                tags: ["Unreal Engine", "Node.js", "Multiplayer", "Optimization"],
+                description: "Multiplayer metaverse for PC & Mobile driven by a scalable Node.js backend.",
+                fullDescription: "Engineered real-time server architecture for live events and concurrent user synchronization across platforms.",
                 bulletPoints: [
-                    { title: "Real-time Multiplayer", desc: "Architected a scalable Node.js server for live sync. Engineered interactive shared-world features like dynamic 3D greeting cards on a Christmas tree." },
-                    { title: "Core Systems & Navigation", desc: "Developed core interactive gameplay mechanics, login flows, gacha systems, and a real-time minimap for seamless navigation." },
-                    { title: "Mobile Optimization", desc: "Spearheaded the cross-platform Unreal Engine build pipeline to Android & iOS with aggressive memory and draw-call optimizations." }
+                    { title: "Real-time Multiplayer Sync", desc: "Architected a highly scalable Node.js backend supporting shared-world interactivity and live states." },
+                    { title: "Mobile Build Pipeline", desc: "Optimized UE mobile builds targeting low-end Android/iOS through aggressive draw-call and memory management." }
                 ],
                 role: "Core Gameplay & Optimization",
                 timeline: "Completed",
@@ -28,13 +27,12 @@ const projectCategories = [
                 title: "CPF: Let the CPF Game On!",
                 subtitle: "Educational Mobile App",
                 date: "2022",
-                tags: ["Unity 3D", "Mobile", "Optimization", "Publishing"],
-                description: "A mobile application gamifying financial habits for kids with physical vending machine integration.",
-                fullDescription: "A gamified educational app designed to teach kids financial habits, featuring real-world integration where users can redeem custom coffee cups at physical vending machines upon completing games.",
+                tags: ["Unity 3D", "Mobile Optimization", "Publishing"],
+                description: "Educational mobile app integrated directly with physical hardware vending machines.",
+                fullDescription: "Managed end-to-end telemetry integration, game optimization, and multi-platform publishing for iOS and Android.",
                 bulletPoints: [
-                    { title: "Game Optimization", desc: "Refactored and optimized core game logic to ensure smooth performance across various mobile devices." },
-                    { title: "Analytics & Authentication", desc: "Integrated secure login flows and comprehensive telemetry/statistics tracking for user behavior analysis." },
-                    { title: "Store Publishing", desc: "Managed the build pipeline, bug fixing, and final deployments to both Apple App Store and Google Play Store." }
+                    { title: "Core Logic Optimization", desc: "Refactored game logic to ensure stable 60FPS on low-tier mobile devices." },
+                    { title: "Telemetry & Pipeline", desc: "Integrated secure authentication and automated the publishing pipeline to major app stores." }
                 ],
                 role: "Gameplay & Release Engineer",
                 timeline: "Completed",
@@ -44,12 +42,12 @@ const projectCategories = [
                 title: "Singapore Discovery Center",
                 subtitle: "AR & Interactive Exhibits",
                 date: "2022",
-                tags: ["Unity 3D", "AR", "Shaders", "VFX"],
-                description: "Interactive Augmented Reality experiences and visual effects for the Singapore Discovery Center.",
-                fullDescription: "Developed highly visual and interactive AR exhibits focusing on cutting-edge tracking and rendering techniques.",
+                tags: ["Unity 3D", "AR", "Shaders"],
+                description: "Interactive AR exhibits powered by Unity and custom spatial tracking.",
+                fullDescription: "Developed highly visual AR installations leveraging advanced shaders, tracking, and fluid animations.",
                 bulletPoints: [
-                    { title: "Visual Engineering", desc: "Authored custom shaders, complex materials, and advanced VFX to bring the interactive exhibits to life." },
-                    { title: "AR Tracking & Animation", desc: "Implemented robust AR spatial tracking and fluid animations to ensure seamless blending of digital and physical worlds." }
+                    { title: "Spatial Tracking", desc: "Engineered robust AR tracking logic for seamless physical-digital blending." },
+                    { title: "Custom VFX Pipelines", desc: "Authored complex shaders and custom VFX to drive interactive visual feedback." }
                 ],
                 role: "Technical Artist / AR Engineer",
                 timeline: "Completed",
@@ -57,19 +55,19 @@ const projectCategories = [
             },
             {
                 title: "Vinpearl Digital Aquarium",
-                subtitle: "Mixed-Reality & Hardware Integration",
+                subtitle: "Mixed-Reality Ecosystem",
                 date: "2023",
-                tags: ["Unreal Engine", "Unity", "Hologram", "BLE Beacons"],
-                description: "A suite of mixed-reality and location-aware interactive applications blending physical structures with digital interactivity.",
-                fullDescription: "Engineered multiple interactive installations for the Vinpearl Aquarium in Phu Quoc, ranging from AR games to synchronized holographic displays.",
+                tags: ["Unreal Engine", "Unity", "Holographic Sync", "BLE"],
+                description: "Mixed-reality ecosystem featuring location-aware mapping and holographic synchronization.",
+                fullDescription: "Architected a multi-platform installation integrating BLE beacon mapping, AR gameplay, and cross-display hologram sync.",
                 bulletPoints: [
-                    { title: "Location-Based Mobile App", desc: "Developed a companion app using BLE Beacon technology for precise, location-triggered guided tours." },
-                    { title: "AR Spatial Gameplay", desc: "Programmed custom spatial mapping in Unity to align digital coral onto physical structures, alongside interactive physics games." },
-                    { title: "Holographic Synchronization", desc: "Architected a real-time synchronized system in Unreal Engine bridging a holographic display with external projection hardware." }
+                    { title: "Cross-Display Synchronization", desc: "Architected real-time sync logic bridging UE holograms and external projection surfaces." },
+                    { title: "AR Spatial Mapping", desc: "Developed custom AR mapping pipelines for dynamic physics interactions on physical structures." }
                 ],
                 role: "Lead Interactive Engineer",
                 timeline: "Completed",
-                video: "/videos/vinpearl.mp4"
+                video: "/videos/vinpearl.mp4",
+                images: ["/images/vinpearl-1.png", "/images/vinpearl-2.jpg"]
             }
         ]
     },
@@ -301,7 +299,7 @@ export default function Projects() {
 
                             <div className="overflow-y-auto w-full custom-scrollbar">
                                 <div className="w-full bg-[#0c0a09] relative border-b border-stone-800/50 flex flex-col items-center">
-                                    {selectedProject.video ? (
+                                    {selectedProject.video && (
                                         <div className="aspect-video w-full flex items-center justify-center">
                                             <video
                                                 src={selectedProject.video}
@@ -310,13 +308,15 @@ export default function Projects() {
                                                 className="w-full h-full object-contain"
                                             />
                                         </div>
-                                    ) : selectedProject.images && selectedProject.images.length > 0 ? (
+                                    )}
+                                    {selectedProject.images && selectedProject.images.length > 0 && (
                                         <div className="w-full flex flex-col">
                                             {selectedProject.images.map((img, idx) => (
                                                 <img key={idx} src={img} alt={`Screenshot ${idx + 1}`} className="w-full h-auto max-h-[80vh] object-contain bg-[#12100f] border-b border-stone-800/30 last:border-0" />
                                             ))}
                                         </div>
-                                    ) : (
+                                    )}
+                                    {!selectedProject.video && (!selectedProject.images || selectedProject.images.length === 0) && (
                                         <div className="aspect-video w-full" />
                                     )}
                                 </div>
