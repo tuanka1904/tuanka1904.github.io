@@ -6,6 +6,26 @@ import { X, ArrowRight } from "lucide-react";
 
 const projectCategories = [
     {
+        categoryTitle: "Company Projects",
+        projects: [
+            {
+                title: "Confidential Project",
+                subtitle: "Studio Name",
+                date: "2025",
+                tags: ["Unity 3D", "C#", "Mobile"],
+                description: "A commercial project demonstrating professional workflow.",
+                fullDescription: "Detailed description of the company project. The specifics are under NDA, but the architecture involved scalable UI systems and mobile optimization.",
+                bulletPoints: [
+                    { title: "UI Architecture", desc: "Built a robust MVC architecture for complex UI flows." },
+                    { title: "Mobile Optimization", desc: "Ensured 60fps on low-end devices by heavy draw-call batching." }
+                ],
+                role: "Gameplay Programmer",
+                timeline: "6 Months",
+                images: ["/images/company-placeholder-1.jpg", "/images/company-placeholder-2.jpg"]
+            }
+        ]
+    },
+    {
         categoryTitle: "Core Engineering",
         projects: [
             {
@@ -175,6 +195,12 @@ export default function Projects() {
                                                     playsInline
                                                     className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105"
                                                 />
+                                            ) : p.images && p.images.length > 0 ? (
+                                                <img 
+                                                    src={p.images[0]} 
+                                                    alt={p.title}
+                                                    className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105"
+                                                />
                                             ) : (
                                                 <div className="w-full h-full bg-[#1c1917]" />
                                             )}
@@ -226,14 +252,24 @@ export default function Projects() {
                             </button>
 
                             <div className="overflow-y-auto w-full custom-scrollbar">
-                                <div className="aspect-video w-full bg-[#0c0a09] relative flex items-center justify-center border-b border-stone-800/50">
-                                    {selectedProject.video && (
-                                        <video
-                                            src={selectedProject.video}
-                                            controls
-                                            autoPlay
-                                            className="w-full h-full object-contain"
-                                        />
+                                <div className="w-full bg-[#0c0a09] relative border-b border-stone-800/50 flex flex-col items-center">
+                                    {selectedProject.video ? (
+                                        <div className="aspect-video w-full flex items-center justify-center">
+                                            <video
+                                                src={selectedProject.video}
+                                                controls
+                                                autoPlay
+                                                className="w-full h-full object-contain"
+                                            />
+                                        </div>
+                                    ) : selectedProject.images && selectedProject.images.length > 0 ? (
+                                        <div className="w-full flex flex-col">
+                                            {selectedProject.images.map((img, idx) => (
+                                                <img key={idx} src={img} alt={`Screenshot ${idx + 1}`} className="w-full h-auto max-h-[80vh] object-contain bg-[#12100f] border-b border-stone-800/30 last:border-0" />
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <div className="aspect-video w-full" />
                                     )}
                                 </div>
 
