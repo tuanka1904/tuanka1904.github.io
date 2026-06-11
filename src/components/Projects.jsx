@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { X, ArrowRight } from "lucide-react";
 
 const projectCategories = [
@@ -214,6 +214,40 @@ const projectCategories = [
     }
 ];
 
+function LazyVideo({ src, className }) {
+    const videoRef = useRef(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    const handleMouseEnter = useCallback(() => {
+        const video = videoRef.current;
+        if (!video) return;
+        if (!isLoaded) {
+            video.src = src;
+            setIsLoaded(true);
+        }
+        video.play().catch(() => {});
+    }, [src, isLoaded]);
+
+    const handleMouseLeave = useCallback(() => {
+        const video = videoRef.current;
+        if (!video) return;
+        video.pause();
+    }, []);
+
+    return (
+        <video
+            ref={videoRef}
+            muted
+            loop
+            playsInline
+            preload="none"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className={className}
+        />
+    );
+}
+
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState(null);
 
@@ -247,20 +281,26 @@ export default function Projects() {
                                         onClick={() => setSelectedProject(p)}
                                         className="group cursor-pointer flex flex-col bg-[#1c1917]/20 border border-stone-800/40 hover:border-stone-700 rounded-3xl overflow-hidden transition-all duration-500 hover:bg-[#1c1917]/40 hover:shadow-2xl hover:shadow-amber-900/5"
                                     >
-                                        <div className="w-full aspect-[16/10] bg-[#1c1917] overflow-hidden relative border-b border-stone-800/40">
+                                        <div className="w-full aspect-[16/10] bg-[#1c1917] overflow-hidden relative border-b border-stone-800/40"
+                                            onMouseEnter={(e) => {
+                                                const video = e.currentTarget.querySelector('video');
+                                                if (video) { video.play().catch(() => {}); }
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                const video = e.currentTarget.querySelector('video');
+                                                if (video) { video.pause(); }
+                                            }}
+                                        >
                                             {p.video ? (
-                                                <video
+                                                <LazyVideo
                                                     src={p.video}
-                                                    autoPlay
-                                                    muted
-                                                    loop
-                                                    playsInline
                                                     className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105"
                                                 />
                                             ) : p.images && p.images.length > 0 ? (
                                                 <img 
                                                     src={p.images[0]} 
                                                     alt={p.title}
+                                                    loading="lazy"
                                                     className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105"
                                                 />
                                             ) : (
@@ -321,6 +361,7 @@ export default function Projects() {
                                                 src={selectedProject.video}
                                                 controls
                                                 autoPlay
+                                                preload="metadata"
                                                 className="w-full h-full object-contain"
                                             />
                                         </div>
@@ -328,7 +369,7 @@ export default function Projects() {
                                     {selectedProject.images && selectedProject.images.length > 0 && (
                                         <div className="w-full flex flex-col">
                                             {selectedProject.images.map((img, idx) => (
-                                                <img key={idx} src={img} alt={`Screenshot ${idx + 1}`} className="w-full h-auto max-h-[80vh] object-contain bg-[#12100f] border-b border-stone-800/30 last:border-0" />
+                                                <img key={idx} src={img} alt={`Screenshot ${idx + 1}`} loading="lazy" className="w-full h-auto max-h-[80vh] object-contain bg-[#12100f] border-b border-stone-800/30 last:border-0" />
                                             ))}
                                         </div>
                                     )}
