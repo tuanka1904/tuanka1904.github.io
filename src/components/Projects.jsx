@@ -40,11 +40,11 @@ const projectCategories = [
             },
             {
                 title: "Singapore Discovery Center",
-                subtitle: "AR & Interactive Exhibits",
+                subtitle: "Sandbox Experience",
                 date: "2022",
-                tags: ["Unity 3D", "AR", "Shaders"],
-                description: "Interactive AR exhibits powered by Unity and custom spatial tracking.",
-                fullDescription: "Developed highly visual AR installations leveraging advanced shaders, tracking, and fluid animations.",
+                tags: ["Unity 3D", "Unreal", "AR", "Shaders"],
+                description: "AR-based interactive sandbox showcasing infrastructure models and educational mini-games on disaster preparedness.",
+                fullDescription: "Developed an AR-based interactive sandbox featuring infrastructure models and educational mini-games focused on disaster preparedness.",
                 bulletPoints: [
                     { title: "Spatial Tracking", desc: "Engineered robust AR tracking logic for seamless physical-digital blending." },
                     { title: "Custom VFX Pipelines", desc: "Authored complex shaders and custom VFX to drive interactive visual feedback." }
@@ -52,6 +52,21 @@ const projectCategories = [
                 role: "Technical Artist / AR Engineer",
                 timeline: "Completed",
                 video: "/videos/sg-discovery.mp4"
+            },
+            {
+                title: "HomeTeam NS",
+                subtitle: "HomeTeam Festival 2023",
+                date: "2023",
+                tags: ["Unity", "Unreal", "AR", "JavaScript"],
+                description: "AR mirror for virtual uniform fitting and a cycling-controlled interactive game for a national festival.",
+                fullDescription: "Developed an AR mirror experience for virtual uniform fitting and a cycling-controlled interactive game for the HomeTeam Festival 2023.",
+                bulletPoints: [
+                    { title: "AR Mirror", desc: "Built a real-time AR mirror allowing visitors to virtually try on uniforms with accurate body tracking." },
+                    { title: "Interactive Cycling Game", desc: "Engineered a hardware-integrated cycling game syncing physical pedal input to in-game movement." }
+                ],
+                role: "Interactive Engineer",
+                timeline: "Completed",
+                images: ["/images/hometeam-1.jpg"]
             },
             {
                 title: "Vinpearl Digital Aquarium",
@@ -71,19 +86,18 @@ const projectCategories = [
             },
             {
                 title: "Seal of Exorcism",
-                subtitle: "Upcoming on Steam",
-                date: "2026",
-                tags: ["Unreal Engine", "C++", "GAS", "Core Optimization"],
-                description: "A high-performance top-down action game leveraging Unreal's Gameplay Ability System (GAS) and advanced memory management.",
-                fullDescription: "Engineered a scalable, data-driven core architecture for a top-down action game slated for Steam release, focusing heavily on runtime performance and ability modularity using C++ and GAS.",
+                subtitle: "Action Roguelike Game",
+                date: "2025",
+                tags: ["Unreal Engine", "C++", "Core Optimization", "Steam"],
+                description: "Core technical representative handling advanced system optimization for a high-performance action roguelike.",
+                fullDescription: "Served as the core technical representative handling advanced system optimization and bug-fixing. Developed high-performance core gameplay systems, managed intense entity counts, and structured reusable framework modules.",
                 bulletPoints: [
-                    { title: "Gameplay Ability System", desc: "Designed modular abilities, attributes, and precise gameplay effects for complex combat scenarios." },
-                    { title: "Advanced Object Pooling", desc: "Implemented custom C++ object pools for projectiles and FX, eliminating garbage collection hitches during intense firefights." },
-                    { title: "Data-Driven Enemy AI", desc: "Constructed lightweight AI behavior trees integrated with GAS for scalable, high-density enemy encounters." },
-                    { title: "Optimized Top-Down Camera", desc: "Engineered a smooth, customizable camera system with occlusion handling and screen-shake integration." }
+                    { title: "Core Gameplay Systems", desc: "Developed high-performance projectile combat, enemy AI, and combat mechanics with structured reusable modules." },
+                    { title: "System Optimization", desc: "Managed intense entity counts and structured reusable framework modules for flawless performance stability." },
+                    { title: "Framework Architecture", desc: "Built structured, reusable framework modules to achieve flawless performance during high-stress gameplay loops." }
                 ],
-                role: "Core Gameplay & Optimization Engineer",
-                timeline: "Upcoming Release",
+                role: "Core Technical Representative",
+                timeline: "Upcoming Steam Release",
                 video: "/videos/ue5-topdown.mp4"
             }
         ]

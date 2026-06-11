@@ -6,19 +6,19 @@ export default function Skills() {
     const categories = [
         {
             title: "Core Tech",
-            skills: ["Unreal Engine (C++/BP)", "Unity 3D (C#)", "Rendering Pipelines", "Optimization"]
+            skills: ["Unreal Engine 4/5 (C++/BP)", "Unity 3D (C#)", "Rendering Pipelines", "Optimization"]
         },
         {
             title: "Architecture",
             skills: ["AI & Behavior Trees", "State Machines", "Core Game Loops", "Data-Driven Design"]
         },
         {
-            title: "Tooling",
-            skills: ["Unity Editor Tooling", "LLM Pipeline", "Python Automation", "Workflow Accel"]
+            title: "Tooling & Backend",
+            skills: ["Editor Tooling", "PlayFab & Node.js", "Python Automation", "LLM Pipeline"]
         },
         {
-            title: "Systems",
-            skills: ["Memory Management", "Multi-platform", "Algorithms", "Event-Driven"]
+            title: "Platforms",
+            skills: ["Multi-platform (Mobile/PC)", "VR/AR Development", "Swift & Java", "Hardware (Arduino/RPi)"]
         }
     ];
 

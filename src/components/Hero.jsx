@@ -17,7 +17,7 @@ export default function Hero() {
                 >
                     <p className="text-amber-600 font-mono text-sm tracking-widest uppercase mb-8 flex items-center gap-3">
                         <span className="w-8 h-px bg-amber-600/50"></span>
-                        Core Engineer & Tool Developer
+                        Senior Game & Systems Developer
                     </p>
                     
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-medium tracking-tighter text-stone-100 leading-[0.9] mb-12">

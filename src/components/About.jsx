@@ -22,12 +22,12 @@ export default function About() {
                             <ul className="space-y-6 text-sm text-stone-400 font-sans">
                                 <div>
                                     <span className="block text-xs uppercase tracking-widest text-amber-600 mb-1 font-mono">Focus</span>
-                                    <span className="text-stone-200 text-base font-medium">Core Architecture, Automation</span>
+                                    <span className="text-stone-200 text-base font-medium">Gameplay Mechanics, Modular Systems, Optimization</span>
                                 </div>
                                 <div className="h-px w-full bg-stone-800/50"></div>
                                 <div>
                                     <span className="block text-xs uppercase tracking-widest text-amber-600 mb-1 font-mono">Platforms</span>
-                                    <span className="text-stone-200 text-base font-medium">Unreal Engine 5, Unity</span>
+                                    <span className="text-stone-200 text-base font-medium">Unreal Engine 4/5 (C++/BP), Unity (C#)</span>
                                 </div>
                                 <div className="h-px w-full bg-stone-800/50"></div>
                                 <div>
@@ -40,7 +40,7 @@ export default function About() {
 
                     <div className="md:col-span-7 prose prose-invert prose-lg max-w-none pt-4 md:pt-16">
                         <p className="text-2xl text-stone-200 font-light leading-relaxed mb-8">
-                            I am a Core Engineer and Tool Developer specializing in scalable game architectures and workflow automation. For over 8 years, I have architected high-performance systems for Unreal and Unity.
+                            I am a Senior Game & Systems Developer specializing in scalable game architectures and deep performance optimization. For over 8 years, I have architected high-performance systems for Unreal Engine (C++/Blueprints) and Unity (C#).
                         </p>
                         <p className="text-stone-400 font-light leading-relaxed">
                             My technical foundation is built on architecting complex gameplay loops&mdash;from state machines and data-driven mechanics to scalable combat systems. But my execution goes deeper. I engineer custom Editor workflows and AI-powered automation tooling that act as force multipliers for entire development teams.
