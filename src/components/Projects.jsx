@@ -9,19 +9,67 @@ const projectCategories = [
         categoryTitle: "Company Projects",
         projects: [
             {
-                title: "Confidential Project",
-                subtitle: "Studio Name",
-                date: "2025",
-                tags: ["Unity 3D", "C#", "Mobile"],
-                description: "A commercial project demonstrating professional workflow.",
-                fullDescription: "Detailed description of the company project. The specifics are under NDA, but the architecture involved scalable UI systems and mobile optimization.",
+                title: "Christmas Wonderland Metaverse",
+                subtitle: "Virtual Event Platform",
+                date: "2021",
+                tags: ["Unreal Engine", "Node.js", "Multiplayer", "Mobile Optimization"],
+                description: "A multiplayer metaverse experience for PC & Mobile built during the pandemic lock-down.",
+                fullDescription: "Developed a scalable multiplayer metaverse allowing users to explore, play mini-games, and engage in live virtual events.",
                 bulletPoints: [
-                    { title: "UI Architecture", desc: "Built a robust MVC architecture for complex UI flows." },
-                    { title: "Mobile Optimization", desc: "Ensured 60fps on low-end devices by heavy draw-call batching." }
+                    { title: "Real-time Multiplayer", desc: "Architected a scalable Node.js server for live sync. Engineered interactive shared-world features like dynamic 3D greeting cards on a Christmas tree." },
+                    { title: "Core Systems & Navigation", desc: "Developed core interactive gameplay mechanics, login flows, gacha systems, and a real-time minimap for seamless navigation." },
+                    { title: "Mobile Optimization", desc: "Spearheaded the cross-platform Unreal Engine build pipeline to Android & iOS with aggressive memory and draw-call optimizations." }
                 ],
-                role: "Gameplay Programmer",
-                timeline: "6 Months",
-                images: ["/images/company-placeholder-1.jpg", "/images/company-placeholder-2.jpg"]
+                role: "Core Gameplay & Optimization",
+                timeline: "Completed",
+                images: ["/images/christmas-1.png", "/images/christmas-2.jpg"]
+            },
+            {
+                title: "CPF: Let the CPF Game On!",
+                subtitle: "Educational Mobile App",
+                date: "2022",
+                tags: ["Unity 3D", "Mobile", "Optimization", "Publishing"],
+                description: "A mobile application gamifying financial habits for kids with physical vending machine integration.",
+                fullDescription: "A gamified educational app designed to teach kids financial habits, featuring real-world integration where users can redeem custom coffee cups at physical vending machines upon completing games.",
+                bulletPoints: [
+                    { title: "Game Optimization", desc: "Refactored and optimized core game logic to ensure smooth performance across various mobile devices." },
+                    { title: "Analytics & Authentication", desc: "Integrated secure login flows and comprehensive telemetry/statistics tracking for user behavior analysis." },
+                    { title: "Store Publishing", desc: "Managed the build pipeline, bug fixing, and final deployments to both Apple App Store and Google Play Store." }
+                ],
+                role: "Gameplay & Release Engineer",
+                timeline: "Completed",
+                video: "/videos/cpf-game.mp4"
+            },
+            {
+                title: "Singapore Discovery Center",
+                subtitle: "AR & Interactive Exhibits",
+                date: "2022",
+                tags: ["Unity 3D", "AR", "Shaders", "VFX"],
+                description: "Interactive Augmented Reality experiences and visual effects for the Singapore Discovery Center.",
+                fullDescription: "Developed highly visual and interactive AR exhibits focusing on cutting-edge tracking and rendering techniques.",
+                bulletPoints: [
+                    { title: "Visual Engineering", desc: "Authored custom shaders, complex materials, and advanced VFX to bring the interactive exhibits to life." },
+                    { title: "AR Tracking & Animation", desc: "Implemented robust AR spatial tracking and fluid animations to ensure seamless blending of digital and physical worlds." }
+                ],
+                role: "Technical Artist / AR Engineer",
+                timeline: "Completed",
+                video: "/videos/sg-discovery.mp4"
+            },
+            {
+                title: "Vinpearl Digital Aquarium",
+                subtitle: "Mixed-Reality & Hardware Integration",
+                date: "2023",
+                tags: ["Unreal Engine", "Unity", "Hologram", "BLE Beacons"],
+                description: "A suite of mixed-reality and location-aware interactive applications blending physical structures with digital interactivity.",
+                fullDescription: "Engineered multiple interactive installations for the Vinpearl Aquarium in Phu Quoc, ranging from AR games to synchronized holographic displays.",
+                bulletPoints: [
+                    { title: "Location-Based Mobile App", desc: "Developed a companion app using BLE Beacon technology for precise, location-triggered guided tours." },
+                    { title: "AR Spatial Gameplay", desc: "Programmed custom spatial mapping in Unity to align digital coral onto physical structures, alongside interactive physics games." },
+                    { title: "Holographic Synchronization", desc: "Architected a real-time synchronized system in Unreal Engine bridging a holographic display with external projection hardware." }
+                ],
+                role: "Lead Interactive Engineer",
+                timeline: "Completed",
+                video: "/videos/vinpearl.mp4"
             }
         ]
     },
