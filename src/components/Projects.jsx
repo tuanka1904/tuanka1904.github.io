@@ -138,6 +138,23 @@ const projectCategories = [
                 role: "Lead Gameplay Engineer",
                 timeline: "Core System Setup",
                 video: "/videos/action-rpg.mp4"
+            },
+            {
+                title: "Mobile Game Framework",
+                subtitle: "Casual Mechanics Playground",
+                date: "2026",
+                tags: ["Unity", "C#", "ScriptableObjects", "Mobile Optimization"],
+                description: "Engineered a highly modular, data-driven Unity framework for rapid prototyping and deployment of popular mobile casual game modes.",
+                fullDescription: "Engineered a highly modular, data-driven Unity framework for rapid prototyping and deployment of popular mobile casual game modes.",
+                bulletPoints: [
+                    { title: "Multi-Genre Gameplay Modes", desc: "Developed two distinct prototypes within a single codebase: a Roguelite survival arena featuring auto-orbiting weapon upgrades, and a hyper-casual runner utilizing mathematical multiplier gates." },
+                    { title: "Data-Driven Level Configurator", desc: "Implemented a reusable architecture leveraging Unity ScriptableObjects to define enemy waves, spawn rules, and dynamic level scaling parameters without writing new code." },
+                    { title: "Performance & Object Pooling", desc: "Optimized mobile runtime efficiency by building a custom object pooling system for enemies, pickups, and VFX particle bursts, eliminating runtime memory allocations and garbage collection spikes." },
+                    { title: "Meta-Progression & Mission Systems", desc: "Designed a persistent progression shop using PlayerPrefs for permanent character stat upgrades, alongside a polymorphic mission manager supporting Defend, Gather, and Destroy quest objectives." }
+                ],
+                role: "Solo Game Developer & Architect",
+                timeline: "Completed",
+                video: "/videos/mobile-game-framework.mp4"
             }
         ]
     },
