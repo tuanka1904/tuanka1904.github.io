@@ -6,8 +6,25 @@ import { X, ArrowRight } from "lucide-react";
 
 const projectCategories = [
     {
-        categoryTitle: "Company Projects",
+        categoryTitle: "Studio Works",
         projects: [
+            {
+                title: "Mobile Game Framework",
+                subtitle: "Casual Mechanics Playground",
+                date: "2026",
+                tags: ["Unity", "C#", "ScriptableObjects", "Mobile Optimization"],
+                description: "Engineered a highly modular, data-driven Unity framework for rapid prototyping and deployment of popular mobile casual game modes.",
+                fullDescription: "Engineered a highly modular, data-driven Unity framework for rapid prototyping and deployment of popular mobile casual game modes.",
+                bulletPoints: [
+                    { title: "Multi-Genre Gameplay Modes", desc: "Developed two distinct prototypes within a single codebase: a Roguelite survival arena featuring auto-orbiting weapon upgrades, and a hyper-casual runner utilizing mathematical multiplier gates." },
+                    { title: "Data-Driven Level Configurator", desc: "Implemented a reusable architecture leveraging Unity ScriptableObjects to define enemy waves, spawn rules, and dynamic level scaling parameters without writing new code." },
+                    { title: "Performance & Object Pooling", desc: "Optimized mobile runtime efficiency by building a custom object pooling system for enemies, pickups, and VFX particle bursts, eliminating runtime memory allocations and garbage collection spikes." },
+                    { title: "Meta-Progression & Mission Systems", desc: "Designed a persistent progression shop using PlayerPrefs for permanent character stat upgrades, alongside a polymorphic mission manager supporting Defend, Gather, and Destroy quest objectives." }
+                ],
+                role: "Solo Game Developer & Architect",
+                timeline: "Completed",
+                video: "/videos/mobile-game-framework.mp4"
+            },
             {
                 title: "Seal of Exorcism",
                 subtitle: "Action Roguelike Game",
@@ -108,23 +125,6 @@ const projectCategories = [
         categoryTitle: "Core Engineering",
         projects: [
             {
-                title: "Mobile Game Framework",
-                subtitle: "Casual Mechanics Playground",
-                date: "2026",
-                tags: ["Unity", "C#", "ScriptableObjects", "Mobile Optimization"],
-                description: "Engineered a highly modular, data-driven Unity framework for rapid prototyping and deployment of popular mobile casual game modes.",
-                fullDescription: "Engineered a highly modular, data-driven Unity framework for rapid prototyping and deployment of popular mobile casual game modes.",
-                bulletPoints: [
-                    { title: "Multi-Genre Gameplay Modes", desc: "Developed two distinct prototypes within a single codebase: a Roguelite survival arena featuring auto-orbiting weapon upgrades, and a hyper-casual runner utilizing mathematical multiplier gates." },
-                    { title: "Data-Driven Level Configurator", desc: "Implemented a reusable architecture leveraging Unity ScriptableObjects to define enemy waves, spawn rules, and dynamic level scaling parameters without writing new code." },
-                    { title: "Performance & Object Pooling", desc: "Optimized mobile runtime efficiency by building a custom object pooling system for enemies, pickups, and VFX particle bursts, eliminating runtime memory allocations and garbage collection spikes." },
-                    { title: "Meta-Progression & Mission Systems", desc: "Designed a persistent progression shop using PlayerPrefs for permanent character stat upgrades, alongside a polymorphic mission manager supporting Defend, Gather, and Destroy quest objectives." }
-                ],
-                role: "Solo Game Developer & Architect",
-                timeline: "Completed",
-                video: "/videos/mobile-game-framework.mp4"
-            },
-            {
                 title: "Action Top-Down Framework",
                 subtitle: "Unity 3D",
                 date: "2025",
@@ -133,7 +133,7 @@ const projectCategories = [
                 fullDescription: "A fully developed C# logic core intended for a fast-paced game environment emphasizing controller responsiveness.",
                 bulletPoints: [
                     { title: "Responsive Controller", desc: "Fluid character controller with mouse-driven aiming, root motion blending, dodge i-frames, and input buffering for responsive combat feel." },
-                    { title: "Modular AI Behavior", desc: "Engineered pluggable AI state machines with configurable patrol graphs, aggro radius detection, and weighted pursuit logic supporting 50+ concurrent agents." },
+                    { title: "Modular AI Behavior", desc: "Engineered pluggable AI state machines with configurable patrol graphs, aggro radius detection, and weighted weighted pursuit logic supporting 50+ concurrent agents." },
                     { title: "Event-Driven Combat", desc: "Architected an Observer-pattern event bus for decoupled combat interactions, environmental hazard triggers, and real-time feedback systems (hit-stop, screen-shake)." }
                 ],
                 role: "Lead Gameplay Engineer",
