@@ -9,65 +9,20 @@ const projectCategories = [
         categoryTitle: "Company Projects",
         projects: [
             {
-                title: "Christmas Wonderland Metaverse",
-                subtitle: "Virtual Event Platform",
-                date: "2021",
-                tags: ["Unreal Engine", "Node.js", "Multiplayer", "Optimization"],
-                description: "Multiplayer metaverse for PC & Mobile driven by a scalable Node.js backend.",
-                fullDescription: "Engineered real-time server architecture for live events and concurrent user synchronization across platforms.",
+                title: "Seal of Exorcism",
+                subtitle: "Action Roguelike Game",
+                date: "2025",
+                tags: ["Unreal Engine", "C++", "Core Optimization", "Steam"],
+                description: "Core technical representative handling advanced system optimization for a high-performance action roguelike.",
+                fullDescription: "Served as the core technical representative handling advanced system optimization and bug-fixing. Developed high-performance core gameplay systems, managed intense entity counts, and structured reusable framework modules.",
                 bulletPoints: [
-                    { title: "Real-time Multiplayer Sync", desc: "Architected a Node.js WebSocket backend handling concurrent user state synchronization, shared-world RPCs, and live event broadcasting with sub-100ms latency." },
-                    { title: "Mobile Build Pipeline", desc: "Optimized UE mobile builds for low-end Android/iOS via draw-call batching, texture streaming budgets, LOD tuning, and aggressive memory pooling to maintain 30fps on min-spec hardware." },
-                    { title: "Interactive Gameplay Systems", desc: "Developed login flows, gacha reward systems, and a real-time minimap with dynamic POI tracking for seamless user navigation." }
+                    { title: "Core Gameplay Systems", desc: "Developed high-performance projectile combat with object pooling, boss mechanics with phase-driven state machines, and enemy AI using behavior trees with dynamic difficulty scaling." },
+                    { title: "System Optimization & Profiling", desc: "Profiled and resolved CPU-bound bottlenecks across gameplay ticks, managing 500+ concurrent entities through spatial partitioning, LOD cascading, and tick-rate throttling." },
+                    { title: "Reusable Framework Modules", desc: "Architected decoupled, interface-driven C++ modules (damage pipeline, ability slots, status effects) designed for cross-project reuse without source modification." }
                 ],
-                role: "Core Gameplay & Optimization",
-                timeline: "Completed",
-                images: ["/images/christmas-1.png", "/images/christmas-2.jpg"]
-            },
-            {
-                title: "CPF: Let the CPF Game On!",
-                subtitle: "Educational Mobile App",
-                date: "2022",
-                tags: ["Unity 3D", "Mobile Optimization", "Publishing"],
-                description: "Educational mobile app integrated directly with physical hardware vending machines.",
-                fullDescription: "Managed end-to-end telemetry integration, game optimization, and multi-platform publishing for iOS and Android.",
-                bulletPoints: [
-                    { title: "Core Logic Optimization", desc: "Profiled and refactored core game loops, reducing per-frame allocation overhead and achieving stable 60FPS across low-tier Android and iOS devices." },
-                    { title: "Telemetry & CI/CD Pipeline", desc: "Integrated PlayFab-based authentication, player data persistence, and cloud analytics. Automated the build-to-store pipeline for both Apple App Store and Google Play." }
-                ],
-                role: "Gameplay & Release Engineer",
-                timeline: "Completed",
-                video: "/videos/cpf-game.mp4"
-            },
-            {
-                title: "Singapore Discovery Center",
-                subtitle: "Sandbox Experience",
-                date: "2022",
-                tags: ["Unity 3D", "Unreal", "AR", "Shaders"],
-                description: "AR-based interactive sandbox showcasing infrastructure models and educational mini-games on disaster preparedness.",
-                fullDescription: "Developed an AR-based interactive sandbox featuring infrastructure models and educational mini-games focused on disaster preparedness.",
-                bulletPoints: [
-                    { title: "Spatial Tracking & AR Pipeline", desc: "Engineered custom AR tracking and spatial mapping pipelines using Unity's AR Foundation, ensuring sub-centimeter alignment between physical sandbox terrain and digital overlays." },
-                    { title: "Custom Shader & Material Authoring", desc: "Authored HLSL/ShaderGraph-based custom shaders and particle systems to render real-time environmental VFX (water, fire, structural damage) driven by user interaction data." }
-                ],
-                role: "Technical Artist / AR Engineer",
-                timeline: "Completed",
-                video: "/videos/sg-discovery.mp4"
-            },
-            {
-                title: "HomeTeam NS",
-                subtitle: "HomeTeam Festival 2023",
-                date: "2023",
-                tags: ["Unity", "Unreal", "AR", "JavaScript"],
-                description: "AR mirror for virtual uniform fitting and a cycling-controlled interactive game for a national festival.",
-                fullDescription: "Developed an AR mirror experience for virtual uniform fitting and a cycling-controlled interactive game for the HomeTeam Festival 2023.",
-                bulletPoints: [
-                    { title: "AR Mirror & Body Tracking", desc: "Built a real-time AR mirror using skeletal pose estimation to map virtual uniform meshes onto visitors with accurate joint-to-mesh binding and occlusion handling." },
-                    { title: "Hardware-Integrated Cycling Game", desc: "Engineered serial I/O communication between physical cycling hardware and Unity runtime, mapping real-time RPM data to in-game physics velocity and terrain response." }
-                ],
-                role: "Interactive Engineer",
-                timeline: "Completed",
-                images: ["/images/hometeam-1.jpg"]
+                role: "Core Technical Representative",
+                timeline: "Upcoming Steam Release",
+                video: "/videos/ue5-topdown.mp4"
             },
             {
                 title: "Vinpearl Digital Aquarium",
@@ -87,20 +42,65 @@ const projectCategories = [
                 images: ["/images/vinpearl-1.png", "/images/vinpearl-2.png"]
             },
             {
-                title: "Seal of Exorcism",
-                subtitle: "Action Roguelike Game",
-                date: "2025",
-                tags: ["Unreal Engine", "C++", "Core Optimization", "Steam"],
-                description: "Core technical representative handling advanced system optimization for a high-performance action roguelike.",
-                fullDescription: "Served as the core technical representative handling advanced system optimization and bug-fixing. Developed high-performance core gameplay systems, managed intense entity counts, and structured reusable framework modules.",
+                title: "HomeTeam NS",
+                subtitle: "HomeTeam Festival 2023",
+                date: "2023",
+                tags: ["Unity", "Unreal", "AR", "JavaScript"],
+                description: "AR mirror for virtual uniform fitting and a cycling-controlled interactive game for a national festival.",
+                fullDescription: "Developed an AR mirror experience for virtual uniform fitting and a cycling-controlled interactive game for the HomeTeam Festival 2023.",
                 bulletPoints: [
-                    { title: "Core Gameplay Systems", desc: "Developed high-performance projectile combat with object pooling, boss mechanics with phase-driven state machines, and enemy AI using behavior trees with dynamic difficulty scaling." },
-                    { title: "System Optimization & Profiling", desc: "Profiled and resolved CPU-bound bottlenecks across gameplay ticks, managing 500+ concurrent entities through spatial partitioning, LOD cascading, and tick-rate throttling." },
-                    { title: "Reusable Framework Modules", desc: "Architected decoupled, interface-driven C++ modules (damage pipeline, ability slots, status effects) designed for cross-project reuse without source modification." }
+                    { title: "AR Mirror & Body Tracking", desc: "Built a real-time AR mirror using skeletal pose estimation to map virtual uniform meshes onto visitors with accurate joint-to-mesh binding and occlusion handling." },
+                    { title: "Hardware-Integrated Cycling Game", desc: "Engineered serial I/O communication between physical cycling hardware and Unity runtime, mapping real-time RPM data to in-game physics velocity and terrain response." }
                 ],
-                role: "Core Technical Representative",
-                timeline: "Upcoming Steam Release",
-                video: "/videos/ue5-topdown.mp4"
+                role: "Interactive Engineer",
+                timeline: "Completed",
+                images: ["/images/hometeam-1.jpg"]
+            },
+            {
+                title: "Singapore Discovery Center",
+                subtitle: "Sandbox Experience",
+                date: "2022",
+                tags: ["Unity 3D", "Unreal", "AR", "Shaders"],
+                description: "AR-based interactive sandbox showcasing infrastructure models and educational mini-games on disaster preparedness.",
+                fullDescription: "Developed an AR-based interactive sandbox featuring infrastructure models and educational mini-games focused on disaster preparedness.",
+                bulletPoints: [
+                    { title: "Spatial Tracking & AR Pipeline", desc: "Engineered custom AR tracking and spatial mapping pipelines using Unity's AR Foundation, ensuring sub-centimeter alignment between physical sandbox terrain and digital overlays." },
+                    { title: "Custom Shader & Material Authoring", desc: "Authored HLSL/ShaderGraph-based custom shaders and particle systems to render real-time environmental VFX (water, fire, structural damage) driven by user interaction data." }
+                ],
+                role: "Technical Artist / AR Engineer",
+                timeline: "Completed",
+                video: "/videos/sg-discovery.mp4"
+            },
+            {
+                title: "CPF: Let the CPF Game On!",
+                subtitle: "Educational Mobile App",
+                date: "2022",
+                tags: ["Unity 3D", "Mobile Optimization", "Publishing"],
+                description: "Educational mobile app integrated directly with physical hardware vending machines.",
+                fullDescription: "Managed end-to-end telemetry integration, game optimization, and multi-platform publishing for iOS and Android.",
+                bulletPoints: [
+                    { title: "Core Logic Optimization", desc: "Profiled and refactored core game loops, reducing per-frame allocation overhead and achieving stable 60FPS across low-tier Android and iOS devices." },
+                    { title: "Telemetry & CI/CD Pipeline", desc: "Integrated PlayFab-based authentication, player data persistence, and cloud analytics. Automated the build-to-store pipeline for both Apple App Store and Google Play." }
+                ],
+                role: "Gameplay & Release Engineer",
+                timeline: "Completed",
+                video: "/videos/cpf-game.mp4"
+            },
+            {
+                title: "Christmas Wonderland Metaverse",
+                subtitle: "Virtual Event Platform",
+                date: "2021",
+                tags: ["Unreal Engine", "Node.js", "Multiplayer", "Optimization"],
+                description: "Multiplayer metaverse for PC & Mobile driven by a scalable Node.js backend.",
+                fullDescription: "Engineered real-time server architecture for live events and concurrent user synchronization across platforms.",
+                bulletPoints: [
+                    { title: "Real-time Multiplayer Sync", desc: "Architected a Node.js WebSocket backend handling concurrent user state synchronization, shared-world RPCs, and live event broadcasting with sub-100ms latency." },
+                    { title: "Mobile Build Pipeline", desc: "Optimized UE mobile builds for low-end Android/iOS via draw-call batching, texture streaming budgets, LOD tuning, and aggressive memory pooling to maintain 30fps on min-spec hardware." },
+                    { title: "Interactive Gameplay Systems", desc: "Developed login flows, gacha reward systems, and a real-time minimap with dynamic POI tracking for seamless user navigation." }
+                ],
+                role: "Core Gameplay & Optimization",
+                timeline: "Completed",
+                images: ["/images/christmas-1.png", "/images/christmas-2.jpg"]
             }
         ]
     },
@@ -108,20 +108,21 @@ const projectCategories = [
         categoryTitle: "Core Engineering",
         projects: [
             {
-                title: "UE C++: Modular Combat Framework",
-                subtitle: "Unreal Engine 5",
-                date: "2024",
-                tags: ["Unreal Engine", "Pure C++", "Architecture"],
-                description: "Scalable, data-driven combat architecture entirely in C++.",
-                fullDescription: "Built a highly resilient core logic framework designed for scalability in complex game environments.",
+                title: "Mobile Game Framework",
+                subtitle: "Casual Mechanics Playground",
+                date: "2026",
+                tags: ["Unity", "C#", "ScriptableObjects", "Mobile Optimization"],
+                description: "Engineered a highly modular, data-driven Unity framework for rapid prototyping and deployment of popular mobile casual game modes.",
+                fullDescription: "Engineered a highly modular, data-driven Unity framework for rapid prototyping and deployment of popular mobile casual game modes.",
                 bulletPoints: [
-                    { title: "Object-Oriented AI Architecture", desc: "Designed a polymorphic enemy spawning system with shared base combat logic and specialized pursuit/aggro state machines driven by Behavior Trees." },
-                    { title: "Data-Driven Weapon Pipeline", desc: "Built a DataAsset-driven weapon system enabling hot-swappable stat profiles linked to Animation Blueprints and Anim Notify-driven state transitions." },
-                    { title: "Unified Damage Interface", desc: "Implemented a decoupled IDamageable interface supporting AI combat, environmental destruction, and projectile interactions through a single polymorphic dispatch." }
+                    { title: "Multi-Genre Gameplay Modes", desc: "Developed two distinct prototypes within a single codebase: a Roguelite survival arena featuring auto-orbiting weapon upgrades, and a hyper-casual runner utilizing mathematical multiplier gates." },
+                    { title: "Data-Driven Level Configurator", desc: "Implemented a reusable architecture leveraging Unity ScriptableObjects to define enemy waves, spawn rules, and dynamic level scaling parameters without writing new code." },
+                    { title: "Performance & Object Pooling", desc: "Optimized mobile runtime efficiency by building a custom object pooling system for enemies, pickups, and VFX particle bursts, eliminating runtime memory allocations and garbage collection spikes." },
+                    { title: "Meta-Progression & Mission Systems", desc: "Designed a persistent progression shop using PlayerPrefs for permanent character stat upgrades, alongside a polymorphic mission manager supporting Defend, Gather, and Destroy quest objectives." }
                 ],
-                role: "Core Engineer",
-                timeline: "Personal Prototype",
-                video: "/videos/combat-system.mp4"
+                role: "Solo Game Developer & Architect",
+                timeline: "Completed",
+                video: "/videos/mobile-game-framework.mp4"
             },
             {
                 title: "Action Top-Down Framework",
@@ -140,27 +141,60 @@ const projectCategories = [
                 video: "/videos/action-rpg.mp4"
             },
             {
-                title: "Mobile Game Framework",
-                subtitle: "Casual Mechanics Playground",
-                date: "2026",
-                tags: ["Unity", "C#", "ScriptableObjects", "Mobile Optimization"],
-                description: "Engineered a highly modular, data-driven Unity framework for rapid prototyping and deployment of popular mobile casual game modes.",
-                fullDescription: "Engineered a highly modular, data-driven Unity framework for rapid prototyping and deployment of popular mobile casual game modes.",
+                title: "UE C++: Modular Combat Framework",
+                subtitle: "Unreal Engine 5",
+                date: "2024",
+                tags: ["Unreal Engine", "Pure C++", "Architecture"],
+                description: "Scalable, data-driven combat architecture entirely in C++.",
+                fullDescription: "Built a highly resilient core logic framework designed for scalability in complex game environments.",
                 bulletPoints: [
-                    { title: "Multi-Genre Gameplay Modes", desc: "Developed two distinct prototypes within a single codebase: a Roguelite survival arena featuring auto-orbiting weapon upgrades, and a hyper-casual runner utilizing mathematical multiplier gates." },
-                    { title: "Data-Driven Level Configurator", desc: "Implemented a reusable architecture leveraging Unity ScriptableObjects to define enemy waves, spawn rules, and dynamic level scaling parameters without writing new code." },
-                    { title: "Performance & Object Pooling", desc: "Optimized mobile runtime efficiency by building a custom object pooling system for enemies, pickups, and VFX particle bursts, eliminating runtime memory allocations and garbage collection spikes." },
-                    { title: "Meta-Progression & Mission Systems", desc: "Designed a persistent progression shop using PlayerPrefs for permanent character stat upgrades, alongside a polymorphic mission manager supporting Defend, Gather, and Destroy quest objectives." }
+                    { title: "Object-Oriented AI Architecture", desc: "Designed a polymorphic enemy spawning system with shared base combat logic and specialized pursuit/aggro state machines driven by Behavior Trees." },
+                    { title: "Data-Driven Weapon Pipeline", desc: "Built a DataAsset-driven weapon system enabling hot-swappable stat profiles linked to Animation Blueprints and Anim Notify-driven state transitions." },
+                    { title: "Unified Damage Interface", desc: "Implemented a decoupled IDamageable interface supporting AI combat, environmental destruction, and projectile interactions through a single polymorphic dispatch." }
                 ],
-                role: "Solo Game Developer & Architect",
-                timeline: "Completed",
-                video: "/videos/mobile-game-framework.mp4"
+                role: "Core Engineer",
+                timeline: "Personal Prototype",
+                video: "/videos/combat-system.mp4"
             }
         ]
     },
     {
         categoryTitle: "Custom Tooling",
         projects: [
+            {
+                title: "Catfe Scene Analyzer Suite",
+                subtitle: "Unity Editor Tooling & Diagnostics",
+                date: "2026",
+                tags: ["Unity 3D", "C#", "Editor Scripting", "Optimization"],
+                description: "Engineered a comprehensive real-time rendering diagnostic and draw-call optimization suite inside Unity Editor to detect bottlenecks and automate scene performance profiling.",
+                fullDescription: "Engineered a comprehensive real-time rendering diagnostic and draw-call optimization suite inside Unity Editor to detect bottlenecks and automate scene performance profiling.",
+                bulletPoints: [
+                    { title: "Heuristic Risk Profiling Engine", desc: "Architected a real-time scanning system that evaluates complex scene renderers against weighted performance costs—detecting multi-material splitting, missing static flags, uninstanced meshes, and redundant shadow casters." },
+                    { title: "Interactive 3D Heatmap & HUD", desc: "Developed custom scene-view overlays and sleek diagnostic badges featuring custom frustum culling, distance throttling, and a smart screen-space anti-collision algorithm to prevent overlap in dense environments." },
+                    { title: "1-Click Automated Batching", desc: "Built an automated remediation workflow that groups identical fragmented materials/meshes to enable GPU Instancing and Static Batching instantly, saving hundreds of draw calls with full Undo/Redo safety." },
+                    { title: "KPI Audit Reporting System", desc: "Integrated an executive dashboard with high-level performance metrics and an automated generator that exports detailed markdown (.md) audit reports for seamless team collaboration." }
+                ],
+                role: "Tooling & Performance Engineer",
+                timeline: "Completed",
+                video: "/videos/catfe-analyzer.mp4"
+            },
+            {
+                title: "PolyWorld: Dynamic World Streaming & Runtime Navigation",
+                subtitle: "Unity Engine Architecture",
+                date: "2026",
+                tags: ["Unity 3D", "C#", "Async Optimization", "Architecture"],
+                description: "Built a highly optimized, modular framework for seamless infinite chunk streaming and real-time asynchronous background NavMesh baking inside the Unity Engine.",
+                fullDescription: "Built a highly optimized, modular framework for seamless infinite chunk streaming and real-time asynchronous background NavMesh baking inside the Unity Engine.",
+                bulletPoints: [
+                    { title: "Zero-Stutter Infinite Streaming", desc: "Advanced object pooling architecture that recycles environment chunks using active state toggles to prevent garbage collection spikes and main-thread CPU hiccups." },
+                    { title: "Asynchronous Background Baking", desc: "Real-time navigation mesh generation running on background worker threads, achieving 12ms average bake times per chunk without blocking game thread execution." },
+                    { title: "Interactive Zone Painting", desc: "A specialized Unity Scene View tool allowing level designers to paint area-specific gameplay behaviors, AI spawn rules, and travel costs visually on the grid." },
+                    { title: "Observer-Pattern Events", desc: "A decoupled event API (PolyWorldEvents) facilitating clean, modular integrations with custom gameplay controllers and AI behavior scripts." }
+                ],
+                role: "Core Engineer",
+                timeline: "Completed",
+                video: "/videos/polyworld-streaming.mp4"
+            },
             {
                 title: "Advanced Workspace Manager",
                 subtitle: "Unity Editor Scripting",
@@ -209,23 +243,6 @@ const projectCategories = [
                 role: "System Designer & Programmer",
                 timeline: "Completed (v1.2.0)",
                 video: "/videos/catfe-inventory.mp4"
-            },
-            {
-                title: "PolyWorld: Dynamic World Streaming & Runtime Navigation",
-                subtitle: "Unity Engine Architecture",
-                date: "2026",
-                tags: ["Unity 3D", "C#", "Async Optimization", "Architecture"],
-                description: "Built a highly optimized, modular framework for seamless infinite chunk streaming and real-time asynchronous background NavMesh baking inside the Unity Engine.",
-                fullDescription: "Built a highly optimized, modular framework for seamless infinite chunk streaming and real-time asynchronous background NavMesh baking inside the Unity Engine.",
-                bulletPoints: [
-                    { title: "Zero-Stutter Infinite Streaming", desc: "Advanced object pooling architecture that recycles environment chunks using active state toggles to prevent garbage collection spikes and main-thread CPU hiccups." },
-                    { title: "Asynchronous Background Baking", desc: "Real-time navigation mesh generation running on background worker threads, achieving 12ms average bake times per chunk without blocking game thread execution." },
-                    { title: "Interactive Zone Painting", desc: "A specialized Unity Scene View tool allowing level designers to paint area-specific gameplay behaviors, AI spawn rules, and travel costs visually on the grid." },
-                    { title: "Observer-Pattern Events", desc: "A decoupled event API (PolyWorldEvents) facilitating clean, modular integrations with custom gameplay controllers and AI behavior scripts." }
-                ],
-                role: "Core Engineer",
-                timeline: "Completed",
-                video: "/videos/polyworld-streaming.mp4"
             }
         ]
     }
