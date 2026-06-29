@@ -51,7 +51,7 @@ const projectCategories = [
                 bulletPoints: [
                     { title: "Cross-Display Holographic Sync", desc: "Architected a socket-based IPC protocol in UE C++ bridging an internal holographic display with external projection hardware, achieving frame-accurate synchronization for interactive 3D assets." },
                     { title: "AR Spatial Mapping & Physics", desc: "Developed custom AR spatial mapping in Unity to project and anchor dynamic coral meshes onto pre-built physical structures, with real-time Rigidbody physics for interactive turtle and volcano gameplay." },
-                    { title: "BLE Beacon Navigation", desc: "Built a companion mobile app leveraging BLE RSSI trilateration for precise indoor positioning, delivering context-aware guided tours triggered by proximity to exhibit zones." }
+                    { title: "Location-Based Gameplay Triggering", desc: "Built a companion app leveraging BLE RSSI trilateration for indoor positioning, triggering localized AR gameplay events and interactive state changes as users approached exhibit zones." }
                 ],
                 role: "Lead Interactive Engineer",
                 timeline: "Completed",
@@ -60,22 +60,22 @@ const projectCategories = [
             },
             {
                 title: "HomeTeam NS",
-                subtitle: "HomeTeam Festival 2023",
+                subtitle: "AR Avatar Fitting System",
                 date: "2023",
-                tags: ["Unity", "Unreal", "AR", "JavaScript"],
-                description: "AR mirror for virtual uniform fitting and a cycling-controlled interactive game for a national festival.",
-                fullDescription: "Developed an AR mirror experience for virtual uniform fitting and a cycling-controlled interactive game for the HomeTeam Festival 2023.",
+                tags: ["Unity", "Unreal", "AR", "Skeletal Tracking"],
+                description: "AR mirror for real-time virtual uniform fitting and skeletal pose tracking.",
+                fullDescription: "Developed an AR mirror experience leveraging real-time skeletal pose estimation to map and align virtual uniform meshes onto users.",
                 bulletPoints: [
-                    { title: "AR Mirror & Body Tracking", desc: "Built a real-time AR mirror using skeletal pose estimation to map virtual uniform meshes onto visitors with accurate joint-to-mesh binding and occlusion handling." },
-                    { title: "Hardware-Integrated Cycling Game", desc: "Engineered serial I/O communication between physical cycling hardware and Unity runtime, mapping real-time RPM data to in-game physics velocity and terrain response." }
+                    { title: "Real-Time Skeletal Binding", desc: "Leveraged skeletal pose estimation to map and bind virtual uniform meshes onto dynamic user poses with accurate joint-to-mesh binding." },
+                    { title: "Occlusion & Rendering Optimization", desc: "Implemented advanced occlusion handling and depth-sorting shaders to ensure correct rendering order between the physical user and virtual meshes." }
                 ],
-                role: "Interactive Engineer",
+                role: "Interactive & AR Engineer",
                 timeline: "Completed",
                 images: ["/images/hometeam-1.jpg"]
             },
             {
                 title: "Singapore Discovery Center",
-                subtitle: "Sandbox Experience",
+                subtitle: "AR Interactive Sandbox",
                 date: "2022",
                 tags: ["Unity 3D", "Unreal", "AR", "Shaders"],
                 description: "AR-based interactive sandbox showcasing infrastructure models and educational mini-games on disaster preparedness.",
@@ -90,10 +90,10 @@ const projectCategories = [
             },
             {
                 title: "CPF: Let the CPF Game On!",
-                subtitle: "Educational Mobile App",
+                subtitle: "Educational Mobile Game",
                 date: "2022",
                 tags: ["Unity 3D", "Mobile Optimization", "Publishing"],
-                description: "Educational mobile app integrated directly with physical hardware vending machines.",
+                description: "Educational mobile game integrated directly with physical hardware vending machines.",
                 fullDescription: "Managed end-to-end telemetry integration, game optimization, and multi-platform publishing for iOS and Android.",
                 bulletPoints: [
                     { title: "Core Logic Optimization", desc: "Profiled and refactored core game loops, reducing per-frame allocation overhead and achieving stable 60FPS across low-tier Android and iOS devices." },
@@ -101,11 +101,16 @@ const projectCategories = [
                 ],
                 role: "Gameplay & Release Engineer",
                 timeline: "Completed",
-                video: "/videos/cpf-game.mp4"
+                images: [
+                    "/images/cpf-1.png",
+                    "/images/cpf-2.png",
+                    "/images/cpf-3.png",
+                    "/images/cpf-4.png"
+                ]
             },
             {
                 title: "Christmas Wonderland Metaverse",
-                subtitle: "Virtual Event Platform",
+                subtitle: "Multiplayer Metaverse Platform",
                 date: "2021",
                 tags: ["Unreal Engine", "Node.js", "Multiplayer", "Optimization"],
                 description: "Multiplayer metaverse for PC & Mobile driven by a scalable Node.js backend.",
