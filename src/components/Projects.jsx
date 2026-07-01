@@ -55,7 +55,6 @@ const projectCategories = [
                 ],
                 role: "Lead Interactive Engineer",
                 timeline: "Completed",
-                video: "/videos/vinpearl.mp4",
                 images: ["/images/vinpearl-1.png", "/images/vinpearl-2.png"]
             },
             {
