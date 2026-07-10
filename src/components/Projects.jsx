@@ -1,8 +1,10 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef, useCallback } from "react";
-import { X, ArrowRight } from "lucide-react";
+import { useState, useRef, useCallback, useEffect } from "react";
+import { X, ArrowRight, Play } from "lucide-react";
+
+const posterFor = (video) => video.replace("/videos/", "/posters/").replace(".mp4", ".jpg");
 
 const projectCategories = [
     {
@@ -13,13 +15,13 @@ const projectCategories = [
                 subtitle: "Casual Mechanics Playground",
                 date: "2026",
                 tags: ["Unity", "C#", "ScriptableObjects", "Mobile Optimization"],
-                description: "Engineered a highly modular, data-driven Unity framework for rapid prototyping and deployment of popular mobile casual game modes.",
-                fullDescription: "Engineered a highly modular, data-driven Unity framework for rapid prototyping and deployment of popular mobile casual game modes.",
+                description: "Data-driven Unity framework powering two distinct casual game genres from a single modular codebase.",
+                fullDescription: "A data-driven Unity framework built for rapid prototyping and deployment of mobile casual game modes. Two distinct genres run on the same codebase, configured entirely through ScriptableObjects — no per-mode rewrites.",
                 bulletPoints: [
-                    { title: "Multi-Genre Gameplay Modes", desc: "Developed two distinct prototypes within a single codebase: a Roguelite survival arena featuring auto-orbiting weapon upgrades, and a hyper-casual runner utilizing mathematical multiplier gates." },
-                    { title: "Data-Driven Level Configurator", desc: "Implemented a reusable architecture leveraging Unity ScriptableObjects to define enemy waves, spawn rules, and dynamic level scaling parameters without writing new code." },
-                    { title: "Performance & Object Pooling", desc: "Optimized mobile runtime efficiency by building a custom object pooling system for enemies, pickups, and VFX particle bursts, eliminating runtime memory allocations and garbage collection spikes." },
-                    { title: "Meta-Progression & Mission Systems", desc: "Designed a persistent progression shop using PlayerPrefs for permanent character stat upgrades, alongside a polymorphic mission manager supporting Defend, Gather, and Destroy quest objectives." }
+                    { title: "Multi-Genre Gameplay Modes", desc: "Two prototypes in one codebase: a Roguelite survival arena with auto-orbiting weapon upgrades, and a hyper-casual runner built around mathematical multiplier gates." },
+                    { title: "Data-Driven Level Configurator", desc: "ScriptableObject-based architecture defines enemy waves, spawn rules, and dynamic level scaling — designers ship new levels without touching code." },
+                    { title: "Performance & Object Pooling", desc: "Custom object pooling for enemies, pickups, and VFX bursts eliminates runtime allocations and GC spikes on low-end mobile hardware." },
+                    { title: "Meta-Progression & Mission Systems", desc: "Persistent upgrade shop backed by local save data, plus a polymorphic mission manager supporting Defend, Gather, and Destroy objectives." }
                 ],
                 role: "Solo Game Developer & Architect",
                 timeline: "Completed",
@@ -30,14 +32,14 @@ const projectCategories = [
                 subtitle: "Action Roguelike Game",
                 date: "2025",
                 tags: ["Unreal Engine", "C++", "Core Optimization", "Steam"],
-                description: "Core technical representative handling advanced system optimization for a high-performance action roguelike.",
-                fullDescription: "Served as the core technical representative handling advanced system optimization and bug-fixing. Developed high-performance core gameplay systems, managed intense entity counts, and structured reusable framework modules.",
+                description: "Owned core systems and performance for a high-entity-count action roguelike headed to Steam.",
+                fullDescription: "Core technical owner for systems and performance on a fast-paced action roguelike. Built high-performance gameplay systems, kept 500+ concurrent entities within frame budget, and structured framework modules for reuse across projects.",
                 bulletPoints: [
-                    { title: "Core Gameplay Systems", desc: "Developed high-performance projectile combat with object pooling, boss mechanics with phase-driven state machines, and enemy AI using behavior trees with dynamic difficulty scaling." },
-                    { title: "System Optimization & Profiling", desc: "Profiled and resolved CPU-bound bottlenecks across gameplay ticks, managing 500+ concurrent entities through spatial partitioning, LOD cascading, and tick-rate throttling." },
-                    { title: "Reusable Framework Modules", desc: "Architected decoupled, interface-driven C++ modules (damage pipeline, ability slots, status effects) designed for cross-project reuse without source modification." }
+                    { title: "Core Gameplay Systems", desc: "High-throughput projectile combat with object pooling, boss mechanics driven by phase-based state machines, and enemy AI on behavior trees with dynamic difficulty scaling." },
+                    { title: "System Optimization & Profiling", desc: "Profiled and resolved CPU-bound bottlenecks across gameplay ticks — 500+ concurrent entities sustained via spatial partitioning, LOD cascading, and tick-rate throttling." },
+                    { title: "Reusable Framework Modules", desc: "Decoupled, interface-driven C++ modules (damage pipeline, ability slots, status effects) designed for cross-project reuse without source modification." }
                 ],
-                role: "Core Technical Representative",
+                role: "Core Systems Engineer",
                 timeline: "Upcoming Steam Release",
                 video: "/videos/ue5-topdown.mp4"
             },
@@ -46,27 +48,27 @@ const projectCategories = [
                 subtitle: "Mixed-Reality Ecosystem",
                 date: "2023",
                 tags: ["Unreal Engine", "Unity", "Holographic Sync", "BLE"],
-                description: "Mixed-reality ecosystem featuring location-aware mapping and holographic synchronization.",
-                fullDescription: "Architected a multi-platform installation integrating BLE beacon mapping, AR gameplay, and cross-display hologram sync.",
+                description: "Mixed-reality installation combining BLE indoor positioning, AR gameplay, and frame-accurate hologram sync.",
+                fullDescription: "A multi-platform installation integrating BLE beacon mapping, AR gameplay, and cross-display hologram synchronization for a live aquarium exhibit.",
                 bulletPoints: [
-                    { title: "Cross-Display Holographic Sync", desc: "Architected a socket-based IPC protocol in UE C++ bridging an internal holographic display with external projection hardware, achieving frame-accurate synchronization for interactive 3D assets." },
-                    { title: "AR Spatial Mapping & Physics", desc: "Developed custom AR spatial mapping in Unity to project and anchor dynamic coral meshes onto pre-built physical structures, with real-time Rigidbody physics for interactive turtle and volcano gameplay." },
-                    { title: "Location-Based Gameplay Triggering", desc: "Built a companion app leveraging BLE RSSI trilateration for indoor positioning, triggering localized AR gameplay events and interactive state changes as users approached exhibit zones." }
+                    { title: "Cross-Display Holographic Sync", desc: "Socket-based IPC protocol in UE C++ bridging an internal holographic display with external projection hardware — frame-accurate synchronization for interactive 3D assets." },
+                    { title: "AR Spatial Mapping & Physics", desc: "Custom AR spatial mapping in Unity projects and anchors dynamic coral meshes onto pre-built physical structures, with real-time Rigidbody physics for interactive turtle and volcano gameplay." },
+                    { title: "Location-Based Gameplay Triggering", desc: "Companion app using BLE RSSI trilateration for indoor positioning, triggering localized AR events and state changes as visitors approach exhibit zones." }
                 ],
                 role: "Lead Interactive Engineer",
                 timeline: "Completed",
-                images: ["/images/vinpearl-1.png", "/images/vinpearl-2.png"]
+                images: ["/images/vinpearl-1.jpg", "/images/vinpearl-2.jpg"]
             },
             {
                 title: "HomeTeam NS",
                 subtitle: "AR Avatar Fitting System",
                 date: "2023",
                 tags: ["Unity", "Unreal", "AR", "Skeletal Tracking"],
-                description: "AR mirror for real-time virtual uniform fitting and skeletal pose tracking.",
-                fullDescription: "Developed an AR mirror experience leveraging real-time skeletal pose estimation to map and align virtual uniform meshes onto users.",
+                description: "AR mirror for real-time virtual uniform fitting driven by skeletal pose tracking.",
+                fullDescription: "An AR mirror experience using real-time skeletal pose estimation to map and align virtual uniform meshes onto users as they move.",
                 bulletPoints: [
-                    { title: "Real-Time Skeletal Binding", desc: "Leveraged skeletal pose estimation to map and bind virtual uniform meshes onto dynamic user poses with accurate joint-to-mesh binding." },
-                    { title: "Occlusion & Rendering Optimization", desc: "Implemented advanced occlusion handling and depth-sorting shaders to ensure correct rendering order between the physical user and virtual meshes." }
+                    { title: "Real-Time Skeletal Binding", desc: "Skeletal pose estimation maps virtual uniform meshes onto dynamic user poses with accurate joint-to-mesh binding." },
+                    { title: "Occlusion & Rendering Optimization", desc: "Occlusion handling and depth-sorting shaders keep rendering order correct between the physical user and virtual meshes." }
                 ],
                 role: "Interactive & AR Engineer",
                 timeline: "Completed",
@@ -77,11 +79,11 @@ const projectCategories = [
                 subtitle: "AR Interactive Sandbox",
                 date: "2022",
                 tags: ["Unity 3D", "Unreal", "AR", "Shaders"],
-                description: "AR-based interactive sandbox showcasing infrastructure models and educational mini-games on disaster preparedness.",
-                fullDescription: "Developed an AR-based interactive sandbox featuring infrastructure models and educational mini-games focused on disaster preparedness.",
+                description: "AR interactive sandbox teaching disaster preparedness through physical terrain and digital overlays.",
+                fullDescription: "An AR-based interactive sandbox featuring infrastructure models and educational mini-games focused on disaster preparedness, installed at the Singapore Discovery Centre.",
                 bulletPoints: [
-                    { title: "Spatial Tracking & AR Pipeline", desc: "Engineered custom AR tracking and spatial mapping pipelines using Unity's AR Foundation, ensuring sub-centimeter alignment between physical sandbox terrain and digital overlays." },
-                    { title: "Custom Shader & Material Authoring", desc: "Authored HLSL/ShaderGraph-based custom shaders and particle systems to render real-time environmental VFX (water, fire, structural damage) driven by user interaction data." }
+                    { title: "Spatial Tracking & AR Pipeline", desc: "Custom AR tracking and spatial mapping pipelines on Unity AR Foundation, holding sub-centimeter alignment between physical sandbox terrain and digital overlays." },
+                    { title: "Custom Shader & Material Authoring", desc: "HLSL/ShaderGraph shaders and particle systems render real-time environmental VFX — water, fire, structural damage — driven by user interaction data." }
                 ],
                 role: "Technical Artist / AR Engineer",
                 timeline: "Completed",
@@ -92,11 +94,11 @@ const projectCategories = [
                 subtitle: "Educational Mobile Game",
                 date: "2022",
                 tags: ["Unity 3D", "Mobile Optimization", "Publishing"],
-                description: "Educational mobile game integrated directly with physical hardware vending machines.",
-                fullDescription: "Managed end-to-end telemetry integration, game optimization, and multi-platform publishing for iOS and Android.",
+                description: "Educational mobile game shipped to both app stores, integrated with physical vending-machine hardware.",
+                fullDescription: "Owned telemetry integration, performance, and multi-platform publishing end-to-end — from PlayFab backend wiring to App Store and Google Play release.",
                 bulletPoints: [
-                    { title: "Core Logic Optimization", desc: "Profiled and refactored core game loops, reducing per-frame allocation overhead and achieving stable 60FPS across low-tier Android and iOS devices." },
-                    { title: "Telemetry & CI/CD Pipeline", desc: "Integrated PlayFab-based authentication, player data persistence, and cloud analytics. Automated the build-to-store pipeline for both Apple App Store and Google Play." }
+                    { title: "Core Logic Optimization", desc: "Profiled and refactored core game loops, cutting per-frame allocation overhead to hold a stable 60 FPS on low-tier Android and iOS devices." },
+                    { title: "Telemetry & CI/CD Pipeline", desc: "PlayFab authentication, player data persistence, and cloud analytics, with an automated build-to-store pipeline for both Apple App Store and Google Play." }
                 ],
                 role: "Gameplay & Release Engineer",
                 timeline: "Completed",
@@ -112,16 +114,16 @@ const projectCategories = [
                 subtitle: "Multiplayer Metaverse Platform",
                 date: "2021",
                 tags: ["Unreal Engine", "Node.js", "Multiplayer", "Optimization"],
-                description: "Multiplayer metaverse for PC & Mobile driven by a scalable Node.js backend.",
-                fullDescription: "Engineered real-time server architecture for live events and concurrent user synchronization across platforms.",
+                description: "Cross-platform multiplayer metaverse with live events, backed by a Node.js real-time server.",
+                fullDescription: "Real-time server architecture for live events and concurrent user synchronization across PC and mobile clients.",
                 bulletPoints: [
-                    { title: "Real-time Multiplayer Sync", desc: "Architected a Node.js WebSocket backend handling concurrent user state synchronization, shared-world RPCs, and live event broadcasting with sub-100ms latency." },
-                    { title: "Mobile Build Pipeline", desc: "Optimized UE mobile builds for low-end Android/iOS via draw-call batching, texture streaming budgets, LOD tuning, and aggressive memory pooling to maintain 30fps on min-spec hardware." },
-                    { title: "Interactive Gameplay Systems", desc: "Developed login flows, gacha reward systems, and a real-time minimap with dynamic POI tracking for seamless user navigation." }
+                    { title: "Real-time Multiplayer Sync", desc: "Node.js WebSocket backend handling concurrent user state sync, shared-world RPCs, and live event broadcasting with sub-100ms latency." },
+                    { title: "Mobile Build Pipeline", desc: "UE mobile builds tuned for low-end Android/iOS — draw-call batching, texture streaming budgets, LOD tuning, and memory pooling to hold 30 FPS on min-spec hardware." },
+                    { title: "Interactive Gameplay Systems", desc: "Login flows, gacha reward systems, and a real-time minimap with dynamic POI tracking." }
                 ],
                 role: "Core Gameplay & Optimization",
                 timeline: "Completed",
-                images: ["/images/christmas-1.png", "/images/christmas-2.jpg"]
+                images: ["/images/christmas-1.jpg", "/images/christmas-2.jpg"]
             }
         ]
     },
@@ -133,12 +135,12 @@ const projectCategories = [
                 subtitle: "Unity 3D",
                 date: "2025",
                 tags: ["Unity 3D", "C#", "AI State Machines"],
-                description: "Robust core architecture for a fast-paced action shooter.",
-                fullDescription: "A fully developed C# logic core intended for a fast-paced game environment emphasizing controller responsiveness.",
+                description: "C# gameplay core for a fast-paced action shooter, built around controller responsiveness.",
+                fullDescription: "A fully developed C# logic core for a fast-paced action environment, engineered around input responsiveness and decoupled combat systems.",
                 bulletPoints: [
                     { title: "Responsive Controller", desc: "Fluid character controller with mouse-driven aiming, root motion blending, dodge i-frames, and input buffering for responsive combat feel." },
-                    { title: "Modular AI Behavior", desc: "Engineered pluggable AI state machines with configurable patrol graphs, aggro radius detection, and weighted weighted pursuit logic supporting 50+ concurrent agents." },
-                    { title: "Event-Driven Combat", desc: "Architected an Observer-pattern event bus for decoupled combat interactions, environmental hazard triggers, and real-time feedback systems (hit-stop, screen-shake)." }
+                    { title: "Modular AI Behavior", desc: "Pluggable AI state machines with configurable patrol graphs, aggro radius detection, and weighted pursuit logic supporting 50+ concurrent agents." },
+                    { title: "Event-Driven Combat", desc: "Observer-pattern event bus decouples combat interactions, environmental hazard triggers, and feedback systems (hit-stop, screen-shake)." }
                 ],
                 role: "Lead Gameplay Engineer",
                 timeline: "Core System Setup",
@@ -149,12 +151,12 @@ const projectCategories = [
                 subtitle: "Unreal Engine 5",
                 date: "2024",
                 tags: ["Unreal Engine", "Pure C++", "Architecture"],
-                description: "Scalable, data-driven combat architecture entirely in C++.",
-                fullDescription: "Built a highly resilient core logic framework designed for scalability in complex game environments.",
+                description: "Data-driven combat architecture written entirely in C++, designed to scale without engine-source changes.",
+                fullDescription: "A resilient core logic framework in pure C++, designed for scalability in complex game environments without touching engine source.",
                 bulletPoints: [
-                    { title: "Object-Oriented AI Architecture", desc: "Designed a polymorphic enemy spawning system with shared base combat logic and specialized pursuit/aggro state machines driven by Behavior Trees." },
-                    { title: "Data-Driven Weapon Pipeline", desc: "Built a DataAsset-driven weapon system enabling hot-swappable stat profiles linked to Animation Blueprints and Anim Notify-driven state transitions." },
-                    { title: "Unified Damage Interface", desc: "Implemented a decoupled IDamageable interface supporting AI combat, environmental destruction, and projectile interactions through a single polymorphic dispatch." }
+                    { title: "Object-Oriented AI Architecture", desc: "Polymorphic enemy spawning with shared base combat logic and specialized pursuit/aggro state machines driven by Behavior Trees." },
+                    { title: "Data-Driven Weapon Pipeline", desc: "DataAsset-driven weapon system with hot-swappable stat profiles linked to Animation Blueprints and Anim Notify-driven state transitions." },
+                    { title: "Unified Damage Interface", desc: "Decoupled IDamageable interface supports AI combat, environmental destruction, and projectiles through a single polymorphic dispatch." }
                 ],
                 role: "Core Engineer",
                 timeline: "Personal Prototype",
@@ -170,30 +172,30 @@ const projectCategories = [
                 subtitle: "Unity Editor Tooling & Diagnostics",
                 date: "2026",
                 tags: ["Unity 3D", "C#", "Editor Scripting", "Optimization"],
-                description: "Engineered a comprehensive real-time rendering diagnostic and draw-call optimization suite inside Unity Editor to detect bottlenecks and automate scene performance profiling.",
-                fullDescription: "Engineered a comprehensive real-time rendering diagnostic and draw-call optimization suite inside Unity Editor to detect bottlenecks and automate scene performance profiling.",
+                description: "Real-time rendering diagnostics and one-click draw-call optimization, built directly into the Unity Editor.",
+                fullDescription: "A rendering diagnostic and draw-call optimization suite inside the Unity Editor — it detects bottlenecks in real time and automates scene performance profiling for the whole team.",
                 bulletPoints: [
-                    { title: "Heuristic Risk Profiling Engine", desc: "Architected a real-time scanning system that evaluates complex scene renderers against weighted performance costs—detecting multi-material splitting, missing static flags, uninstanced meshes, and redundant shadow casters." },
-                    { title: "Interactive 3D Heatmap & HUD", desc: "Developed custom scene-view overlays and sleek diagnostic badges featuring custom frustum culling, distance throttling, and a smart screen-space anti-collision algorithm to prevent overlap in dense environments." },
-                    { title: "1-Click Automated Batching", desc: "Built an automated remediation workflow that groups identical fragmented materials/meshes to enable GPU Instancing and Static Batching instantly, saving hundreds of draw calls with full Undo/Redo safety." },
-                    { title: "KPI Audit Reporting System", desc: "Integrated an executive dashboard with high-level performance metrics and an automated generator that exports detailed markdown (.md) audit reports for seamless team collaboration." }
+                    { title: "Heuristic Risk Profiling Engine", desc: "Real-time scanning evaluates scene renderers against weighted performance costs — detecting multi-material splitting, missing static flags, uninstanced meshes, and redundant shadow casters." },
+                    { title: "Interactive 3D Heatmap & HUD", desc: "Custom scene-view overlays and diagnostic badges with frustum culling, distance throttling, and screen-space anti-collision to stay readable in dense scenes." },
+                    { title: "1-Click Automated Batching", desc: "Automated remediation groups fragmented materials and meshes for GPU Instancing and Static Batching — hundreds of draw calls saved per scene, with full Undo/Redo safety." },
+                    { title: "KPI Audit Reporting", desc: "Executive dashboard of scene performance metrics plus an automated generator that exports markdown audit reports for team review." }
                 ],
                 role: "Tooling & Performance Engineer",
                 timeline: "Completed",
                 video: "/videos/catfe-analyzer.mp4"
             },
             {
-                title: "PolyWorld: Dynamic World Streaming & Runtime Navigation",
+                title: "PolyWorld: Dynamic World Streaming",
                 subtitle: "Unity Engine Architecture",
                 date: "2026",
                 tags: ["Unity 3D", "C#", "Async Optimization", "Architecture"],
-                description: "Built a highly optimized, modular framework for seamless infinite chunk streaming and real-time asynchronous background NavMesh baking inside the Unity Engine.",
-                fullDescription: "Built a highly optimized, modular framework for seamless infinite chunk streaming and real-time asynchronous background NavMesh baking inside the Unity Engine.",
+                description: "Infinite chunk streaming with async background NavMesh baking — 12ms average bake per chunk, zero main-thread stalls.",
+                fullDescription: "A modular framework for seamless infinite chunk streaming and asynchronous background NavMesh baking inside Unity — worlds stream and stay navigable without ever blocking the game thread.",
                 bulletPoints: [
-                    { title: "Zero-Stutter Infinite Streaming", desc: "Advanced object pooling architecture that recycles environment chunks using active state toggles to prevent garbage collection spikes and main-thread CPU hiccups." },
-                    { title: "Asynchronous Background Baking", desc: "Real-time navigation mesh generation running on background worker threads, achieving 12ms average bake times per chunk without blocking game thread execution." },
-                    { title: "Interactive Zone Painting", desc: "A specialized Unity Scene View tool allowing level designers to paint area-specific gameplay behaviors, AI spawn rules, and travel costs visually on the grid." },
-                    { title: "Observer-Pattern Events", desc: "A decoupled event API (PolyWorldEvents) facilitating clean, modular integrations with custom gameplay controllers and AI behavior scripts." }
+                    { title: "Zero-Stutter Infinite Streaming", desc: "Object pooling recycles environment chunks via active-state toggles, preventing GC spikes and main-thread CPU hiccups during streaming." },
+                    { title: "Asynchronous Background Baking", desc: "NavMesh generation runs on background worker threads — 12ms average bake per chunk with zero game-thread blocking." },
+                    { title: "Interactive Zone Painting", desc: "Scene View tool lets level designers paint area-specific gameplay behaviors, AI spawn rules, and travel costs directly onto the grid." },
+                    { title: "Observer-Pattern Events", desc: "Decoupled event API (PolyWorldEvents) for clean integration with custom gameplay controllers and AI behavior scripts." }
                 ],
                 role: "Core Engineer",
                 timeline: "Completed",
@@ -204,11 +206,11 @@ const projectCategories = [
                 subtitle: "Unity Editor Scripting",
                 date: "2026",
                 tags: ["Editor Scripting", "Workflow", "C#"],
-                description: "Custom Editor utility eliminating friction in multi-scene environments.",
-                fullDescription: "Built a highly optimized custom GUI integration natively inside the Unity Editor.",
+                description: "Editor-native utility that removes the friction of multi-scene workflows.",
+                fullDescription: "A custom GUI integration built natively into the Unity Editor to speed up navigation and layout management in multi-scene projects.",
                 bulletPoints: [
-                    { title: "Rapid Navigation", desc: "Quick-switch interface with automated visual snapshots." },
-                    { title: "Workspace Persistence", desc: "Layout management enabling users to save and restore window configurations." },
+                    { title: "Rapid Navigation", desc: "Quick-switch interface with automated visual snapshots of each scene." },
+                    { title: "Workspace Persistence", desc: "Layout management to save and restore window configurations per task." },
                     { title: "Live Dependency Tracking", desc: "Real-time dependency analyzer to visualize and validate scene relationships." }
                 ],
                 role: "Tool Developer",
@@ -220,12 +222,12 @@ const projectCategories = [
                 subtitle: "Automated Remediation",
                 date: "2026",
                 tags: ["Local LLM", "Remediation", "C#"],
-                description: "Integrating local LLMs to automate technical auditing and asset fixes.",
-                fullDescription: "A powerful tool chaining local LLM inference via Ollama directly into Unity to act as an automated technical director.",
+                description: "Local LLM inference wired into Unity to automate technical audits and asset fixes.",
+                fullDescription: "Chains local LLM inference (via Ollama) directly into the Unity Editor to act as an automated technical director — scanning, diagnosing, and fixing asset issues without cloud dependencies.",
                 bulletPoints: [
-                    { title: "Local AI Diagnostics", desc: "Context-aware scanning system parsing hierarchy and memory data." },
-                    { title: "Automated Remediation", desc: "One-click auto-fix pipeline correcting misconfigured import settings." },
-                    { title: "Granular Profiling", desc: "Interface exposing critical metrics like precise VRAM footprints." }
+                    { title: "Local AI Diagnostics", desc: "Context-aware scanning parses hierarchy and memory data for analysis — fully offline, no cloud round-trips." },
+                    { title: "Automated Remediation", desc: "One-click auto-fix pipeline corrects misconfigured import settings." },
+                    { title: "Granular Profiling", desc: "Exposes precise per-asset metrics such as exact VRAM footprints." }
                 ],
                 role: "Automation Engineer",
                 timeline: "Internal Tool",
@@ -234,15 +236,15 @@ const projectCategories = [
             {
                 title: "Catfe Vault Inventory (Catfe.InvPro)",
                 subtitle: "Unity Editor & Architecture",
-                date: "v1.2.0",
+                date: "2026",
                 tags: ["Editor Scripting", "C#", "Clean Architecture", "NUnit"],
-                description: "Built a highly decoupled, scalable inventory and equipment system with a custom Architect dashboard for streamlined Unity Editor workflows.",
-                fullDescription: "Built a highly decoupled, scalable inventory and equipment system with a custom Architect dashboard for streamlined Unity Editor workflows.",
+                description: "Decoupled inventory and equipment system with a custom Architect dashboard and full NUnit coverage on core logic.",
+                fullDescription: "A decoupled, scalable inventory and equipment system with a custom Architect dashboard that streamlines designer workflows inside the Unity Editor.",
                 bulletPoints: [
-                    { title: "Inventory Architect Window", desc: "Custom Editor GUI dashboard centralizing data configuration (Items, Loot, UI) for designers." },
-                    { title: "Clean Architecture", desc: "Strict separation of C# logic models and UI components, communicating entirely through Interfaces." },
-                    { title: "Advanced Core Mechanics", desc: "Implemented robust item pickup, crafting with rollback support, and an equipment system that preserves instance data." },
-                    { title: "Reliable Stability", desc: "Maintained system integrity with comprehensive NUnit test suites for all core logic and health systems." }
+                    { title: "Inventory Architect Window", desc: "Custom Editor dashboard centralizing data configuration — Items, Loot, UI — in one place for designers." },
+                    { title: "Clean Architecture", desc: "Strict separation of C# logic models and UI components, communicating entirely through interfaces." },
+                    { title: "Advanced Core Mechanics", desc: "Item pickup, crafting with rollback support, and an equipment system that preserves instance data." },
+                    { title: "Test Coverage", desc: "Comprehensive NUnit test suites over all core logic and health systems keep refactors safe." }
                 ],
                 role: "System Designer & Programmer",
                 timeline: "Completed (v1.2.0)",
@@ -254,22 +256,24 @@ const projectCategories = [
 
 function LazyVideo({ src, className }) {
     const videoRef = useRef(null);
-    const [isLoaded, setIsLoaded] = useState(false);
+    const loadedRef = useRef(false);
+
+    const ensureLoaded = useCallback(() => {
+        const video = videoRef.current;
+        if (!video || loadedRef.current) return;
+        video.src = src;
+        loadedRef.current = true;
+    }, [src]);
 
     const handleMouseEnter = useCallback(() => {
         const video = videoRef.current;
         if (!video) return;
-        if (!isLoaded) {
-            video.src = src;
-            setIsLoaded(true);
-        }
+        ensureLoaded();
         video.play().catch(() => {});
-    }, [src, isLoaded]);
+    }, [ensureLoaded]);
 
     const handleMouseLeave = useCallback(() => {
-        const video = videoRef.current;
-        if (!video) return;
-        video.pause();
+        videoRef.current?.pause();
     }, []);
 
     return (
@@ -279,6 +283,7 @@ function LazyVideo({ src, className }) {
             loop
             playsInline
             preload="none"
+            poster={posterFor(src)}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className={className}
@@ -288,6 +293,12 @@ function LazyVideo({ src, className }) {
 
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState(null);
+
+    // Lock page scroll while the detail modal is open
+    useEffect(() => {
+        document.body.style.overflow = selectedProject ? "hidden" : "";
+        return () => { document.body.style.overflow = ""; };
+    }, [selectedProject]);
 
     return (
         <section id="projects" className="py-32 bg-[#0c0a09]">
@@ -319,24 +330,20 @@ export default function Projects() {
                                         onClick={() => setSelectedProject(p)}
                                         className="group cursor-pointer flex flex-col bg-[#1c1917]/20 border border-stone-800/40 hover:border-stone-700 rounded-3xl overflow-hidden transition-all duration-500 hover:bg-[#1c1917]/40 hover:shadow-2xl hover:shadow-amber-900/5"
                                     >
-                                        <div className="w-full aspect-[16/10] bg-[#1c1917] overflow-hidden relative border-b border-stone-800/40"
-                                            onMouseEnter={(e) => {
-                                                const video = e.currentTarget.querySelector('video');
-                                                if (video) { video.play().catch(() => {}); }
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                const video = e.currentTarget.querySelector('video');
-                                                if (video) { video.pause(); }
-                                            }}
-                                        >
+                                        <div className="w-full aspect-[16/10] bg-[#1c1917] overflow-hidden relative border-b border-stone-800/40">
                                             {p.video ? (
-                                                <LazyVideo
-                                                    src={p.video}
-                                                    className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105"
-                                                />
+                                                <>
+                                                    <LazyVideo
+                                                        src={p.video}
+                                                        className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105"
+                                                    />
+                                                    <div className="absolute bottom-4 right-4 flex items-center gap-2 text-[10px] uppercase tracking-widest font-mono text-stone-300 bg-stone-950/70 backdrop-blur px-3 py-1.5 rounded-full border border-stone-800/60 pointer-events-none opacity-80 group-hover:opacity-0 transition-opacity duration-500">
+                                                        <Play size={10} className="fill-current" /> Demo
+                                                    </div>
+                                                </>
                                             ) : p.images && p.images.length > 0 ? (
-                                                <img 
-                                                    src={p.images[0]} 
+                                                <img
+                                                    src={p.images[0]}
                                                     alt={p.title}
                                                     loading="lazy"
                                                     className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105"
@@ -352,7 +359,7 @@ export default function Projects() {
                                             </div>
                                             <h4 className="text-2xl font-medium text-stone-100 mb-4 group-hover:text-amber-500 transition-colors">{p.title}</h4>
                                             <p className="text-stone-400 font-light text-sm mb-8 leading-relaxed">{p.description}</p>
-                                            
+
                                             <div className="mt-auto flex flex-wrap gap-2 pt-6 border-t border-stone-800/30">
                                                 {p.tags.map(tag => (
                                                     <span key={tag} className="text-xs text-stone-400 bg-stone-900/50 px-3 py-1.5 rounded-full border border-stone-800/50">
@@ -375,6 +382,7 @@ export default function Projects() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
+                        onClick={() => setSelectedProject(null)}
                         className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 lg:p-12 bg-[#0c0a09]/90 backdrop-blur-xl"
                     >
                         <motion.div
@@ -382,10 +390,12 @@ export default function Projects() {
                             animate={{ y: 0, opacity: 1, scale: 1 }}
                             exit={{ y: 20, opacity: 0, scale: 0.98 }}
                             transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            onClick={(e) => e.stopPropagation()}
                             className="bg-[#12100f] w-full max-w-5xl rounded-3xl overflow-hidden relative flex flex-col border border-stone-800/60 shadow-2xl max-h-[95vh]"
                         >
                             <button
                                 onClick={() => setSelectedProject(null)}
+                                aria-label="Close project details"
                                 className="absolute top-6 right-6 z-10 text-stone-500 hover:text-amber-500 bg-stone-900/80 backdrop-blur rounded-full p-2 transition-colors border border-stone-800"
                             >
                                 <X size={24} strokeWidth={1.5} />
@@ -397,8 +407,11 @@ export default function Projects() {
                                         <div className="aspect-video w-full flex items-center justify-center">
                                             <video
                                                 src={selectedProject.video}
+                                                poster={posterFor(selectedProject.video)}
                                                 controls
                                                 autoPlay
+                                                muted
+                                                playsInline
                                                 preload="metadata"
                                                 className="w-full h-full object-contain"
                                             />
@@ -407,7 +420,7 @@ export default function Projects() {
                                     {selectedProject.images && selectedProject.images.length > 0 && (
                                         <div className="w-full flex flex-col">
                                             {selectedProject.images.map((img, idx) => (
-                                                <img key={idx} src={img} alt={`Screenshot ${idx + 1}`} loading="lazy" className="w-full h-auto max-h-[80vh] object-contain bg-[#12100f] border-b border-stone-800/30 last:border-0" />
+                                                <img key={idx} src={img} alt={`${selectedProject.title} screenshot ${idx + 1}`} loading="lazy" className="w-full h-auto max-h-[80vh] object-contain bg-[#12100f] border-b border-stone-800/30 last:border-0" />
                                             ))}
                                         </div>
                                     )}

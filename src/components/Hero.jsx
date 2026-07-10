@@ -30,7 +30,7 @@ export default function Hero() {
                         <p className="text-lg text-stone-400 max-w-md leading-relaxed font-light">
                             8+ years engineering scalable gameplay systems, cross-platform optimization, and modular toolchains across Unreal Engine (C++) and Unity (C#).
                         </p>
-                        
+
                         <div className="flex flex-col gap-6 justify-start">
                             <a href="#projects" className="group flex items-center gap-4 text-stone-200 hover:text-amber-500 transition-colors w-fit">
                                 <span className="text-sm font-medium">Selected Works</span>
@@ -41,6 +41,20 @@ export default function Hero() {
                                 <span className="h-px w-12 bg-stone-800 group-hover:w-20 group-hover:bg-stone-500 transition-all duration-500"></span>
                             </a>
                         </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-10 border-t border-stone-800/40">
+                        {[
+                            { value: "8+", label: "Years Engineering" },
+                            { value: "14", label: "Featured Projects" },
+                            { value: "UE5 · Unity", label: "C++ / C# Cores" },
+                            { value: "PC · Mobile · AR", label: "Shipped Platforms" },
+                        ].map((stat) => (
+                            <div key={stat.label}>
+                                <p className="text-2xl md:text-3xl font-medium text-stone-100 tracking-tight mb-1">{stat.value}</p>
+                                <p className="text-xs uppercase tracking-widest text-stone-500 font-mono">{stat.label}</p>
+                            </div>
+                        ))}
                     </div>
                 </motion.div>
             </div>
