@@ -168,6 +168,26 @@ const projectCategories = [
         categoryTitle: "Custom Tooling",
         projects: [
             {
+                title: "Quick Scene Switcher",
+                subtitle: "Published Unity Asset Store Tool",
+                date: "2026",
+                tags: ["Editor Scripting", "C#", "Asset Store", "Workflow"],
+                description: "Commercial scene-workflow tool shipped on the Unity Asset Store under Catfe Studio — from code to store listing, end to end.",
+                fullDescription: "A scene-management productivity tool designed, built, and published to the Unity Asset Store as a commercial product under the Catfe Studio publisher account. Compatible with Built-in, URP, and HDRP across Unity 2022.3+, and shipped through Unity's full submission review pipeline.",
+                bulletPoints: [
+                    { title: "Live Commercial Release", desc: "Passed Unity Asset Store review and released as a paid Extension Asset — versioned, documented, and supported as a real product, not a portfolio prototype." },
+                    { title: "Rapid Scene Navigation", desc: "Quick-switch interface with automated visual snapshots of each scene, cutting the constant open-scene friction of multi-scene projects." },
+                    { title: "Workspace Persistence", desc: "Saves and restores window layouts and scene sets per task, so context-switching between features costs seconds instead of minutes." },
+                    { title: "Lightweight, Zero-Dependency Design", desc: "Entire tool ships in a ~82 KB package with no third-party dependencies — editor-only code that adds nothing to player builds." }
+                ],
+                role: "Publisher & Tool Developer",
+                timeline: "Live on Asset Store (v1.0)",
+                video: "/videos/scene-manager.mp4",
+                link: "https://assetstore.unity.com/packages/tools/utilities/quick-scene-switcher-384534",
+                linkLabel: "View on Asset Store",
+                badge: "Asset Store"
+            },
+            {
                 title: "GPU Fish Ecosystem",
                 subtitle: "GPU-Driven Simulation & Rendering",
                 date: "2026",
@@ -249,22 +269,6 @@ const projectCategories = [
                 role: "System Designer & Programmer",
                 timeline: "Completed (v1.2.0)",
                 video: "/videos/catfe-inventory.mp4"
-            },
-            {
-                title: "Advanced Workspace Manager",
-                subtitle: "Unity Editor Scripting",
-                date: "2026",
-                tags: ["Editor Scripting", "Workflow", "C#"],
-                description: "Editor-native utility that removes the friction of multi-scene workflows.",
-                fullDescription: "A custom GUI integration built natively into the Unity Editor to speed up navigation and layout management in multi-scene projects.",
-                bulletPoints: [
-                    { title: "Rapid Navigation", desc: "Quick-switch interface with automated visual snapshots of each scene." },
-                    { title: "Workspace Persistence", desc: "Layout management to save and restore window configurations per task." },
-                    { title: "Live Dependency Tracking", desc: "Real-time dependency analyzer to visualize and validate scene relationships." }
-                ],
-                role: "Tool Developer",
-                timeline: "Ongoing Tooling",
-                video: "/videos/scene-manager.mp4"
             }
         ]
     }
@@ -367,6 +371,11 @@ export default function Projects() {
                                             ) : (
                                                 <div className="w-full h-full bg-[#1c1917]" />
                                             )}
+                                            {p.badge && (
+                                                <div className="absolute top-3 left-3 text-[9px] uppercase tracking-widest font-mono text-amber-400 bg-stone-950/80 backdrop-blur px-2.5 py-1 rounded-full border border-amber-700/40 pointer-events-none">
+                                                    {p.badge}
+                                                </div>
+                                            )}
                                         </div>
                                         <div className="p-5 flex flex-col flex-grow">
                                             <div className="text-stone-500 font-mono text-[10px] uppercase tracking-widest mb-2 flex justify-between gap-2">
@@ -452,6 +461,16 @@ export default function Projects() {
                                     <div className="mb-12">
                                         <p className="text-amber-600 font-mono text-sm uppercase tracking-widest mb-3">{selectedProject.subtitle} &mdash; {selectedProject.date}</p>
                                         <h2 className="text-3xl md:text-4xl font-medium text-stone-100">{selectedProject.title}</h2>
+                                        {selectedProject.link && (
+                                            <a
+                                                href={selectedProject.link}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="inline-flex items-center gap-2 mt-5 text-sm font-medium text-amber-500 hover:text-amber-400 border border-amber-700/40 hover:border-amber-600/60 bg-amber-950/20 px-4 py-2 rounded-full transition-colors"
+                                            >
+                                                {selectedProject.linkLabel || "View Project"} <ArrowRight size={14} />
+                                            </a>
+                                        )}
                                     </div>
 
                                     <div className="grid md:grid-cols-2 gap-12 mb-12 bg-[#1c1917]/30 p-8 rounded-2xl border border-stone-800/30">
