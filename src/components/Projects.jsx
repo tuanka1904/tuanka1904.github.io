@@ -221,6 +221,23 @@ const projectCategories = [
                 video: "/videos/catfe-inventory.mp4"
             },
             {
+                title: "Catfe Scene Analyzer Suite",
+                subtitle: "Unity Editor Tooling & Diagnostics",
+                date: "2026",
+                tags: ["Unity 3D", "C#", "Editor Scripting", "Optimization"],
+                description: "Real-time rendering diagnostics and one-click draw-call optimization, built directly into the Unity Editor.",
+                fullDescription: "A rendering diagnostic and draw-call optimization suite inside the Unity Editor — it detects bottlenecks in real time and automates scene performance profiling for the whole team.",
+                bulletPoints: [
+                    { title: "Heuristic Risk Profiling Engine", desc: "Real-time scanning evaluates scene renderers against weighted performance costs — detecting multi-material splitting, missing static flags, uninstanced meshes, and redundant shadow casters." },
+                    { title: "Interactive 3D Heatmap & HUD", desc: "Custom scene-view overlays and diagnostic badges with frustum culling, distance throttling, and screen-space anti-collision to stay readable in dense scenes." },
+                    { title: "1-Click Automated Batching", desc: "Automated remediation groups fragmented materials and meshes for GPU Instancing and Static Batching — hundreds of draw calls saved per scene, with full Undo/Redo safety." },
+                    { title: "KPI Audit Reporting", desc: "Executive dashboard of scene performance metrics plus an automated generator that exports markdown audit reports for team review." }
+                ],
+                role: "Tooling & Performance Engineer",
+                timeline: "Completed",
+                video: "/videos/catfe-analyzer.mp4"
+            },
+            {
                 title: "PolyWorld: Dynamic World Streaming",
                 subtitle: "Unity Engine Architecture",
                 date: "2026",
