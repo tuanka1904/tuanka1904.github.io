@@ -192,8 +192,8 @@ const projectCategories = [
                 subtitle: "GPU-Driven Simulation & Rendering",
                 date: "2026",
                 tags: ["Compute Shader", "HLSL", "C#", "URP", "GPU-Driven Rendering"],
-                description: "Large-scale fish ecosystem in Unity URP, simulating and rendering 950,050 agents entirely on the GPU with zero game-thread overhead.",
-                fullDescription: "A massive-scale fish ecosystem simulation built for Unity URP. The entire simulation and rendering pipeline runs directly on the GPU, achieving high-fidelity interaction for 950,050 agents without GameObjects, MonoBehaviours, or synchronous readbacks on the hot path.",
+                description: "Large-scale fish ecosystem in Unity URP, simulating and rendering 200k agents entirely on the GPU with zero game-thread overhead.",
+                fullDescription: "A massive-scale fish ecosystem simulation built for Unity URP. The entire simulation and rendering pipeline runs directly on the GPU, achieving high-fidelity interaction for 200k agents without GameObjects, MonoBehaviours, or synchronous readbacks on the hot path.",
                 bulletPoints: [
                     { title: "GPU-Driven Simulation Pipeline", desc: "Runs the entire agent lifecycle — spatial hashing, counting sort, prefix sum, boid steering (separation/alignment/cohesion), and predator/prey behaviors between 3 distinct species — sequentially inside HLSL compute shaders." },
                     { title: "Indirect Rendering & Culling", desc: "Performs GPU compaction for frustum culling and Level of Detail (LOD) selection. Renders the entire ecosystem using only 6 indirect draw calls (3 species × 2 LODs), avoiding cheap scale-to-zero vertex shader hacks." },
@@ -204,21 +204,21 @@ const projectCategories = [
                 video: "/videos/gpu-ecosystem.mp4"
             },
             {
-                title: "Catfe Scene Analyzer Suite",
-                subtitle: "Unity Editor Tooling & Diagnostics",
+                title: "Catfe Vault Inventory (Catfe.InvPro)",
+                subtitle: "Unity Editor & Architecture",
                 date: "2026",
-                tags: ["Unity 3D", "C#", "Editor Scripting", "Optimization"],
-                description: "Real-time rendering diagnostics and one-click draw-call optimization, built directly into the Unity Editor.",
-                fullDescription: "A rendering diagnostic and draw-call optimization suite inside the Unity Editor — it detects bottlenecks in real time and automates scene performance profiling for the whole team.",
+                tags: ["Editor Scripting", "C#", "Clean Architecture", "NUnit"],
+                description: "Decoupled inventory and equipment system with a custom Architect dashboard and full NUnit coverage on core logic.",
+                fullDescription: "A decoupled, scalable inventory and equipment system with a custom Architect dashboard that streamlines designer workflows inside the Unity Editor.",
                 bulletPoints: [
-                    { title: "Heuristic Risk Profiling Engine", desc: "Real-time scanning evaluates scene renderers against weighted performance costs — detecting multi-material splitting, missing static flags, uninstanced meshes, and redundant shadow casters." },
-                    { title: "Interactive 3D Heatmap & HUD", desc: "Custom scene-view overlays and diagnostic badges with frustum culling, distance throttling, and screen-space anti-collision to stay readable in dense scenes." },
-                    { title: "1-Click Automated Batching", desc: "Automated remediation groups fragmented materials and meshes for GPU Instancing and Static Batching — hundreds of draw calls saved per scene, with full Undo/Redo safety." },
-                    { title: "KPI Audit Reporting", desc: "Executive dashboard of scene performance metrics plus an automated generator that exports markdown audit reports for team review." }
+                    { title: "Inventory Architect Window", desc: "Custom Editor dashboard centralizing data configuration — Items, Loot, UI — in one place for designers." },
+                    { title: "Clean Architecture", desc: "Strict separation of C# logic models and UI components, communicating entirely through interfaces." },
+                    { title: "Advanced Core Mechanics", desc: "Item pickup, crafting with rollback support, and an equipment system that preserves instance data." },
+                    { title: "Test Coverage", desc: "Comprehensive NUnit test suites over all core logic and health systems keep refactors safe." }
                 ],
-                role: "Tooling & Performance Engineer",
-                timeline: "Completed",
-                video: "/videos/catfe-analyzer.mp4"
+                role: "System Designer & Programmer",
+                timeline: "Completed (v1.2.0)",
+                video: "/videos/catfe-inventory.mp4"
             },
             {
                 title: "PolyWorld: Dynamic World Streaming",
@@ -252,23 +252,6 @@ const projectCategories = [
                 role: "Automation Engineer",
                 timeline: "Internal Tool",
                 video: "/videos/logic-validator.mp4"
-            },
-            {
-                title: "Catfe Vault Inventory (Catfe.InvPro)",
-                subtitle: "Unity Editor & Architecture",
-                date: "2026",
-                tags: ["Editor Scripting", "C#", "Clean Architecture", "NUnit"],
-                description: "Decoupled inventory and equipment system with a custom Architect dashboard and full NUnit coverage on core logic.",
-                fullDescription: "A decoupled, scalable inventory and equipment system with a custom Architect dashboard that streamlines designer workflows inside the Unity Editor.",
-                bulletPoints: [
-                    { title: "Inventory Architect Window", desc: "Custom Editor dashboard centralizing data configuration — Items, Loot, UI — in one place for designers." },
-                    { title: "Clean Architecture", desc: "Strict separation of C# logic models and UI components, communicating entirely through interfaces." },
-                    { title: "Advanced Core Mechanics", desc: "Item pickup, crafting with rollback support, and an equipment system that preserves instance data." },
-                    { title: "Test Coverage", desc: "Comprehensive NUnit test suites over all core logic and health systems keep refactors safe." }
-                ],
-                role: "System Designer & Programmer",
-                timeline: "Completed (v1.2.0)",
-                video: "/videos/catfe-inventory.mp4"
             }
         ]
     }
