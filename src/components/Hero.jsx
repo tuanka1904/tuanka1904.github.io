@@ -13,22 +13,22 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-4xl"
+                    className="max-w-5xl"
                 >
                     <p className="text-amber-600 font-mono text-sm tracking-widest uppercase mb-8 flex items-center gap-3">
                         <span className="w-8 h-px bg-amber-600/50"></span>
-                        Senior Game & Systems Developer
+                        Senior Game &amp; Systems Developer &mdash; Unreal &amp; Unity
                     </p>
-                    
-                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-medium tracking-tighter text-stone-100 leading-[0.9] mb-12">
-                        System.<br />
-                        Logic.<br />
-                        Architecture.
+
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-stone-100 leading-[1.05] mb-12">
+                        I engineer game systems<br />
+                        that hold their frame budget<br />
+                        <span className="text-stone-500">&mdash; and the tools that ship them.</span>
                     </h1>
-                    
+
                     <div className="flex flex-col md:flex-row gap-8 md:gap-16 mt-20 border-t border-stone-800/60 pt-12">
                         <p className="text-lg text-stone-400 max-w-md leading-relaxed font-light">
-                            8+ years engineering scalable gameplay systems, cross-platform optimization, and modular toolchains across Unreal Engine (C++) and Unity (C#).
+                            8+ years on gameplay architecture, performance profiling, and Editor toolchains in Unreal Engine (C++) and Unity (C#) &mdash; shipped on PC, mobile, and AR/MR.
                         </p>
 
                         <div className="flex flex-col gap-6 justify-start">
@@ -37,7 +37,7 @@ export default function Hero() {
                                 <span className="h-px w-12 bg-stone-700 group-hover:w-20 group-hover:bg-amber-500 transition-all duration-500"></span>
                             </a>
                             <a href="#about" className="group flex items-center gap-4 text-stone-500 hover:text-stone-200 transition-colors w-fit">
-                                <span className="text-sm font-medium">The Ethos</span>
+                                <span className="text-sm font-medium">How I Work</span>
                                 <span className="h-px w-12 bg-stone-800 group-hover:w-20 group-hover:bg-stone-500 transition-all duration-500"></span>
                             </a>
                         </div>

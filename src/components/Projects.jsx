@@ -24,7 +24,8 @@ const projectCategories = [
                 ],
                 role: "Core Systems Engineer",
                 timeline: "Upcoming Steam Release",
-                video: "/videos/ue5-topdown.mp4"
+                video: "/videos/ue5-topdown.mp4",
+                featured: true
             },
             {
                 title: "Mobile Game Framework",
@@ -57,7 +58,8 @@ const projectCategories = [
                 ],
                 role: "Lead Interactive Engineer",
                 timeline: "Completed",
-                images: ["/images/vinpearl-1.jpg", "/images/vinpearl-2.jpg"]
+                images: ["/images/vinpearl-1.jpg", "/images/vinpearl-2.jpg"],
+                featured: true
             },
             {
                 title: "Christmas Wonderland Metaverse",
@@ -185,7 +187,8 @@ const projectCategories = [
                 video: "/videos/scene-manager.mp4",
                 link: "https://assetstore.unity.com/packages/tools/utilities/quick-scene-switcher-384534",
                 linkLabel: "View on Asset Store",
-                badge: "Asset Store"
+                badge: "Asset Store",
+                featured: true
             },
             {
                 title: "GPU Fish Ecosystem",
@@ -201,7 +204,8 @@ const projectCategories = [
                 ],
                 role: "GPU Engineer & System Architect",
                 timeline: "Completed (Demo Ocean)",
-                video: "/videos/gpu-ecosystem.mp4"
+                video: "/videos/gpu-ecosystem.mp4",
+                featured: true
             },
             {
                 title: "Catfe Vault Inventory (Catfe.InvPro)",
@@ -274,6 +278,12 @@ const projectCategories = [
     }
 ];
 
+const featuredProjects = projectCategories.flatMap((category) => category.projects).filter((p) => p.featured);
+
+const supportingCategories = projectCategories
+    .map((category) => ({ ...category, projects: category.projects.filter((p) => !p.featured) }))
+    .filter((category) => category.projects.length > 0);
+
 function LazyVideo({ src, className }) {
     const videoRef = useRef(null);
     const loadedRef = useRef(false);
@@ -311,6 +321,37 @@ function LazyVideo({ src, className }) {
     );
 }
 
+function CardMedia({ project, aspect }) {
+    const mediaClass = "w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105";
+
+    return (
+        <div className={`w-full ${aspect} bg-[#1c1917] overflow-hidden relative border-b border-stone-800/40`}>
+            {project.video ? (
+                <>
+                    <LazyVideo src={project.video} className={mediaClass} />
+                    <div className="absolute bottom-3 right-3 flex items-center gap-1.5 text-[9px] uppercase tracking-widest font-mono text-stone-300 bg-stone-950/70 backdrop-blur px-2.5 py-1 rounded-full border border-stone-800/60 pointer-events-none opacity-80 group-hover:opacity-0 transition-opacity duration-500">
+                        <Play size={10} className="fill-current" /> Demo
+                    </div>
+                </>
+            ) : project.images && project.images.length > 0 ? (
+                <img
+                    src={project.images[0]}
+                    alt={project.title}
+                    loading="lazy"
+                    className={mediaClass}
+                />
+            ) : (
+                <div className="w-full h-full bg-[#1c1917]" />
+            )}
+            {project.badge && (
+                <div className="absolute top-3 left-3 text-[9px] uppercase tracking-widest font-mono text-amber-400 bg-stone-950/80 backdrop-blur px-2.5 py-1 rounded-full border border-amber-700/40 pointer-events-none">
+                    {project.badge}
+                </div>
+            )}
+        </div>
+    );
+}
+
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState(null);
 
@@ -323,19 +364,70 @@ export default function Projects() {
     return (
         <section id="projects" className="py-32 bg-[#0c0a09]">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                <div className="mb-20 flex flex-col md:flex-row justify-between items-baseline border-b border-stone-800/50 pb-8">
-                    <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-stone-100">
-                        Selected Works.
-                    </h2>
-                    <a href="https://www.linkedin.com/in/tuanka19" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-amber-500 transition-colors mt-4 md:mt-0 text-sm font-medium flex items-center gap-2">
-                        View Full History <ArrowRight size={16} />
-                    </a>
+                <div className="mb-20 border-b border-stone-800/50 pb-8">
+                    <div className="flex flex-col md:flex-row justify-between items-baseline">
+                        <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-stone-100">
+                            Selected Works.
+                        </h2>
+                        <a href="https://www.linkedin.com/in/tuanka19" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-amber-500 transition-colors mt-4 md:mt-0 text-sm font-medium flex items-center gap-2">
+                            View Full History <ArrowRight size={16} />
+                        </a>
+                    </div>
+                    <p className="text-stone-400 font-light leading-relaxed max-w-2xl mt-6">
+                        Shipped titles, installations, and Editor tools &mdash; the common thread is systems that stay fast as they scale, and toolchains that cut a team&apos;s iteration time.
+                    </p>
+                </div>
+
+                <div className="mb-24">
+                    <h3 className="text-amber-500 uppercase tracking-widest text-sm mb-10 font-mono flex items-center gap-4">
+                        <span>Flagship Work</span>
+                        <span className="h-px flex-grow bg-amber-900/30"></span>
+                    </h3>
+                    <div className="grid lg:grid-cols-2 gap-8">
+                        {featuredProjects.map((p, idx) => (
+                            <motion.div
+                                key={p.title}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.8, delay: (idx % 2) * 0.1 }}
+                                onClick={() => setSelectedProject(p)}
+                                className="group cursor-pointer flex flex-col bg-[#1c1917]/30 border border-stone-800/50 hover:border-amber-700/40 rounded-2xl overflow-hidden transition-all duration-500 hover:bg-[#1c1917]/50 hover:shadow-2xl hover:shadow-amber-900/10"
+                            >
+                                <CardMedia project={p} aspect="aspect-video" />
+                                <div className="p-6 md:p-8 flex flex-col flex-grow">
+                                    <div className="text-stone-500 font-mono text-[10px] uppercase tracking-widest mb-3 flex justify-between gap-2">
+                                        <span className="truncate">{p.subtitle}</span>
+                                        <span className="shrink-0">{p.date}</span>
+                                    </div>
+                                    <h4 className="text-xl md:text-2xl font-medium text-stone-100 mb-3 group-hover:text-amber-500 transition-colors leading-snug tracking-tight">{p.title}</h4>
+                                    <p className="text-stone-400 font-light text-sm mb-6 leading-relaxed">{p.description}</p>
+
+                                    <div className="mt-auto pt-5 border-t border-stone-800/40">
+                                        <p className="text-xs text-stone-300 font-medium mb-4">
+                                            {p.role} <span className="text-stone-600">&mdash;</span> <span className="text-stone-500 font-light">{p.timeline}</span>
+                                        </p>
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {p.tags.slice(0, 4).map(tag => (
+                                                <span key={tag} className="text-[10px] text-stone-400 bg-stone-900/50 px-2.5 py-1 rounded-full border border-stone-800/50">
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                            {p.tags.length > 4 && (
+                                                <span className="text-[10px] text-stone-500 px-1.5 py-1">+{p.tags.length - 4}</span>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
 
                 <div className="space-y-24">
-                    {projectCategories.map((category, catIdx) => (
+                    {supportingCategories.map((category, catIdx) => (
                         <div key={catIdx}>
-                            <h3 className="text-amber-600/80 uppercase tracking-widest text-sm mb-10 font-mono flex items-center gap-4">
+                            <h3 className="text-stone-500 uppercase tracking-widest text-sm mb-10 font-mono flex items-center gap-4">
                                 <span>{category.categoryTitle}</span>
                                 <span className="h-px flex-grow bg-stone-800/30"></span>
                             </h3>
@@ -350,33 +442,7 @@ export default function Projects() {
                                         onClick={() => setSelectedProject(p)}
                                         className="group cursor-pointer flex flex-col bg-[#1c1917]/20 border border-stone-800/40 hover:border-stone-700 rounded-2xl overflow-hidden transition-all duration-500 hover:bg-[#1c1917]/40 hover:shadow-2xl hover:shadow-amber-900/5"
                                     >
-                                        <div className="w-full aspect-[16/10] bg-[#1c1917] overflow-hidden relative border-b border-stone-800/40">
-                                            {p.video ? (
-                                                <>
-                                                    <LazyVideo
-                                                        src={p.video}
-                                                        className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105"
-                                                    />
-                                                    <div className="absolute bottom-3 right-3 flex items-center gap-1.5 text-[9px] uppercase tracking-widest font-mono text-stone-300 bg-stone-950/70 backdrop-blur px-2.5 py-1 rounded-full border border-stone-800/60 pointer-events-none opacity-80 group-hover:opacity-0 transition-opacity duration-500">
-                                                        <Play size={10} className="fill-current" /> Demo
-                                                    </div>
-                                                </>
-                                            ) : p.images && p.images.length > 0 ? (
-                                                <img
-                                                    src={p.images[0]}
-                                                    alt={p.title}
-                                                    loading="lazy"
-                                                    className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105"
-                                                />
-                                            ) : (
-                                                <div className="w-full h-full bg-[#1c1917]" />
-                                            )}
-                                            {p.badge && (
-                                                <div className="absolute top-3 left-3 text-[9px] uppercase tracking-widest font-mono text-amber-400 bg-stone-950/80 backdrop-blur px-2.5 py-1 rounded-full border border-amber-700/40 pointer-events-none">
-                                                    {p.badge}
-                                                </div>
-                                            )}
-                                        </div>
+                                        <CardMedia project={p} aspect="aspect-[16/10]" />
                                         <div className="p-5 flex flex-col flex-grow">
                                             <div className="text-stone-500 font-mono text-[10px] uppercase tracking-widest mb-2 flex justify-between gap-2">
                                                 <span className="truncate">{p.subtitle}</span>

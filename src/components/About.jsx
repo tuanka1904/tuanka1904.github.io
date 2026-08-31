@@ -15,7 +15,7 @@ export default function About() {
                 >
                     <div className="md:col-span-5">
                         <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-stone-100 mb-8">
-                            The Ethos.
+                            How I Work.
                         </h2>
                         
                         <div className="bg-[#1c1917]/40 border border-stone-800/60 rounded-3xl p-8 backdrop-blur-sm">
