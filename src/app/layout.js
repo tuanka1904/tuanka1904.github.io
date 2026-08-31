@@ -13,23 +13,23 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   metadataBase: new URL("https://tuanka1904.github.io"),
-  title: "Kieu Anh Tuan — Senior Game & Systems Developer",
+  title: "Kieu Anh Tuan — Senior Unity Developer · Systems, Tooling & Monetization",
   description:
-    "8+ years engineering gameplay systems, performance optimization, and Editor toolchains across Unreal Engine (C++) and Unity (C#). Shipped on PC, mobile, and AR/MR.",
-  keywords: ["Game Developer", "Unreal Engine", "Unity", "C++", "C#", "Gameplay Engineer", "Performance Optimization", "Editor Tooling"],
+    "8+ years building Unity game systems: performance-critical gameplay, Editor toolchains, and SDK/ad-monetization integration. Also ships Unreal (C++/BP). Published tools on the Unity Asset Store.",
+  keywords: ["Unity Developer", "C#", "Game Systems", "Performance Optimization", "Editor Tooling", "Ad Monetization", "LevelPlay", "AppLovin MAX", "SDK Integration", "LiveOps", "Unreal Engine"],
   openGraph: {
-    title: "Kieu Anh Tuan — Senior Game & Systems Developer",
+    title: "Kieu Anh Tuan — Senior Unity Developer · Systems, Tooling & Monetization",
     description:
-      "Gameplay systems, performance optimization, and Editor toolchains across Unreal Engine (C++) and Unity (C#).",
+      "Unity game systems: performance-critical gameplay, Editor toolchains, and SDK/ad-monetization integration. Also ships Unreal (C++/BP).",
     url: "https://tuanka1904.github.io",
     siteName: "Kieu Anh Tuan",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kieu Anh Tuan — Senior Game & Systems Developer",
+    title: "Kieu Anh Tuan — Senior Unity Developer · Systems, Tooling & Monetization",
     description:
-      "Gameplay systems, performance optimization, and Editor toolchains across Unreal Engine (C++) and Unity (C#).",
+      "Unity game systems: performance-critical gameplay, Editor toolchains, and SDK/ad-monetization integration. Also ships Unreal (C++/BP).",
   },
 };
 

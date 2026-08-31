@@ -2,10 +2,14 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useCallback, useEffect } from "react";
-import { X, ArrowRight, Play } from "lucide-react";
+import { X, ArrowRight, ArrowUpRight, Play } from "lucide-react";
 
 const posterFor = (video) => video.replace("/videos/", "/posters/").replace(".mp4", ".jpg");
 
+/*
+ * metric: the one measured number a card is allowed to show. Never estimate it —
+ * leave it null and list the gap in TODO-FILL.md until a real figure exists.
+ */
 const projectCategories = [
     {
         categoryTitle: "Studio Works",
@@ -14,7 +18,7 @@ const projectCategories = [
                 title: "Seal of Exorcism",
                 subtitle: "Action Roguelike Game",
                 date: "2025",
-                tags: ["Unreal Engine", "C++", "Core Optimization", "Steam"],
+                tags: ["Unreal Engine", "C++/BP", "Core Optimization", "Steam"],
                 description: "Owned core systems and performance for a high-entity-count action roguelike headed to Steam.",
                 fullDescription: "Core technical owner for systems and performance on a fast-paced action roguelike. Built high-performance gameplay systems, kept 500+ concurrent entities within frame budget, and structured framework modules for reuse across projects.",
                 bulletPoints: [
@@ -25,7 +29,8 @@ const projectCategories = [
                 role: "Core Systems Engineer",
                 timeline: "Upcoming Steam Release",
                 video: "/videos/ue5-topdown.mp4",
-                featured: true
+                featured: true,
+                metric: null /* FILL: entity count / ms per frame / draw calls — see TODO-FILL.md */
             },
             {
                 title: "Mobile Game Framework",
@@ -59,38 +64,8 @@ const projectCategories = [
                 role: "Lead Interactive Engineer",
                 timeline: "Completed",
                 images: ["/images/vinpearl-1.jpg", "/images/vinpearl-2.jpg"],
-                featured: true
-            },
-            {
-                title: "Christmas Wonderland Metaverse",
-                subtitle: "Multiplayer Metaverse Platform",
-                date: "2021",
-                tags: ["Unreal Engine", "Node.js", "Multiplayer", "Optimization"],
-                description: "Cross-platform multiplayer metaverse with live events, backed by a Node.js real-time server.",
-                fullDescription: "Real-time server architecture for live events and concurrent user synchronization across PC and mobile clients.",
-                bulletPoints: [
-                    { title: "Real-time Multiplayer Sync", desc: "Node.js WebSocket backend handling concurrent user state sync, shared-world RPCs, and live event broadcasting with sub-100ms latency." },
-                    { title: "Mobile Build Pipeline", desc: "UE mobile builds tuned for low-end Android/iOS — draw-call batching, texture streaming budgets, LOD tuning, and memory pooling to hold 30 FPS on min-spec hardware." },
-                    { title: "Interactive Gameplay Systems", desc: "Login flows, gacha reward systems, and a real-time minimap with dynamic POI tracking." }
-                ],
-                role: "Core Gameplay & Optimization",
-                timeline: "Completed",
-                images: ["/images/christmas-1.jpg", "/images/christmas-2.jpg"]
-            },
-            {
-                title: "Singapore Discovery Center",
-                subtitle: "AR Interactive Sandbox",
-                date: "2022",
-                tags: ["Unity 3D", "Unreal", "AR", "Shaders"],
-                description: "AR interactive sandbox teaching disaster preparedness through physical terrain and digital overlays.",
-                fullDescription: "An AR-based interactive sandbox featuring infrastructure models and educational mini-games focused on disaster preparedness, installed at the Singapore Discovery Centre.",
-                bulletPoints: [
-                    { title: "Spatial Tracking & AR Pipeline", desc: "Custom AR tracking and spatial mapping pipelines on Unity AR Foundation, holding sub-centimeter alignment between physical sandbox terrain and digital overlays." },
-                    { title: "Custom Shader & Material Authoring", desc: "HLSL/ShaderGraph shaders and particle systems render real-time environmental VFX — water, fire, structural damage — driven by user interaction data." }
-                ],
-                role: "Technical Artist / AR Engineer",
-                timeline: "Completed",
-                video: "/videos/sg-discovery.mp4"
+                featured: true,
+                metric: null /* FILL: hologram sync error (ms) or concurrent devices — see TODO-FILL.md */
             },
             {
                 title: "HomeTeam NS",
@@ -108,9 +83,45 @@ const projectCategories = [
                 images: ["/images/hometeam-1.jpg"]
             },
             {
+                title: "Christmas Wonderland Metaverse",
+                subtitle: "Multiplayer Metaverse Platform",
+                date: "2021",
+                summary: "Node.js multiplayer backend and UE mobile build optimization for a cross-platform live-events world.",
+                tags: ["Unreal Engine", "Node.js", "Multiplayer", "Optimization"],
+                description: "Cross-platform multiplayer metaverse with live events, backed by a Node.js real-time server.",
+                fullDescription: "Real-time server architecture for live events and concurrent user synchronization across PC and mobile clients.",
+                bulletPoints: [
+                    { title: "Real-time Multiplayer Sync", desc: "Node.js WebSocket backend handling concurrent user state sync, shared-world RPCs, and live event broadcasting with sub-100ms latency." },
+                    { title: "Mobile Build Pipeline", desc: "UE mobile builds tuned for low-end Android/iOS — draw-call batching, texture streaming budgets, LOD tuning, and memory pooling to hold 30 FPS on min-spec hardware." },
+                    { title: "Interactive Gameplay Systems", desc: "Login flows, gacha reward systems, and a real-time minimap with dynamic POI tracking." }
+                ],
+                role: "Core Gameplay & Optimization",
+                timeline: "Completed",
+                images: ["/images/christmas-1.jpg", "/images/christmas-2.jpg"],
+                earlier: true
+            },
+            {
+                title: "Singapore Discovery Center",
+                subtitle: "AR Interactive Sandbox",
+                date: "2022",
+                summary: "AR sandbox holding sub-centimeter terrain alignment, with custom HLSL environmental VFX.",
+                tags: ["Unity 3D", "Unreal", "AR", "Shaders"],
+                description: "AR interactive sandbox teaching disaster preparedness through physical terrain and digital overlays.",
+                fullDescription: "An AR-based interactive sandbox featuring infrastructure models and educational mini-games focused on disaster preparedness, installed at the Singapore Discovery Centre.",
+                bulletPoints: [
+                    { title: "Spatial Tracking & AR Pipeline", desc: "Custom AR tracking and spatial mapping pipelines on Unity AR Foundation, holding sub-centimeter alignment between physical sandbox terrain and digital overlays." },
+                    { title: "Custom Shader & Material Authoring", desc: "HLSL/ShaderGraph shaders and particle systems render real-time environmental VFX — water, fire, structural damage — driven by user interaction data." }
+                ],
+                role: "Technical Artist / AR Engineer",
+                timeline: "Completed",
+                video: "/videos/sg-discovery.mp4",
+                earlier: true
+            },
+            {
                 title: "CPF: Let the CPF Game On!",
                 subtitle: "Educational Mobile Game",
                 date: "2022",
+                summary: "Educational mobile title shipped to both app stores with PlayFab telemetry and an automated release pipeline.",
                 tags: ["Unity 3D", "Mobile Optimization", "Publishing"],
                 description: "Educational mobile game shipped to both app stores, integrated with physical vending-machine hardware.",
                 fullDescription: "Owned telemetry integration, performance, and multi-platform publishing end-to-end — from PlayFab backend wiring to App Store and Google Play release.",
@@ -125,20 +136,22 @@ const projectCategories = [
                     "/images/cpf-2.png",
                     "/images/cpf-3.png",
                     "/images/cpf-4.png"
-                ]
+                ],
+                earlier: true
             }
         ]
     },
     {
         categoryTitle: "Core Engineering",
+        note: "Self-directed framework work — personal projects, not shipped titles.",
         projects: [
             {
                 title: "UE C++: Modular Combat Framework",
-                subtitle: "Unreal Engine 5",
+                subtitle: "Unreal Engine 5 · Personal Project",
                 date: "2024",
-                tags: ["Unreal Engine", "Pure C++", "Architecture"],
-                description: "Data-driven combat architecture written entirely in C++, designed to scale without engine-source changes.",
-                fullDescription: "A resilient core logic framework in pure C++, designed for scalability in complex game environments without touching engine source.",
+                tags: ["Unreal Engine", "C++", "Architecture"],
+                description: "Data-driven combat architecture in C++, built to extend without modifying engine source.",
+                fullDescription: "A self-directed core logic framework written in C++, exploring how far a combat architecture can scale without touching engine source. Personal project, not a shipped title.",
                 bulletPoints: [
                     { title: "Object-Oriented AI Architecture", desc: "Polymorphic enemy spawning with shared base combat logic and specialized pursuit/aggro state machines driven by Behavior Trees." },
                     { title: "Data-Driven Weapon Pipeline", desc: "DataAsset-driven weapon system with hot-swappable stat profiles linked to Animation Blueprints and Anim Notify-driven state transitions." },
@@ -150,11 +163,11 @@ const projectCategories = [
             },
             {
                 title: "Action Top-Down Framework",
-                subtitle: "Unity 3D",
+                subtitle: "Unity 3D · Personal Project",
                 date: "2025",
                 tags: ["Unity 3D", "C#", "AI State Machines"],
                 description: "C# gameplay core for a fast-paced action shooter, built around controller responsiveness.",
-                fullDescription: "A fully developed C# logic core for a fast-paced action environment, engineered around input responsiveness and decoupled combat systems.",
+                fullDescription: "A self-directed C# logic core for a fast-paced action environment, engineered around input responsiveness and decoupled combat systems.",
                 bulletPoints: [
                     { title: "Responsive Controller", desc: "Fluid character controller with mouse-driven aiming, root motion blending, dodge i-frames, and input buffering for responsive combat feel." },
                     { title: "Modular AI Behavior", desc: "Pluggable AI state machines with configurable patrol graphs, aggro radius detection, and weighted pursuit logic supporting 50+ concurrent agents." },
@@ -187,8 +200,9 @@ const projectCategories = [
                 video: "/videos/scene-manager.mp4",
                 link: "https://assetstore.unity.com/packages/tools/utilities/quick-scene-switcher-384534",
                 linkLabel: "View on Asset Store",
-                badge: "Asset Store",
-                featured: true
+                badge: "Live on Asset Store",
+                featured: true,
+                metric: { value: "82 KB", label: "package · zero dependencies · editor-only" }
             },
             {
                 title: "GPU Fish Ecosystem",
@@ -205,7 +219,8 @@ const projectCategories = [
                 role: "GPU Engineer & System Architect",
                 timeline: "Completed (Demo Ocean)",
                 video: "/videos/gpu-ecosystem.mp4",
-                featured: true
+                featured: true,
+                metric: { value: "200k agents", label: "6 indirect draw calls · 0 game-thread overhead" }
             },
             {
                 title: "Catfe Vault Inventory (Catfe.InvPro)",
@@ -239,14 +254,15 @@ const projectCategories = [
                 ],
                 role: "Tooling & Performance Engineer",
                 timeline: "Completed",
-                video: "/videos/catfe-analyzer.mp4"
+                video: "/videos/catfe-analyzer.mp4",
+                metric: null /* FILL: draw calls before/after on one real scene — see TODO-FILL.md */
             },
             {
                 title: "PolyWorld: Dynamic World Streaming",
                 subtitle: "Unity Engine Architecture",
                 date: "2026",
                 tags: ["Unity 3D", "C#", "Async Optimization", "Architecture"],
-                description: "Infinite chunk streaming with async background NavMesh baking — 12ms average bake per chunk, zero main-thread stalls.",
+                description: "Infinite chunk streaming with async background NavMesh baking — no main-thread stalls.",
                 fullDescription: "A modular framework for seamless infinite chunk streaming and asynchronous background NavMesh baking inside Unity — worlds stream and stay navigable without ever blocking the game thread.",
                 bulletPoints: [
                     { title: "Zero-Stutter Infinite Streaming", desc: "Object pooling recycles environment chunks via active-state toggles, preventing GC spikes and main-thread CPU hiccups during streaming." },
@@ -256,7 +272,8 @@ const projectCategories = [
                 ],
                 role: "Core Engineer",
                 timeline: "Completed",
-                video: "/videos/polyworld-streaming.mp4"
+                video: "/videos/polyworld-streaming.mp4",
+                metric: { value: "12 ms", label: "avg NavMesh bake/chunk · 0 main-thread stall" }
             },
             {
                 title: "AI-Powered Profiler",
@@ -278,10 +295,25 @@ const projectCategories = [
     }
 ];
 
-const featuredProjects = projectCategories.flatMap((category) => category.projects).filter((p) => p.featured);
+/* Flagship order is deliberate: Unity-first, publish evidence before in-progress work. */
+const FLAGSHIP_ORDER = [
+    "Quick Scene Switcher",
+    "GPU Fish Ecosystem",
+    "Seal of Exorcism",
+    "Vinpearl Digital Aquarium"
+];
+
+const allProjects = projectCategories.flatMap((category) => category.projects);
+
+const featuredProjects = FLAGSHIP_ORDER.map((title) => allProjects.find((p) => p.title === title)).filter(Boolean);
+
+const earlierCredits = allProjects.filter((p) => p.earlier);
 
 const supportingCategories = projectCategories
-    .map((category) => ({ ...category, projects: category.projects.filter((p) => !p.featured) }))
+    .map((category) => ({
+        ...category,
+        projects: category.projects.filter((p) => !p.featured && !p.earlier)
+    }))
     .filter((category) => category.projects.length > 0);
 
 function LazyVideo({ src, className }) {
@@ -321,32 +353,44 @@ function LazyVideo({ src, className }) {
     );
 }
 
-function CardMedia({ project, aspect }) {
-    const mediaClass = "w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105";
+/*
+ * The one signature element on this site: a measured number, read like a profiler
+ * gauge. Same treatment everywhere it appears — never restyled per card.
+ */
+function MetricReadout({ metric }) {
+    if (!metric) return null;
 
     return (
-        <div className={`w-full ${aspect} bg-[#1c1917] overflow-hidden relative border-b border-stone-800/40`}>
+        <p className="flex items-baseline gap-2.5 text-sm">
+            <span className="w-[3px] h-3.5 bg-amber-500 shrink-0 translate-y-[2px]" aria-hidden="true" />
+            <span className="font-mono text-amber-500 tracking-tight">{metric.value}</span>
+            <span className="text-stone-400 font-light">{metric.label}</span>
+        </p>
+    );
+}
+
+function CardMedia({ project, aspect }) {
+    const mediaClass = "w-full h-full object-cover";
+
+    return (
+        <div className={`w-full ${aspect} bg-[#171412] overflow-hidden relative border-b border-stone-800/60`}>
             {project.video ? (
                 <>
                     <LazyVideo src={project.video} className={mediaClass} />
-                    <div className="absolute bottom-3 right-3 flex items-center gap-1.5 text-[9px] uppercase tracking-widest font-mono text-stone-300 bg-stone-950/70 backdrop-blur px-2.5 py-1 rounded-full border border-stone-800/60 pointer-events-none opacity-80 group-hover:opacity-0 transition-opacity duration-500">
-                        <Play size={10} className="fill-current" /> Demo
-                    </div>
+                    <span className="absolute bottom-3 right-3 flex items-center gap-1.5 text-[10px] text-stone-300 bg-stone-950/75 backdrop-blur px-2.5 py-1 rounded border border-stone-800/60 pointer-events-none group-hover:opacity-0 transition-opacity">
+                        <Play size={9} className="fill-current" /> Hover to play
+                    </span>
                 </>
             ) : project.images && project.images.length > 0 ? (
-                <img
-                    src={project.images[0]}
-                    alt={project.title}
-                    loading="lazy"
-                    className={mediaClass}
-                />
+                <img src={project.images[0]} alt={project.title} loading="lazy" className={mediaClass} />
             ) : (
-                <div className="w-full h-full bg-[#1c1917]" />
+                <div className="w-full h-full bg-[#171412]" />
             )}
             {project.badge && (
-                <div className="absolute top-3 left-3 text-[9px] uppercase tracking-widest font-mono text-amber-400 bg-stone-950/80 backdrop-blur px-2.5 py-1 rounded-full border border-amber-700/40 pointer-events-none">
+                <span className="absolute top-3 left-3 flex items-center gap-1.5 text-[10px] text-amber-400 bg-stone-950/85 backdrop-blur px-2.5 py-1 rounded border border-amber-700/40 pointer-events-none">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
                     {project.badge}
-                </div>
+                </span>
             )}
         </div>
     );
@@ -355,6 +399,13 @@ function CardMedia({ project, aspect }) {
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState(null);
 
+    // Cards act as buttons, so they need to answer the keyboard like buttons too.
+    const openOnKey = useCallback((project) => (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        e.preventDefault();
+        setSelectedProject(project);
+    }, []);
+
     // Lock page scroll while the detail modal is open
     useEffect(() => {
         document.body.style.overflow = selectedProject ? "hidden" : "";
@@ -362,111 +413,136 @@ export default function Projects() {
     }, [selectedProject]);
 
     return (
-        <section id="projects" className="py-32 bg-[#0c0a09]">
+        <section id="projects" className="py-28 bg-[#0c0a09]">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                <div className="mb-20 border-b border-stone-800/50 pb-8">
-                    <div className="flex flex-col md:flex-row justify-between items-baseline">
-                        <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-stone-100">
+                <div className="mb-16 border-b border-stone-800/60 pb-8">
+                    <div className="flex flex-col md:flex-row justify-between items-baseline gap-4">
+                        <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-stone-100">
                             Selected Works.
                         </h2>
-                        <a href="https://www.linkedin.com/in/tuanka19" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-amber-500 transition-colors mt-4 md:mt-0 text-sm font-medium flex items-center gap-2">
-                            View Full History <ArrowRight size={16} />
+                        <a href="https://www.linkedin.com/in/tuanka19" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-stone-100 transition-colors text-sm font-medium flex items-center gap-2">
+                            Full history on LinkedIn <ArrowRight size={15} />
                         </a>
                     </div>
-                    <p className="text-stone-400 font-light leading-relaxed max-w-2xl mt-6">
-                        Shipped titles, installations, and Editor tools &mdash; the common thread is systems that stay fast as they scale, and toolchains that cut a team&apos;s iteration time.
+                    <p className="text-stone-300 font-light leading-relaxed max-w-2xl mt-6">
+                        Shipped titles, installations, and Editor tools. The common thread is systems that stay fast as they scale, and toolchains that cut a team&apos;s iteration time.
                     </p>
                 </div>
 
-                <div className="mb-24">
-                    <h3 className="text-amber-500 uppercase tracking-widest text-sm mb-10 font-mono flex items-center gap-4">
-                        <span>Flagship Work</span>
-                        <span className="h-px flex-grow bg-amber-900/30"></span>
-                    </h3>
-                    <div className="grid lg:grid-cols-2 gap-8">
-                        {featuredProjects.map((p, idx) => (
-                            <motion.div
+                <div className="mb-20">
+                    <div className="grid lg:grid-cols-2 gap-6">
+                        {featuredProjects.map((p) => (
+                            <article
                                 key={p.title}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.8, delay: (idx % 2) * 0.1 }}
+                                role="button"
+                                tabIndex={0}
+                                aria-label={`${p.title} — view project details`}
                                 onClick={() => setSelectedProject(p)}
-                                className="group cursor-pointer flex flex-col bg-[#1c1917]/30 border border-stone-800/50 hover:border-amber-700/40 rounded-2xl overflow-hidden transition-all duration-500 hover:bg-[#1c1917]/50 hover:shadow-2xl hover:shadow-amber-900/10"
+                                onKeyDown={openOnKey(p)}
+                                className="group cursor-pointer flex flex-col bg-[#131110] border border-stone-800/60 hover:border-stone-600 rounded-lg overflow-hidden transition-colors"
                             >
                                 <CardMedia project={p} aspect="aspect-video" />
-                                <div className="p-6 md:p-8 flex flex-col flex-grow">
-                                    <div className="text-stone-500 font-mono text-[10px] uppercase tracking-widest mb-3 flex justify-between gap-2">
-                                        <span className="truncate">{p.subtitle}</span>
-                                        <span className="shrink-0">{p.date}</span>
-                                    </div>
-                                    <h4 className="text-xl md:text-2xl font-medium text-stone-100 mb-3 group-hover:text-amber-500 transition-colors leading-snug tracking-tight">{p.title}</h4>
-                                    <p className="text-stone-400 font-light text-sm mb-6 leading-relaxed">{p.description}</p>
+                                <div className="p-6 md:p-7 flex flex-col flex-grow">
+                                    <p className="text-xs text-stone-500 mb-3">
+                                        {p.subtitle} · {p.date}
+                                    </p>
+                                    <h3 className="text-xl md:text-2xl font-medium text-stone-100 mb-3 tracking-tight leading-snug">
+                                        {p.title}
+                                    </h3>
+                                    <p className="text-stone-300 font-light text-sm mb-6 leading-relaxed">{p.description}</p>
 
-                                    <div className="mt-auto pt-5 border-t border-stone-800/40">
-                                        <p className="text-xs text-stone-300 font-medium mb-4">
-                                            {p.role} <span className="text-stone-600">&mdash;</span> <span className="text-stone-500 font-light">{p.timeline}</span>
-                                        </p>
-                                        <div className="flex flex-wrap gap-1.5">
-                                            {p.tags.slice(0, 4).map(tag => (
-                                                <span key={tag} className="text-[10px] text-stone-400 bg-stone-900/50 px-2.5 py-1 rounded-full border border-stone-800/50">
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                            {p.tags.length > 4 && (
-                                                <span className="text-[10px] text-stone-500 px-1.5 py-1">+{p.tags.length - 4}</span>
+                                    <div className="mt-auto pt-5 border-t border-stone-800/60 space-y-4">
+                                        <MetricReadout metric={p.metric} />
+                                        <div className="flex items-center justify-between gap-4">
+                                            <p className="text-xs text-stone-400">
+                                                {p.role} <span className="text-stone-600">·</span> {p.timeline}
+                                            </p>
+                                            {p.link && (
+                                                <a
+                                                    href={p.link}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    onClick={(e) => e.stopPropagation()}
+                                                    className="shrink-0 inline-flex items-center gap-1.5 text-xs font-medium text-amber-500 hover:text-amber-400 transition-colors"
+                                                >
+                                                    {p.linkLabel} <ArrowUpRight size={14} />
+                                                </a>
                                             )}
                                         </div>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </article>
                         ))}
                     </div>
                 </div>
 
-                <div className="space-y-24">
-                    {supportingCategories.map((category, catIdx) => (
-                        <div key={catIdx}>
-                            <h3 className="text-stone-500 uppercase tracking-widest text-sm mb-10 font-mono flex items-center gap-4">
-                                <span>{category.categoryTitle}</span>
-                                <span className="h-px flex-grow bg-stone-800/30"></span>
-                            </h3>
-                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {category.projects.map((p, idx) => (
-                                    <motion.div
-                                        key={idx}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true, margin: "-50px" }}
-                                        transition={{ duration: 0.8, delay: (idx % 3) * 0.1 }}
+                <div className="space-y-16">
+                    {supportingCategories.map((category) => (
+                        <div key={category.categoryTitle}>
+                            <div className="mb-8 pb-4 border-b border-stone-800/60">
+                                <h3 className="text-stone-100 text-base font-medium">{category.categoryTitle}</h3>
+                                {category.note && (
+                                    <p className="text-sm text-stone-500 font-light mt-1.5">{category.note}</p>
+                                )}
+                            </div>
+                            <div className="grid sm:grid-cols-2 gap-5">
+                                {category.projects.map((p) => (
+                                    <article
+                                        key={p.title}
+                                        role="button"
+                                        tabIndex={0}
+                                        aria-label={`${p.title} — view project details`}
                                         onClick={() => setSelectedProject(p)}
-                                        className="group cursor-pointer flex flex-col bg-[#1c1917]/20 border border-stone-800/40 hover:border-stone-700 rounded-2xl overflow-hidden transition-all duration-500 hover:bg-[#1c1917]/40 hover:shadow-2xl hover:shadow-amber-900/5"
+                                        onKeyDown={openOnKey(p)}
+                                        className="group cursor-pointer flex flex-col bg-[#131110] border border-stone-800/60 hover:border-stone-600 rounded-lg overflow-hidden transition-colors"
                                     >
                                         <CardMedia project={p} aspect="aspect-[16/10]" />
                                         <div className="p-5 flex flex-col flex-grow">
-                                            <div className="text-stone-500 font-mono text-[10px] uppercase tracking-widest mb-2 flex justify-between gap-2">
-                                                <span className="truncate">{p.subtitle}</span>
-                                                <span className="shrink-0">{p.date}</span>
-                                            </div>
-                                            <h4 className="text-lg font-medium text-stone-100 mb-2 group-hover:text-amber-500 transition-colors leading-snug">{p.title}</h4>
-                                            <p className="text-stone-400 font-light text-[13px] mb-5 leading-relaxed line-clamp-3">{p.description}</p>
+                                            <p className="text-xs text-stone-500 mb-2">
+                                                {p.subtitle} · {p.date}
+                                            </p>
+                                            <h4 className="text-base font-medium text-stone-100 mb-2 leading-snug">{p.title}</h4>
+                                            <p className="text-stone-300 font-light text-sm mb-5 leading-relaxed">{p.description}</p>
 
-                                            <div className="mt-auto flex flex-wrap gap-1.5 pt-4 border-t border-stone-800/30">
-                                                {p.tags.slice(0, 3).map(tag => (
-                                                    <span key={tag} className="text-[10px] text-stone-400 bg-stone-900/50 px-2.5 py-1 rounded-full border border-stone-800/50">
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                                {p.tags.length > 3 && (
-                                                    <span className="text-[10px] text-stone-500 px-1.5 py-1">+{p.tags.length - 3}</span>
-                                                )}
+                                            <div className="mt-auto pt-4 border-t border-stone-800/60 space-y-3">
+                                                <MetricReadout metric={p.metric} />
+                                                <div className="flex flex-wrap gap-1.5">
+                                                    {p.tags.map(tag => (
+                                                        <span key={tag} className="text-[11px] text-stone-400 border border-stone-800 px-2 py-0.5 rounded">
+                                                            {tag}
+                                                        </span>
+                                                    ))}
+                                                </div>
                                             </div>
                                         </div>
-                                    </motion.div>
+                                    </article>
                                 ))}
                             </div>
                         </div>
                     ))}
+
+                    {earlierCredits.length > 0 && (
+                        <div>
+                            <div className="mb-2 pb-4 border-b border-stone-800/60">
+                                <h3 className="text-stone-100 text-base font-medium">Earlier production credits</h3>
+                            </div>
+                            <ul>
+                                {earlierCredits.map((p) => (
+                                    <li key={p.title}>
+                                        <button
+                                            type="button"
+                                            onClick={() => setSelectedProject(p)}
+                                            className="w-full text-left py-5 border-b border-stone-800/60 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 group hover:bg-stone-900/30 transition-colors px-2 -mx-2"
+                                        >
+                                            <span className="text-sm text-stone-500 shrink-0 w-12">{p.date}</span>
+                                            <span className="text-stone-100 font-medium shrink-0 sm:w-72">{p.title}</span>
+                                            <span className="text-sm text-stone-400 font-light leading-relaxed">{p.summary}</span>
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -476,27 +552,28 @@ export default function Projects() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
                         onClick={() => setSelectedProject(null)}
-                        className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 lg:p-12 bg-[#0c0a09]/90 backdrop-blur-xl"
+                        className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 lg:p-12 bg-[#0c0a09]/92 backdrop-blur-xl"
                     >
                         <motion.div
-                            initial={{ y: 20, opacity: 0, scale: 0.98 }}
-                            animate={{ y: 0, opacity: 1, scale: 1 }}
-                            exit={{ y: 20, opacity: 0, scale: 0.98 }}
-                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            initial={{ y: 12, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: 12, opacity: 0 }}
+                            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                             onClick={(e) => e.stopPropagation()}
-                            className="bg-[#12100f] w-full max-w-5xl rounded-3xl overflow-hidden relative flex flex-col border border-stone-800/60 shadow-2xl max-h-[95vh]"
+                            className="bg-[#131110] w-full max-w-5xl rounded-xl overflow-hidden relative flex flex-col border border-stone-800 max-h-[95vh]"
                         >
                             <button
                                 onClick={() => setSelectedProject(null)}
                                 aria-label="Close project details"
-                                className="absolute top-6 right-6 z-10 text-stone-500 hover:text-amber-500 bg-stone-900/80 backdrop-blur rounded-full p-2 transition-colors border border-stone-800"
+                                className="absolute top-5 right-5 z-10 text-stone-400 hover:text-stone-100 bg-stone-950/85 backdrop-blur rounded-md p-2 transition-colors border border-stone-800"
                             >
-                                <X size={24} strokeWidth={1.5} />
+                                <X size={22} strokeWidth={1.5} />
                             </button>
 
                             <div className="overflow-y-auto w-full custom-scrollbar">
-                                <div className="w-full bg-[#0c0a09] relative border-b border-stone-800/50 flex flex-col items-center">
+                                <div className="w-full bg-[#0c0a09] relative border-b border-stone-800/60 flex flex-col items-center">
                                     {selectedProject.video && (
                                         <div className="aspect-video w-full flex items-center justify-center">
                                             <video
@@ -514,66 +591,61 @@ export default function Projects() {
                                     {selectedProject.images && selectedProject.images.length > 0 && (
                                         <div className="w-full flex flex-col">
                                             {selectedProject.images.map((img, idx) => (
-                                                <img key={idx} src={img} alt={`${selectedProject.title} screenshot ${idx + 1}`} loading="lazy" className="w-full h-auto max-h-[80vh] object-contain bg-[#12100f] border-b border-stone-800/30 last:border-0" />
+                                                <img key={idx} src={img} alt={`${selectedProject.title} screenshot ${idx + 1}`} loading="lazy" className="w-full h-auto max-h-[80vh] object-contain bg-[#131110] border-b border-stone-800/40 last:border-0" />
                                             ))}
                                         </div>
                                     )}
-                                    {!selectedProject.video && (!selectedProject.images || selectedProject.images.length === 0) && (
-                                        <div className="aspect-video w-full" />
-                                    )}
                                 </div>
 
-                                <div className="p-8 md:p-12 lg:p-16 max-w-4xl mx-auto">
-                                    <div className="mb-12">
-                                        <p className="text-amber-600 font-mono text-sm uppercase tracking-widest mb-3">{selectedProject.subtitle} &mdash; {selectedProject.date}</p>
-                                        <h2 className="text-3xl md:text-4xl font-medium text-stone-100">{selectedProject.title}</h2>
+                                <div className="p-8 md:p-12 lg:p-14 max-w-4xl mx-auto">
+                                    <div className="mb-10">
+                                        <p className="text-sm text-stone-500 mb-3">
+                                            {selectedProject.subtitle} · {selectedProject.date}
+                                        </p>
+                                        <h2 className="text-2xl md:text-3xl font-medium text-stone-100 tracking-tight mb-5">{selectedProject.title}</h2>
+                                        <MetricReadout metric={selectedProject.metric} />
                                         {selectedProject.link && (
                                             <a
                                                 href={selectedProject.link}
                                                 target="_blank"
                                                 rel="noreferrer"
-                                                className="inline-flex items-center gap-2 mt-5 text-sm font-medium text-amber-500 hover:text-amber-400 border border-amber-700/40 hover:border-amber-600/60 bg-amber-950/20 px-4 py-2 rounded-full transition-colors"
+                                                className="inline-flex items-center gap-2 mt-5 text-sm font-medium text-stone-950 bg-amber-500 hover:bg-amber-400 px-4 py-2 rounded-md transition-colors"
                                             >
-                                                {selectedProject.linkLabel || "View Project"} <ArrowRight size={14} />
+                                                {selectedProject.linkLabel || "View Project"} <ArrowUpRight size={15} />
                                             </a>
                                         )}
                                     </div>
 
-                                    <div className="grid md:grid-cols-2 gap-12 mb-12 bg-[#1c1917]/30 p-8 rounded-2xl border border-stone-800/30">
+                                    <div className="grid sm:grid-cols-2 gap-8 mb-10 py-6 border-y border-stone-800/60">
                                         <div>
-                                            <h3 className="text-xs text-stone-500 uppercase tracking-widest mb-3 font-mono">Role & Timeline</h3>
-                                            <p className="text-base text-stone-200 font-medium mb-1">{selectedProject.role}</p>
+                                            <h3 className="text-xs text-stone-500 mb-2">Role &amp; Timeline</h3>
+                                            <p className="text-base text-stone-100 font-medium mb-1">{selectedProject.role}</p>
                                             <p className="text-stone-400 font-light text-sm">{selectedProject.timeline}</p>
                                         </div>
                                         <div>
-                                            <h3 className="text-xs text-stone-500 uppercase tracking-widest mb-3 font-mono">Technologies</h3>
+                                            <h3 className="text-xs text-stone-500 mb-2">Technologies</h3>
                                             <div className="flex flex-wrap gap-2">
                                                 {selectedProject.tags.map(tag => (
-                                                    <span key={tag} className="text-sm text-stone-300 font-medium">{tag}</span>
+                                                    <span key={tag} className="text-sm text-stone-200">{tag}</span>
                                                 ))}
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="prose prose-invert prose-lg max-w-none">
-                                        <p className="text-xl text-stone-300 font-light leading-relaxed mb-10">
-                                            {selectedProject.fullDescription}
-                                        </p>
+                                    <p className="text-lg text-stone-200 font-light leading-relaxed mb-10">
+                                        {selectedProject.fullDescription}
+                                    </p>
 
-                                        {selectedProject.bulletPoints && (
-                                            <ul className="space-y-6 list-none pl-0">
-                                                {selectedProject.bulletPoints.map((bullet, idx) => (
-                                                    <li key={idx} className="flex gap-4">
-                                                        <span className="text-amber-600 mt-1.5">•</span>
-                                                        <div>
-                                                            <strong className="text-stone-200 block text-base font-medium mb-1">{bullet.title}</strong>
-                                                            <p className="text-stone-400 font-light text-sm leading-relaxed m-0">{bullet.desc}</p>
-                                                        </div>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        )}
-                                    </div>
+                                    {selectedProject.bulletPoints && selectedProject.bulletPoints.length > 0 && (
+                                        <ul className="space-y-6 list-none pl-0">
+                                            {selectedProject.bulletPoints.map((bullet, idx) => (
+                                                <li key={idx}>
+                                                    <strong className="text-stone-100 block text-base font-medium mb-1.5">{bullet.title}</strong>
+                                                    <p className="text-stone-300 font-light text-sm leading-relaxed m-0">{bullet.desc}</p>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </div>
                             </div>
                         </motion.div>
