@@ -209,8 +209,8 @@ const projectCategories = [
                 subtitle: "GPU-Driven Simulation & Rendering",
                 date: "2026",
                 tags: ["Compute Shader", "HLSL", "C#", "URP", "GPU-Driven Rendering"],
-                description: "Large-scale fish ecosystem in Unity URP, simulating and rendering 200k agents entirely on the GPU with zero game-thread overhead.",
-                fullDescription: "A massive-scale fish ecosystem simulation built for Unity URP. The entire simulation and rendering pipeline runs directly on the GPU, achieving high-fidelity interaction for 200k agents without GameObjects, MonoBehaviours, or synchronous readbacks on the hot path.",
+                description: "Large-scale fish ecosystem in Unity URP, simulating and rendering up to 2M agents entirely on the GPU with zero game-thread overhead.",
+                fullDescription: "A massive-scale fish ecosystem simulation built for Unity URP. The entire simulation and rendering pipeline runs directly on the GPU, sustaining 1M agents at 60 FPS on a mid-range RTX 4060 and scaling to 2M at 45-50 FPS — without GameObjects, MonoBehaviours, or synchronous readbacks on the hot path.",
                 bulletPoints: [
                     { title: "GPU-Driven Simulation Pipeline", desc: "Runs the entire agent lifecycle — spatial hashing, counting sort, prefix sum, boid steering (separation/alignment/cohesion), and predator/prey behaviors between 3 distinct species — sequentially inside HLSL compute shaders." },
                     { title: "Indirect Rendering & Culling", desc: "Performs GPU compaction for frustum culling and Level of Detail (LOD) selection. Renders the entire ecosystem using only 6 indirect draw calls (3 species × 2 LODs), avoiding cheap scale-to-zero vertex shader hacks." },
@@ -220,7 +220,25 @@ const projectCategories = [
                 timeline: "Completed (Demo Ocean)",
                 video: "/videos/gpu-ecosystem.mp4",
                 featured: true,
-                metric: { value: "200k agents", label: "6 indirect draw calls · 0 game-thread overhead" }
+                metric: { value: "1M agents @ 60 FPS", label: "RTX 4060 · scales to 2M · 6 indirect draw calls" }
+            },
+            {
+                title: "CatfeShader: Screen Effects for URP",
+                subtitle: "Render Graph Post-Processing Pack",
+                date: "2026",
+                tags: ["Unity 6", "URP", "Render Graph", "HLSL", "Volume System"],
+                description: "24 fullscreen post-processing effects for Unity 6 URP — one renderer feature, every effect a Volume override.",
+                fullDescription: "A fullscreen post-processing pack built on the Unity 6 Render Graph API and driven entirely through the Volume system. The whole pack installs as a single renderer feature; after that every effect is a Volume override, so quality tiers and per-area looks are just different profiles. Every pattern is generated procedurally in HLSL — no textures, no third-party packages.",
+                bulletPoints: [
+                    { title: "Render Graph Pass Chain", desc: "Effects composite in a fixed order that follows a real image path (distortion → resampling → stylize → colour → overlay → display), with intermediate targets borrowed from the Render Graph pool. Nothing is queued at all while every intensity sits at 0." },
+                    { title: "Analog Signal Simulation", desc: "CRT and VHS are modelled rather than overlaid: phosphor glow, aperture-grille/slot/shadow masks and interlacing on one side; chroma genuinely resampled at tape bandwidth on an eighth-width buffer, edge-enhance overshoot and head-switch tearing on the other." },
+                    { title: "Global Masking & Offscreen Chain", desc: "One screen-space and depth-range mask confines every effect at once — keeping a HUD readable or the weapon crisp — and the same stack runs onto a RenderTexture for in-world screens, with buffer-dependent effects skipped and reported." },
+                    { title: "Runtime API & Editor Tooling", desc: "One-line gameplay hooks (flash, fade, shockwave-from-world-position), covered scene transitions, and a Timeline-animatable driver, backed by an effect browser, a generated demo scene, a validation pass over every shader, and per-edition package export." }
+                ],
+                role: "Graphics & Tools Engineer",
+                timeline: "Completed",
+                video: "/videos/shader.mp4",
+                metric: { value: "24 effects", label: "16 preset looks · 1 renderer feature · zero textures" }
             },
             {
                 title: "Catfe Vault Inventory (Catfe.InvPro)",
