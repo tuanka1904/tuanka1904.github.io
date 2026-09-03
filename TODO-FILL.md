@@ -54,14 +54,14 @@ thì **không render dòng nào cả** — không có placeholder giả, nhưng 
 
 Đã có sẵn (không cần làm gì):
 
-- GPU Fish Ecosystem — `200k agents · 6 indirect draw calls · 0 game-thread overhead`
+- GPU Fish Ecosystem — `1M agents @ 60 FPS · RTX 4060 · scales to 2M · 6 indirect draw calls`
 - PolyWorld — `12 ms avg NavMesh bake/chunk · 0 main-thread stall`
 - Quick Scene Switcher — `82 KB package · zero dependencies · editor-only`
 
 Format trong code:
 
 ```js
-metric: { value: "200k agents", label: "6 indirect draw calls · 0 game-thread overhead" }
+metric: { value: "1M agents @ 60 FPS", label: "RTX 4060 · scales to 2M · 6 indirect draw calls" }
 ```
 
 `value` là phần in mono màu amber, `label` là phần chữ thường xám.
@@ -114,10 +114,19 @@ cho tới khi hover, và trước đây poster bị phủ `mix-blend-luminosity`
 nên xám xịt như khung rỗng. Đã bỏ hiệu ứng đó, đổi nhãn từ "Demo" thành "Hover to play"
 cho rõ ý.
 
-**Một việc còn lại:** `public/videos/gpu-ecosystem.mp4` nặng **90 MB** — lớn gấp ~7 lần
-file lớn thứ hai. Nó là card flagship đầu bảng nên sẽ bị mở nhiều. Nên nén xuống
-dưới ~10 MB (720p, CRF 28, không audio):
+**Đã xử lý (2026-09-02):** `public/videos/gpu-ecosystem.mp4` từng nặng 94 MB. Nội dung
+là đàn cá dày đặc nên nén interframe gần như vô hiệu — hạ CRF không ăn thua (CRF 28 vẫn
+còn 50 MB). Cần gạt thật là độ phân giải và cắt bớt thời lượng:
 
 ```
-ffmpeg -i gpu-ecosystem.mp4 -vcodec libx264 -crf 28 -vf scale=1280:-2 -an gpu-ecosystem-web.mp4
+ffmpeg -ss 5 -i gpu-ecosystem.mp4 -t 76.8 -c:v libx264 -crf 26 -preset slow -vf scale=960:-2 -pix_fmt yuv420p -movflags +faststart -an out.mp4
 ```
+
+Kết quả: 94 MB → **30.1 MB**, 960x540, 76.8s. Card hiển thị ~580px và modal ~1024px nên
+540p không mất gì đáng kể.
+
+`-movflags +faststart` là phần quan trọng nhất và độc lập với dung lượng: bản cũ có atom
+`moov` nằm ở 99.9% cuối file, khiến trình duyệt không phát được frame nào cho tới khi với
+tới cuối file. Mọi video khác trên site đã có moov ở đầu — riêng file này thì chưa.
+
+Master gốc 94 MB (bản render 2M) **chưa từng được commit** — cần tự lưu trữ ngoài repo.
