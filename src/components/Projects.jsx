@@ -469,7 +469,7 @@ export default function Projects() {
 
                 <div className="mb-20">
                     <div className="grid lg:grid-cols-2 gap-6">
-                        {featuredProjects.map((p, i) => (
+                        {featuredProjects.map((p) => (
                             <article
                                 key={p.title}
                                 role="button"
@@ -477,10 +477,7 @@ export default function Projects() {
                                 aria-label={`${p.title} — view project details`}
                                 onClick={() => setSelectedProject(p)}
                                 onKeyDown={openOnKey(p)}
-                                /* An odd flagship count would strand the last card in a half-row — let it span instead. */
-                                className={`group cursor-pointer flex flex-col bg-[#131110] border border-stone-800/60 hover:border-stone-600 rounded-lg overflow-hidden transition-colors${
-                                    featuredProjects.length % 2 === 1 && i === featuredProjects.length - 1 ? " lg:col-span-2" : ""
-                                }`}
+                                className="group cursor-pointer flex flex-col bg-[#131110] border border-stone-800/60 hover:border-stone-600 rounded-lg overflow-hidden transition-colors"
                             >
                                 <CardMedia project={p} aspect="aspect-video" />
                                 <div className="p-6 md:p-7 flex flex-col flex-grow">
