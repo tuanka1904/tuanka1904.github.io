@@ -130,3 +130,30 @@ Kết quả: 94 MB → **30.1 MB**, 960x540, 76.8s. Card hiển thị ~580px và
 tới cuối file. Mọi video khác trên site đã có moov ở đầu — riêng file này thì chưa.
 
 Master gốc 94 MB (bản render 2M) **chưa từng được commit** — cần tự lưu trữ ngoài repo.
+
+---
+
+## 8. Rio: Arcane Warden — đã thêm (2026-09-11)
+
+Card mới trong **Core Engineering**, đặt `featured: true` và nằm ngay cạnh
+Quick Scene Switcher trong lưới flagship (vị trí #2 của `FLAGSHIP_ORDER`).
+
+**Video:** `rio-in-jurney.mp4` gốc nặng **130 MB** (1280x720, 112s, 9.2 Mbps — bitrate
+thừa gấp ~6 lần so với nội dung low-poly). Nén lại và đổi tên cho khớp tiêu đề:
+
+```
+ffmpeg -i rio-in-jurney.mp4 -an -c:v libx264 -preset slow -crf 26 \
+  -maxrate 2600k -bufsize 5200k -pix_fmt yuv420p -profile:v high \
+  -movflags +faststart -g 60 rio-arcane-warden.mp4
+```
+
+Kết quả: 130 MB → **19.1 MB**, giữ nguyên 1280x720 (khác với gpu-ecosystem: video này
+đầy chữ HUD nên hạ xuống 540p sẽ mất chi tiết). Đã kiểm frame sau khi nén — HUD vẫn đọc rõ.
+Poster `posters/rio-arcane-warden.jpg` lấy từ giây 42, scale 960x540 theo đúng lệ các poster khác.
+
+**FILL — metric:** hiện dùng `61-enemy waves` (đọc trực tiếp từ HUD "WAVE 3 — ENEMIES LEFT: 61"),
+là con số đếm được chứ chưa phải số đo hiệu năng. Nếu profile được thì thay bằng số thật:
+frame time hoặc số agent đồng thời ở wave cao nhất trên một máy cụ thể — giống cách
+GPU Fish Ecosystem ghi "1M agents @ 60 FPS · RTX 4060".
+
+**Master gốc 130 MB chưa commit** — tự lưu trữ ngoài repo như bản gpu-ecosystem.

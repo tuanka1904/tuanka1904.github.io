@@ -162,6 +162,25 @@ const projectCategories = [
                 video: "/videos/combat-system.mp4"
             },
             {
+                title: "Rio: Arcane Warden",
+                subtitle: "Unity 3D · Arena Survival Prototype",
+                date: "2026",
+                tags: ["Unity 3D", "C#", "Wave Director", "HLSL / VFX", "Inventory"],
+                description: "Wave-based arena survival built on the top-down combat core — a wave director, four-discipline ability kit, grid inventory, and a shader pass that repaints the arena each wave.",
+                fullDescription: "A playable arena survival build that takes the top-down combat core further: instead of a sandbox of agents, a wave director drives escalating encounters inside a closed arena, with run progression, a grid inventory, and a per-wave lighting and shader pass carrying the pacing. Personal project, not a shipped title.",
+                bulletPoints: [
+                    { title: "Wave Director & Encounter Escalation", desc: "A wave director sequences the run rather than trickling spawns — 28 enemies in wave 1 up to 61 by wave 3, mixed archetypes placed on ring spawn points away from the player, with a scored intermission between waves that pushes the player out to collect loot before the next one lands." },
+                    { title: "Four-Discipline Ability Kit", desc: "Mist Step (dash), Arcane Nova, Mirror Image, and Annihilate run on independent cooldown timers surfaced live on the HUD, over an Arcane Bolt primary with a finite ammo pool. A spell-chain multiplier rewards uninterrupted kill streaks, backed by floating damage numbers and hit feedback." },
+                    { title: "Run Progression & Grid Inventory", desc: "Arcane Ascension levels the player 13 times in a single run — each level grants +2 damage, +6 max HP and added mobility, scaling life essence 120→192 and bolt capacity 24→32. Loot drops stack into a 25-cell Arcane Satchel with pickup toasts, feeding a Grimoire Score that persists a high-rune record across runs." },
+                    { title: "Arena Presentation & Shader Pass", desc: "Each wave re-grades the arena — amber, to violet, to blood red — through lighting and a fullscreen shader pass, so escalation reads before the wave banner does. Emissive nova bursts, bolt tracers, and dissolve deaths keep dozens of simultaneous enemies legible against the shifting palette." }
+                ],
+                role: "Solo Gameplay & VFX Engineer",
+                timeline: "Playable Build",
+                video: "/videos/rio-arcane-warden.mp4",
+                featured: true,
+                metric: { value: "61-enemy waves", label: "3 escalating waves · 13 ascension levels per run" }
+            },
+            {
                 title: "Action Top-Down Framework",
                 subtitle: "Unity 3D · Personal Project",
                 date: "2025",
@@ -316,6 +335,7 @@ const projectCategories = [
 /* Flagship order is deliberate: Unity-first, publish evidence before in-progress work. */
 const FLAGSHIP_ORDER = [
     "Quick Scene Switcher",
+    "Rio: Arcane Warden",
     "GPU Fish Ecosystem",
     "Seal of Exorcism",
     "Vinpearl Digital Aquarium"
@@ -449,7 +469,7 @@ export default function Projects() {
 
                 <div className="mb-20">
                     <div className="grid lg:grid-cols-2 gap-6">
-                        {featuredProjects.map((p) => (
+                        {featuredProjects.map((p, i) => (
                             <article
                                 key={p.title}
                                 role="button"
@@ -457,7 +477,10 @@ export default function Projects() {
                                 aria-label={`${p.title} — view project details`}
                                 onClick={() => setSelectedProject(p)}
                                 onKeyDown={openOnKey(p)}
-                                className="group cursor-pointer flex flex-col bg-[#131110] border border-stone-800/60 hover:border-stone-600 rounded-lg overflow-hidden transition-colors"
+                                /* An odd flagship count would strand the last card in a half-row — let it span instead. */
+                                className={`group cursor-pointer flex flex-col bg-[#131110] border border-stone-800/60 hover:border-stone-600 rounded-lg overflow-hidden transition-colors${
+                                    featuredProjects.length % 2 === 1 && i === featuredProjects.length - 1 ? " lg:col-span-2" : ""
+                                }`}
                             >
                                 <CardMedia project={p} aspect="aspect-video" />
                                 <div className="p-6 md:p-7 flex flex-col flex-grow">
