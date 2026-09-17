@@ -269,6 +269,7 @@ const webProjects = [
         bulletPoints: [
             { title: "Rigid-Body Stacking", desc: "Spheres simulate as physics bodies inside a glass container — each drop rolls, collides, and resettles the existing pile, so no two runs build the same shape." },
             { title: "Merge & Combo Chain", desc: "Contact between two spheres of the same tier fuses them into the next tier up; chained fusions raise a combo multiplier and spawn floating score popups at the merge point." },
+            { title: "Fever Mode & Tier Discovery", desc: "Fever Mode doubles score for a timed window — opened by a full-screen FEVER! / DOUBLE SCORE banner shown with the current level, then tracked by a ×2 bar counting down under the next-sphere preview. Chained merges get GREAT ×N callouts, and reaching a new sphere tier raises a New Discovery card that names it." },
             { title: "Aim Guide, Next Preview & Fail Line", desc: "A dashed guide previews the drop column and the next sphere is shown ahead of time, against a red danger line that ends the run when the stack crosses it — score, best, and best combo all persist between sessions." },
             { title: "Dual Input & Context-Loss Recovery", desc: "Aim by mouse drag or arrow keys, drop on release or spacebar, pause on Esc — and the build recovers from a browser-reclaimed WebGL context instead of dying on it, with sound quality auto-scaling to the device." }
         ],

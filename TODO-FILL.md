@@ -201,9 +201,9 @@ hiện tại không thấy.
 Poster lấy lại ở giây 48 (đang Fever Mode, stack đã đầy vừa).
 
 Bản này vẫn **không có HUD SCORE/BEST**, nhưng thấy được combo (`GREAT ×3`), **Fever Mode**
-(`LEVEL 2 · FEVER! · DOUBLE SCORE`, thanh ×2 đếm ngược) và popup **New Discovery**. Mô tả
-card chưa nhắc Fever Mode / New Discovery — nếu muốn thêm bullet thì các chi tiết trên đều
-nhìn thấy trong video, đúng quy ước "không claim thứ không thấy".
+(`LEVEL 2 · FEVER! · DOUBLE SCORE`, thanh ×2 đếm ngược) và popup **New Discovery**. Đã thêm
+bullet "Fever Mode & Tier Discovery" vào card, chỉ viết từ những gì thấy trong video: không
+ghi Fever kéo dài bao lâu hay điều kiện kích hoạt, vì video không cho thấy.
 
 **Bản gốc 4 file không commit** — tự lưu trữ ngoài repo như gpu-ecosystem và rio. Bản quay
 Merge Drop 18.7 MB lần này cũng đã bị ghi đè trong repo; chỉ còn một bản sao tạm trong
