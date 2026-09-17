@@ -181,11 +181,18 @@ là byte thừa). Nén lại, bỏ tiếng:
 ffmpeg -i <src> -an -c:v libx264 -crf 26 -preset slow -pix_fmt yuv420p -movflags +faststart <out>
 ```
 
-`mergedrop3d.mp4` gốc dài **190 giây** — quá dài cho một card portfolio — cắt còn 45s
-(`-ss 130 -t 45`, đoạn các quả cầu đã merge lớn, đọc ra luật chơi ngay).
+`mergedrop3d.mp4` quá dài cho một card portfolio nên cắt còn 45s (`-ss 100 -t 45`,
+đoạn các quả cầu đã merge lớn, đọc ra luật chơi ngay).
 
-Kết quả: 54 MB → **4.2 MB** tổng. Poster lấy từ bản đã nén, để ở `public/posters/threejs/`
+Kết quả: **4.6 MB** cho cả 4 file. Poster lấy từ bản đã nén, để ở `public/posters/threejs/`
 theo đúng quy ước `posterFor()` (`/videos/x.mp4` → `/posters/x.jpg`).
+
+**Lưu ý về `mergedrop3d.mp4`:** file trong thư mục bị thay giữa chừng lúc đang làm —
+bản đầu 384x798 / 190s (có HUD SCORE + BEST + Combo), bản thay thế 646x868 / 166s
+(khung rộng hơn, thấy trọn hộp kính, nhưng **không còn HUD điểm**). Repo đang dùng bản
+mới. Nếu muốn video khoe cả điểm số và combo thì cần quay lại bản có HUD — phần mô tả
+trong card (combo multiplier, score/best) viết từ bản cũ, đúng về game nhưng bản video
+hiện tại không thấy.
 
 **Bản gốc 4 file không commit** — tự lưu trữ ngoài repo như gpu-ecosystem và rio.
 
