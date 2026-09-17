@@ -53,17 +53,31 @@ export function MetricReadout({ metric }) {
     return (
         <p className="flex items-baseline gap-2.5 text-sm">
             <span className="w-[3px] h-3.5 bg-amber-500 shrink-0 translate-y-[2px]" aria-hidden="true" />
-            <span className="font-mono text-amber-500 tracking-tight">{metric.value}</span>
+            <span className="font-mono text-amber-500 tracking-tight whitespace-nowrap shrink-0">{metric.value}</span>
             <span className="text-stone-400 font-light">{metric.label}</span>
         </p>
     );
 }
 
-export function CardMedia({ project, aspect }) {
+/* Selection-gizmo corners — the hovered card reads like the selected object in a scene view. */
+export function FrameCorners() {
+    const corner = "absolute w-3.5 h-3.5 border-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none";
+
+    return (
+        <span aria-hidden="true">
+            <span className={`${corner} top-2 left-2 border-t-2 border-l-2`} />
+            <span className={`${corner} top-2 right-2 border-t-2 border-r-2`} />
+            <span className={`${corner} bottom-2 left-2 border-b-2 border-l-2`} />
+            <span className={`${corner} bottom-2 right-2 border-b-2 border-r-2`} />
+        </span>
+    );
+}
+
+export function CardMedia({ project, aspect, className = "" }) {
     const mediaClass = "w-full h-full object-cover";
 
     return (
-        <div className={`w-full ${aspect} bg-[#171412] overflow-hidden relative border-b border-stone-800/60`}>
+        <div className={`w-full ${aspect} bg-[#171412] overflow-hidden relative ${className}`}>
             {project.video ? (
                 <>
                     <LazyVideo src={project.video} className={mediaClass} />
@@ -76,6 +90,7 @@ export function CardMedia({ project, aspect }) {
             ) : (
                 <div className="w-full h-full bg-[#171412]" />
             )}
+            <FrameCorners />
             {project.badge && (
                 <span className="absolute top-3 left-3 flex items-center gap-1.5 text-[10px] text-amber-400 bg-stone-950/85 backdrop-blur px-2.5 py-1 rounded border border-amber-700/40 pointer-events-none">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
@@ -148,6 +163,9 @@ export function ProjectModal({ project, onClose }) {
                     <div className="p-8 md:p-12 lg:p-14 max-w-4xl mx-auto">
                         <div className="mb-10">
                             <p className="text-sm text-stone-500 mb-3">
+                                {project.engine && (
+                                    <span className="font-mono text-xs uppercase tracking-[0.18em] text-amber-500 mr-2">{project.engine}</span>
+                                )}
                                 {project.subtitle} · {project.date}
                             </p>
                             <h2 className="text-2xl md:text-3xl font-medium text-stone-100 tracking-tight mb-5">{project.title}</h2>

@@ -30,7 +30,7 @@ cả hai nút sẽ trả 404.
 
 Brief mục 4.2 đề xuất nâng credit tích hợp VOD SDK thành card riêng trong Selected Works.
 Chủ site quyết định **chưa thêm**, nên card đã được gỡ khỏi
-[Projects.jsx](src/components/Projects.jsx) — hiện không còn placeholder nào live.
+[work.js](src/data/work.js) — hiện không còn placeholder nào live.
 
 Nếu sau này muốn thêm lại, cần chuẩn bị: tên sản phẩm thật, SDK gì, ràng buộc khiến nó
 khó (build size / latency / crash rate / store review), và 2–3 bullet kỹ thuật.
@@ -89,7 +89,8 @@ Analytics & remote config
 ```
 
 **Xoá những dòng chưa thực sự làm.** Brief nói rõ: đừng để nguyên cả 4 nếu chỉ làm 2.
-Đây là nhóm đặt ở vị trí thứ 2 nên sẽ bị hỏi kỹ ở vòng phỏng vấn.
+Sau redesign 2026-09-17 nhóm này đã lùi xuống vị trí thứ 5 (site giờ định vị game dev), nhưng vẫn
+hiển thị nên vẫn có thể bị hỏi ở vòng phỏng vấn.
 
 ---
 
@@ -199,7 +200,7 @@ hiện tại không thấy.
 ### FILL — link chơi thử
 
 Thêm `link` (và `linkLabel` nếu muốn đổi chữ) vào object game trong
-[WebGames.jsx](src/components/WebGames.jsx) là nút hiện ra ở cả card lẫn modal:
+[work.js](src/data/work.js) (mảng `webProjects`) là nút hiện ra ở cả card lẫn modal:
 
 ```js
 link: "https://...",
@@ -241,4 +242,67 @@ Toàn bộ nội dung card viết từ những gì **nhìn thấy trên HUD tron
 HP 1000, moves 3/15, combo x2, tier/kills/survival timer...). Không có con số nào suy đoán.
 Stack ghi `Three.js · React Three Fiber · TypeScript · WebGL` theo xác nhận của chủ site —
 nếu hai game pixel (MewShoot, CasualShoot) thật ra không chạy trên Three.js thì sửa tag
-trong `webGames[]`.
+trong `webProjects` của [work.js](src/data/work.js).
+
+---
+
+## 10. Redesign theo engine: Unity · Web · Unreal (2026-09-17)
+
+Bố cục cũ chia dự án theo *loại* (Studio Works / Core Engineering / Custom Tooling), Unity
+và Unreal trộn lẫn, cộng thêm một lưới flagship trùng lặp và Web Games đứng riêng ở đầu trang.
+Giờ trang chia theo **engine**, thứ tự:
+
+```
+Hero (3 ô chọn engine) → 01 Unity → 02 Web → 03 Unreal → 04 About + Capabilities → 05 Contact
+```
+
+**Toàn bộ dữ liệu dự án giờ nằm ở một file: [src/data/work.js](src/data/work.js).**
+`Projects.jsx` và `WebGames.jsx` đã bị xoá, thay bằng [Work.jsx](src/components/Work.jsx) dựng
+cả ba section từ cùng một dữ liệu. Các mục 8 và 9 phía trên nhắc tới `featured: true`,
+`FLAGSHIP_ORDER`, `Projects.jsx`, `WebGames.jsx` — đó là cấu trúc cũ. Cấu trúc mới:
+
+| Trường | Ý nghĩa |
+|---|---|
+| mảng `unityProjects` / `webProjects` / `unrealProjects` | engine của dự án — chuyển dự án sang engine khác = cắt dán object |
+| `tier: "lead"` | card ngang lớn mở đầu section (tối đa 1) |
+| `tier: "feature"` | card lớn 2 cột ngay dưới lead |
+| không có `tier` | lưới compact ("More Unity work") |
+| `tier: "credit"` | dòng một hàng ở cuối section, cần thêm `summary` |
+
+Thứ tự trong mảng = thứ tự hiển thị. Số cột lưới tự chọn theo số card để không có card lẻ
+cuối hàng: 4/8 → 4 cột, 3/6 → 3 cột; 5 hoặc 7 → card **đầu tiên** của lưới rộng gấp đôi để
+các hàng khép đều (Unity hiện có 7 card lưới nên Mobile Game Framework đang là card rộng).
+
+**Lựa chọn đã đặt, có thể đổi:**
+
+- **Lead của Unity là Rio: Arcane Warden** (thay vì Quick Scene Switcher như `FLAGSHIP_ORDER` cũ),
+  vì hướng game dev nên mở bằng một game. QSS và GPU Fish Ecosystem là 2 card feature ngay dưới.
+  Muốn đổi: chuyển `tier: "lead"` sang object khác và đưa object đó lên đầu mảng.
+- **Christmas Wonderland Metaverse** trước là "earlier credit", giờ là card lưới trong Unreal —
+  section Unreal chỉ có 4 dự án nên cần hình ảnh hơn là một dòng chữ.
+
+### Engine của các dự án lai
+
+Tags của mấy dự án này ghi cả Unity lẫn Unreal:
+
+| Dự án | Đặt ở | Lý do |
+|---|---|---|
+| Vinpearl Digital Aquarium | **Unreal** | bullet đầu là IPC hologram viết bằng UE C++ (phần AR là Unity) |
+| HomeTeam NS | **Unreal** | chủ site chốt (2026-09-17) |
+| Singapore Discovery Center | **Unity** | bullet ghi rõ Unity AR Foundation |
+
+Muốn đổi thì cắt object sang mảng engine đúng trong `work.js`.
+
+### Copy đã đổi theo hướng game dev
+
+- Title/description/OG trong [layout.js](src/app/layout.js): "Senior Unity Developer · Systems,
+  Tooling & Monetization" → "Game Developer · Unity, Unreal & Web". Monetization bỏ khỏi keywords.
+- Hero: eyebrow mới, đoạn giới thiệu nhắc cả ba engine. Stat "Unity · UE5" bỏ (ba ô engine đã
+  thể hiện), thay bằng "4 — Browser games playable now". Headline giữ nguyên.
+- About: "Senior Unity Developer" → "game developer", thêm Three.js vào dòng Engines. **Đoạn 3
+  (SDK, ad mediation, ARPDAU) giữ nguyên** — nếu muốn bỏ hẳn hướng monetization thì xoá đoạn đó
+  cùng nhóm Capabilities ở mục 5.
+- Contact: "senior Unity roles … monetization" → "senior game developer roles — Unity first,
+  Unreal or web when the project calls for it".
+- Tên file CV vẫn là `Kieu-Anh-Tuan-Unity.pdf` — nếu CV mới cũng đổi hướng thì đổi `CV_HREF`
+  trong [Navbar.jsx](src/components/Navbar.jsx).

@@ -5,15 +5,20 @@ import { CV_HREF } from "./Navbar";
 
 export default function Contact() {
     return (
-        <section id="contact" className="py-28 bg-[#0c0a09]">
+        <section id="contact" className="py-24 md:py-32 bg-[#100e0d] border-t border-stone-800/50">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                <div className="border-t border-stone-800/60 pt-20 pb-12">
+                <div className="pb-4">
                     <div className="max-w-3xl">
+                        <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-stone-500 mb-5">
+                            <span className="text-amber-500">05</span>
+                            <span className="text-stone-700 mx-3">/</span>
+                            Contact
+                        </p>
                         <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-stone-100 leading-tight mb-6">
-                            Looking for a Unity engineer<br className="hidden md:block" /> who measures before shipping?
+                            Looking for a game developer<br className="hidden md:block" /> who measures before shipping?
                         </h2>
                         <p className="text-lg text-stone-300 font-light leading-relaxed mb-10">
-                            Open to senior Unity roles in gameplay systems, Editor tooling, and monetization &mdash; Ho Chi Minh City, remote, or relocation.
+                            Open to senior game developer roles &mdash; Unity first, Unreal or web when the project calls for it &mdash; in gameplay systems, performance, and tooling. Ho Chi Minh City, remote, or relocation.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">

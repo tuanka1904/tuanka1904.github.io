@@ -1,8 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import WebGames from "@/components/WebGames";
+import Work from "@/components/Work";
 import About from "@/components/About";
-import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -12,9 +11,8 @@ export default function Home() {
     <main id="top" className="min-h-screen bg-[#0c0a09] text-stone-200 font-sans">
       <Navbar />
       <Hero />
-      <WebGames />
+      <Work />
       <About />
-      <Projects />
       <Skills />
       <Contact />
       <Footer />

@@ -13,23 +13,23 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   metadataBase: new URL("https://tuanka1904.github.io"),
-  title: "Kieu Anh Tuan — Senior Unity Developer · Systems, Tooling & Monetization",
+  title: "Kieu Anh Tuan — Game Developer · Unity, Unreal & Web",
   description:
-    "8+ years building Unity game systems: performance-critical gameplay, Editor toolchains, and SDK/ad-monetization integration. Also ships Unreal (C++/BP). Published tools on the Unity Asset Store.",
-  keywords: ["Unity Developer", "C#", "Game Systems", "Performance Optimization", "Editor Tooling", "Ad Monetization", "LevelPlay", "AppLovin MAX", "SDK Integration", "LiveOps", "Unreal Engine"],
+    "Game developer with 8+ years shipping games: Unity (C#) gameplay systems, GPU rendering and Editor tooling; production Unreal (C++/BP); and live browser games in Three.js. Published tools on the Unity Asset Store.",
+  keywords: ["Game Developer", "Unity Developer", "Unreal Engine", "C#", "C++", "Three.js", "WebGL", "Game Systems", "Performance Optimization", "Editor Tooling", "Web Games"],
   openGraph: {
-    title: "Kieu Anh Tuan — Senior Unity Developer · Systems, Tooling & Monetization",
+    title: "Kieu Anh Tuan — Game Developer · Unity, Unreal & Web",
     description:
-      "Unity game systems: performance-critical gameplay, Editor toolchains, and SDK/ad-monetization integration. Also ships Unreal (C++/BP).",
+      "Unity gameplay systems and Editor tooling, production Unreal (C++/BP), and browser games playable right now in Three.js.",
     url: "https://tuanka1904.github.io",
     siteName: "Kieu Anh Tuan",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kieu Anh Tuan — Senior Unity Developer · Systems, Tooling & Monetization",
+    title: "Kieu Anh Tuan — Game Developer · Unity, Unreal & Web",
     description:
-      "Unity game systems: performance-critical gameplay, Editor toolchains, and SDK/ad-monetization integration. Also ships Unreal (C++/BP).",
+      "Unity gameplay systems and Editor tooling, production Unreal (C++/BP), and browser games playable right now in Three.js.",
   },
 };
 
