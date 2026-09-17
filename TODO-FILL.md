@@ -198,23 +198,35 @@ hiện tại không thấy.
 
 ### FILL — link chơi thử
 
-Chủ site xác nhận **sẽ có link deploy** (itch.io / Vercel / GitHub Pages) nhưng chưa có.
-Code đã chừa sẵn: thêm `link` (và `linkLabel` nếu muốn đổi chữ) vào object game trong
+Thêm `link` (và `linkLabel` nếu muốn đổi chữ) vào object game trong
 [WebGames.jsx](src/components/WebGames.jsx) là nút hiện ra ở cả card lẫn modal:
 
 ```js
 link: "https://...",
-linkLabel: "Play in browser"   // optional, mặc định đã là "Play in browser"
+linkLabel: "Play in browser",   // optional, mặc định đã là "Play in browser"
+badge: "Live demo"              // optional, nhãn amber góc trên ảnh card
 ```
 
 Chưa điền thì không render nút nào — không có placeholder chết.
 
-| Game | File video | Link |
-|---|---|---|
-| Hexa Merge | `threejs/hexa_threejs.mp4` | chưa có |
-| Merge Drop 3D | `threejs/mergedrop3d.mp4` | chưa có |
-| MewShoot | `threejs/mewshoot.mp4` | chưa có |
-| CasualShoot | `threejs/casualshoot.mp4` | chưa có |
+**Đã điền đủ 4 link (2026-09-17)** — card nào cũng có nút "Play in browser":
+
+| Game | File video | Link | Title thật của trang |
+|---|---|---|---|
+| StackPuzzle 3D | `threejs/hexa_threejs.mp4` | https://stack-puzzle.vercel.app | StackPuzzle 3D — Hexa Tile Match |
+| Merge Drop 3D | `threejs/mergedrop3d.mp4` | https://mergedrop3d.vercel.app | Merge Drop 3D |
+| MewShoot | `threejs/mewshoot.mp4` | https://mewshoot.vercel.app | CasualShoot Web V2 ⚠️ |
+| CasualShoot | `threejs/casualshoot.mp4` | https://casualshoot.vercel.app | CasualShoot |
+
+**⚠️ `mewshoot.vercel.app` có `<title>` là "CasualShoot Web V2"** — chủ site xác nhận đây đúng
+là MewShoot (survivor arena), title chỉ là tên codebase cũ chưa đổi. **Nên sửa title trong
+game** cho khớp, không thì recruiter bấm vào từ card MewShoot sẽ thấy tab ghi tên game khác.
+
+**Tên card:** "Hexa Merge" là tên mình đặt tạm, mở link deploy mới biết tên thật là
+**StackPuzzle 3D** — đã sửa. Ba tên còn lại đã khớp với title của build.
+
+**Đừng dùng link dashboard:** `vercel.com/tuan-ka-personal/stack-puzzle` là trang quản trị,
+phải đăng nhập mới vào. Link public là dạng `<project>.vercel.app`.
 
 ### FILL — metric
 

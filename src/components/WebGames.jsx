@@ -7,26 +7,28 @@ import { CardMedia, ProjectModal } from "@/components/ProjectMedia";
 
 /*
  * Browser games, all portrait captures — the cards are phone-shaped on purpose.
- * link: FILL with the live build URL once each game is deployed (see TODO-FILL.md).
- * Nothing here claims a number that is not visible on screen in the capture.
+ * All four are deployed, so every card carries a live link; nothing here claims a
+ * number that is not visible on screen in the capture or in the shipped build.
  */
 const webGames = [
     {
-        title: "Hexa Merge",
-        subtitle: "Three.js · 3D Hex Puzzle",
+        title: "StackPuzzle 3D",
+        subtitle: "Three.js · Hexa Tile Match",
         date: "2026",
         tags: ["Three.js", "React Three Fiber", "TypeScript", "WebGL"],
-        description: "Level-based hex merge puzzle rendered in real 3D — drop coloured tiles onto the board and fuse matching numbers before the move budget runs out.",
-        fullDescription: "A turn-based hex puzzle built on Three.js, where the board is actual 3D geometry rather than a sprite grid. Each level hands the player a fixed move budget and a tray of numbered colour tiles; matching colours placed adjacent fuse into a higher number, and the run is scored against a persisted best.",
+        description: "Level-based hex tile match rendered in real 3D — drop coloured tiles onto the board and fuse matching numbers before the move budget runs out.",
+        fullDescription: "A turn-based hex puzzle built on Three.js, where the board is actual 3D geometry rather than a sprite grid. Each level hands the player a move budget and a tray of numbered colour tiles; matching colours placed adjacent fuse into a higher number, and the run is scored against a persisted best. Deployed and playable in the browser.",
         bulletPoints: [
             { title: "Hex Board & Merge Resolution", desc: "A hex-shaped board of hex cells with a three-tile draw tray — placement is validated against occupancy, and matching colours resolve into a combined higher-value tile on drop." },
             { title: "Real 3D Presentation", desc: "Extruded hex prisms lit and shadowed in Three.js, so drops, merges, and clears animate as objects in space instead of swapped sprites — the board reads as depth, not as a flat grid." },
-            { title: "Level Economy & Scoring", desc: "Each level runs on a fixed move budget (15) with per-colour tile counters at the top of the HUD, a live score, and a best score carried across sessions." }
+            { title: "Level Economy & Scoring", desc: "Each level runs on its own move budget with per-colour tile counters at the top of the HUD, a live score, and a best score carried across sessions." }
         ],
         role: "Solo Developer",
-        timeline: "Playable Build",
+        timeline: "Live · playable in browser",
         video: "/videos/threejs/hexa_threejs.mp4",
-        portrait: true
+        portrait: true,
+        link: "https://stack-puzzle.vercel.app",
+        linkLabel: "Play in browser"
     },
     {
         title: "Merge Drop 3D",
@@ -38,12 +40,15 @@ const webGames = [
         bulletPoints: [
             { title: "Rigid-Body Stacking", desc: "Spheres simulate as physics bodies inside a glass container — each drop rolls, collides, and resettles the existing pile, so no two runs build the same shape." },
             { title: "Merge & Combo Chain", desc: "Contact between two spheres of the same tier fuses them into the next tier up; chained fusions raise a combo multiplier and spawn floating score popups at the merge point." },
-            { title: "Aim Guide, Next Preview & Fail Line", desc: "A dashed guide previews the drop column and the next sphere is shown ahead of time, against a red danger line that ends the run when the stack crosses it — score tracked against a persisted best." }
+            { title: "Aim Guide, Next Preview & Fail Line", desc: "A dashed guide previews the drop column and the next sphere is shown ahead of time, against a red danger line that ends the run when the stack crosses it — score, best, and best combo all persist between sessions." },
+            { title: "Dual Input & Context-Loss Recovery", desc: "Aim by mouse drag or arrow keys, drop on release or spacebar, pause on Esc — and the build recovers from a browser-reclaimed WebGL context instead of dying on it, with sound quality auto-scaling to the device." }
         ],
         role: "Solo Developer",
-        timeline: "Playable Build",
+        timeline: "Live · playable in browser",
         video: "/videos/threejs/mergedrop3d.mp4",
-        portrait: true
+        portrait: true,
+        link: "https://mergedrop3d.vercel.app",
+        linkLabel: "Play in browser"
     },
     {
         title: "MewShoot",
@@ -58,9 +63,11 @@ const webGames = [
             { title: "Portrait-First HUD", desc: "HP and XP bars, run stats, and a pause control laid out for a phone viewport — the arena is framed vertically so the readable play area survives on a narrow screen." }
         ],
         role: "Solo Developer",
-        timeline: "Playable Build",
+        timeline: "Live · playable in browser",
         video: "/videos/threejs/mewshoot.mp4",
-        portrait: true
+        portrait: true,
+        link: "https://mewshoot.vercel.app",
+        linkLabel: "Play in browser"
     },
     {
         title: "CasualShoot",
@@ -75,9 +82,11 @@ const webGames = [
             { title: "Demo-Ready HUD", desc: "A speed toggle and pause control sit directly in the HUD alongside the wave counter and HP bar — the build is set up to be shown, not just played." }
         ],
         role: "Solo Developer",
-        timeline: "Playable Build",
+        timeline: "Live · playable in browser",
         video: "/videos/threejs/casualshoot.mp4",
-        portrait: true
+        portrait: true,
+        link: "https://casualshoot.vercel.app",
+        linkLabel: "Play in browser"
     }
 ];
 
@@ -105,10 +114,10 @@ export default function WebGames() {
                         <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-stone-100">
                             Web Games.
                         </h2>
-                        <p className="text-sm text-stone-500">Three.js / WebGL &mdash; 2026</p>
+                        <p className="text-sm text-stone-500">Three.js / WebGL &mdash; 4 live builds, 2026</p>
                     </div>
                     <p className="text-stone-300 font-light leading-relaxed max-w-2xl mt-6">
-                        Four casual games running entirely in the browser &mdash; no install, no engine runtime. Same systems habits as the engine work, moved onto React Three Fiber and a portrait phone viewport: a physics-driven merge board, a 3D hex puzzle, and two arcade shooters.
+                        Four casual games running entirely in the browser &mdash; no install, no engine runtime, all four playable right now from the card. Same systems habits as the engine work, moved onto React Three Fiber and a portrait phone viewport: a physics-driven merge board, a 3D hex puzzle, and two arcade shooters.
                     </p>
                 </div>
 
