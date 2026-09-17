@@ -425,7 +425,8 @@ export const engines = [
         role: "Three.js · TypeScript",
         summary: "Casual games that run straight in the browser — no install, no engine runtime. Every card below is a live build you can play right now.",
         stack: ["Three.js", "React Three Fiber", "TypeScript", "WebGL", "Rigid-Body Physics"],
-        cover: "/posters/threejs/mergedrop3d.jpg",
+        cover: "/posters/threejs/hexa_threejs.jpg",
+        coverPosition: "center 70%", // portrait poster in a wide tile — frame the hex board, not the tray
         countLabel: "live builds",
         projects: webProjects
     },

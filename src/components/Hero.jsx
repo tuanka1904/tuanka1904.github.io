@@ -48,6 +48,7 @@ export default function Hero() {
                             <img
                                 src={engine.cover}
                                 alt=""
+                                style={{ objectPosition: engine.coverPosition }}
                                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition duration-700"
                             />
                             <span className="absolute inset-0 bg-gradient-to-t from-[#0c0a09] via-[#0c0a09]/60 to-[#0c0a09]/10" aria-hidden="true" />
