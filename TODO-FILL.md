@@ -195,7 +195,19 @@ mới. Nếu muốn video khoe cả điểm số và combo thì cần quay lại
 trong card (combo multiplier, score/best) viết từ bản cũ, đúng về game nhưng bản video
 hiện tại không thấy.
 
-**Bản gốc 4 file không commit** — tự lưu trữ ngoài repo như gpu-ecosystem và rio.
+**Cập nhật 2026-09-17 (tối):** chủ site thay `mergedrop3d.mp4` bằng bản quay mới — 644x860,
+60.6s, 18.7 MB, có audio, atom `moov` nằm cuối file. Nén lại cùng lệnh ở trên, **không cắt**
+(60s đã vừa cho một card): 18.7 MB → **1.67 MB**, bỏ audio, `moov` về đầu file.
+Poster lấy lại ở giây 48 (đang Fever Mode, stack đã đầy vừa).
+
+Bản này vẫn **không có HUD SCORE/BEST**, nhưng thấy được combo (`GREAT ×3`), **Fever Mode**
+(`LEVEL 2 · FEVER! · DOUBLE SCORE`, thanh ×2 đếm ngược) và popup **New Discovery**. Mô tả
+card chưa nhắc Fever Mode / New Discovery — nếu muốn thêm bullet thì các chi tiết trên đều
+nhìn thấy trong video, đúng quy ước "không claim thứ không thấy".
+
+**Bản gốc 4 file không commit** — tự lưu trữ ngoài repo như gpu-ecosystem và rio. Bản quay
+Merge Drop 18.7 MB lần này cũng đã bị ghi đè trong repo; chỉ còn một bản sao tạm trong
+scratchpad của phiên làm việc, cần tự giữ bản gốc ở chỗ khác.
 
 ### FILL — link chơi thử
 
