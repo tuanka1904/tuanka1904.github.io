@@ -205,6 +205,43 @@ Bản này vẫn **không có HUD SCORE/BEST**, nhưng thấy được combo (`G
 bullet "Fever Mode & Tier Discovery" vào card, chỉ viết từ những gì thấy trong video: không
 ghi Fever kéo dài bao lâu hay điều kiện kích hoạt, vì video không cho thấy.
 
+**Cập nhật 2026-09-18 — StackPuzzle 3D:** chủ site thay `threejs/hexa_threejs.mp4` bằng bản quay mới
+(816x866, 29.0s, 10.66 MB, có audio, `moov` cuối file). Xử lý bằng `python tools/media.py video` theo
+[WORKFLOW.md](WORKFLOW.md) mục 4.1, **không cắt**: 10.66 MB → **1.62 MB**, bỏ audio, `moov` về đầu.
+Tool hạ 816 → 720 px ngang theo trần portrait; modal cao tối đa 70vh nên ở 1080p video hiện ~712 px
+ngang — không mất gì nhìn thấy được. Poster lấy ở giây 21.7 (stack cao 9/7/6, một mục tiêu màu đã tick).
+Bản gốc nằm ở `_originals/threejs/hexa_threejs-raw-20260918-035430.mp4` (local, ngoài git).
+
+Bản quay này lần đầu cho thấy **luật chơi in trên màn hình tiêu đề**, nên mô tả card đã viết lại cho
+đúng: kéo *stack* từ khay, hai stack cạnh nhau **cùng màu mặt trên** thì gộp, một màu **đủ 10 thì
+được xoá**, chain combo. Bản cũ ghi "matching colours fuse into a higher number" — gần đúng nhưng
+thiếu điều kiện xoá ở mốc 10. Thấy thêm: **12 level**, mỗi level **15 nước**, chấm **sao** khi hoàn thành
+(bản quay được 2/3 sao, "cleared in 12 / 15 moves · +400 pts"), có **Endless mode** với best score riêng.
+
+**Tags — đã chốt:** màn hình tiêu đề tự ghi stack là `THREE.JS · TYPESCRIPT · VITE · WEB AUDIO`,
+không có React Three Fiber. Chủ site xác nhận theo màn hình tiêu đề, tags đổi thành
+`["Three.js", "TypeScript", "Vite", "Web Audio"]`. Ba game web còn lại vẫn ghi R3F — nếu chúng cũng
+là Three.js thuần thì sửa nốt trong `webProjects`.
+
+**Cập nhật 2026-09-18 — CasualShoot:** bản quay mới 488x876, 81.1s, 19.26 MB, có audio, `moov` cuối file.
+Nhạc trọn 81s ở CRF 26 ra 7.05 MB — nặng gấp 4 lần các card web khác, nên **chủ site chọn cắt**: giữ đoạn
+0:30–1:00 (`--ss 30 --t 30`, dày sự kiện nhất: banner SWARM, chain lên ×50, LV.3→LV.6) → **3.16 MB**.
+Poster lấy ở giây 3.8 của bản cắt (= 33.8s bản gốc): banner SWARM “Runners from the treeline”, đàn quái
+đang trúng đòn, chain ×9. Bản gốc ở `_originals/threejs/casualshoot-raw-20260918-041429.mp4` (local, ngoài git).
+
+**Card viết lại — game đã đổi thể loại.** Mô tả cũ (thủ thành theo lane: wave 1/3, wall HP 1000,
+arrow volley) không còn đúng với build hiện tại. Chủ site xác nhận (2026-09-18) CasualShoot giờ là
+survivor arena. Nội dung mới chỉ viết từ HUD trong video: kill chain có bậc NICE/GREAT/SAVAGE/BRUTAL
+(cao nhất đếm được là ×67), THREAT TIER 0→2, sự kiện SWARM có banner, 2 ô kỹ năng SPACE/R có số lần dùng,
+XP lên LV.7 trong ~70s, HP 100. Subtitle đổi "Wave Defense Shooter" → **"Kill-Chain Survivor"**.
+
+**⚠️ CasualShoot và MewShoot giờ rất giống nhau** — cùng nhân vật mèo, cùng loại quái, cùng HUD
+SURVIVAL/KILLS/TIER, cùng thể loại survivor. Khác biệt nhìn thấy được: CasualShoot có kill chain, ô kỹ năng
+và sự kiện đặt tên, nền đồng trống; MewShoot không có 3 thứ đó, nền rừng có viền, tier ghi là GROWTH.
+Card hiện tách theo đúng mấy điểm đó, nhưng **hai card cạnh nhau vẫn dễ bị đọc là một game nộp hai lần**.
+Cân nhắc: gộp thành một card (MewShoot = bản đầu, CasualShoot = bản hiện tại), hoặc bỏ bớt một.
+Liên quan: `mewshoot.vercel.app` có `<title>` là "CasualShoot Web V2" (ghi ở trên).
+
 **Bản gốc 4 file không commit** — tự lưu trữ ngoài repo như gpu-ecosystem và rio. Bản quay
 Merge Drop 18.7 MB lần này cũng đã bị ghi đè trong repo; chỉ còn một bản sao tạm trong
 scratchpad của phiên làm việc, cần tự giữ bản gốc ở chỗ khác.

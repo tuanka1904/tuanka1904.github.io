@@ -244,13 +244,13 @@ const webProjects = [
         title: "StackPuzzle 3D",
         subtitle: "Hexa Tile Match",
         date: "2026",
-        tags: ["Three.js", "React Three Fiber", "TypeScript", "WebGL"],
-        description: "Level-based hex tile match rendered in real 3D — drop coloured tiles onto the board and fuse matching numbers before the move budget runs out.",
-        fullDescription: "A turn-based hex puzzle built on Three.js, where the board is actual 3D geometry rather than a sprite grid. Each level hands the player a move budget and a tray of numbered colour tiles; matching colours placed adjacent fuse into a higher number, and the run is scored against a persisted best. Deployed and playable in the browser.",
+        tags: ["Three.js", "TypeScript", "Vite", "Web Audio"],
+        description: "Level-based hex stack puzzle in real 3D — drag stacks from the tray, merge neighbours sharing a top colour, and pile ten of a colour to clear it before the moves run out.",
+        fullDescription: "A turn-based hex puzzle built on Three.js, where the board is actual 3D geometry rather than a sprite grid. Each level hands the player fifteen moves and a three-slot tray of coloured stacks; neighbouring stacks that share a top colour merge into one, and a colour clears off the board once it piles up to ten. Deployed and playable in the browser.",
         bulletPoints: [
-            { title: "Hex Board & Merge Resolution", desc: "A hex-shaped board of hex cells with a three-tile draw tray — placement is validated against occupancy, and matching colours resolve into a combined higher-value tile on drop." },
-            { title: "Real 3D Presentation", desc: "Extruded hex prisms lit and shadowed in Three.js, so drops, merges, and clears animate as objects in space instead of swapped sprites — the board reads as depth, not as a flat grid." },
-            { title: "Level Economy & Scoring", desc: "Each level runs on its own move budget with per-colour tile counters at the top of the HUD, a live score, and a best score carried across sessions." }
+            { title: "Stack Merging & Colour Goals", desc: "Stacks drag from a three-slot tray onto a hex board; neighbours sharing a top colour merge into a single taller stack, and a colour clears at ten. Goal chips above the board count each colour down and tick off as they complete, with chained merges paying COMBO bonuses on top of the drop score." },
+            { title: "Real 3D Presentation", desc: "Extruded hex prisms lit and shadowed in Three.js, so drops, merges, and clears animate as objects in space instead of swapped sprites — a merged stack physically grows taller, so the board state reads as depth rather than as a number printed on a flat grid." },
+            { title: "Level Economy & Scoring", desc: "Twelve levels, each on a fifteen-move budget, closing on a star rating that reports the moves spent and the points awarded — plus a separate endless mode, with a best score persisted for each across sessions." }
         ],
         role: "Solo Developer",
         timeline: "Live · playable in browser",
@@ -301,15 +301,15 @@ const webProjects = [
     },
     {
         title: "CasualShoot",
-        subtitle: "Wave Defense Shooter",
+        subtitle: "Kill-Chain Survivor",
         date: "2026",
         tags: ["Three.js", "WebGL", "React Three Fiber", "TypeScript"],
-        description: "Stage-based defence shooter — hold the wall against advancing enemy waves with arrow volleys, on a shared HP pool and a three-wave stage structure.",
-        fullDescription: "A lane defence shooter structured around stages rather than an endless run. Enemies advance down a single vertical lane in formation, the player answers with arrow volleys, and the stage is lost when the wall's shared HP pool is drained.",
+        description: "Survivor run scored on chain kills — an auto-firing hero, two charge-based abilities, and announced swarms that raise the threat tier while the multiplier climbs.",
+        fullDescription: "A survivor-style arena run built around a kill chain instead of a wave counter. The hero fires on its own while the player handles positioning and spends two charge-based abilities; kills landed back to back drive a multiplier up through named ranks, and the threat tier steps up as the survival clock runs.",
         bulletPoints: [
-            { title: "Stage & Wave Structure", desc: "Stages break into numbered waves (1/3 onward) against one 1000-point wall HP pool — enemies enter in formation at the top of the lane and push down together." },
-            { title: "Volley Combat & Feedback", desc: "Multi-projectile arrow volleys with hit flashes and impact bursts on contact, so a connecting volley reads instantly against a crowded lane." },
-            { title: "Demo-Ready HUD", desc: "A speed toggle and pause control sit directly in the HUD alongside the wave counter and HP bar — the build is set up to be shown, not just played." }
+            { title: "Kill Chain & Rank Ladder", desc: "Uninterrupted kills stack a multiplier that climbs through named ranks — NICE, GREAT, SAVAGE, BRUTAL — reaching ×67 in the captured run. A bar under the counter drains between kills, so holding a rank means staying in contact with the swarm." },
+            { title: "Threat Tiers & Announced Swarms", desc: "Difficulty steps through threat tiers rather than discrete waves, punctuated by named events: a full-screen SWARM banner reading \"Runners from the treeline\" lands a dense pack at once instead of the steady trickle between events." },
+            { title: "Charge-Based Abilities & Levelling", desc: "Two active abilities sit in the HUD on SPACE and R, each carrying its own charge count, alongside an XP bar that levels the hero seven times inside the first seventy seconds against a 100-point HP pool." }
         ],
         role: "Solo Developer",
         timeline: "Live · playable in browser",
