@@ -157,3 +157,69 @@ frame time hoặc số agent đồng thời ở wave cao nhất trên một máy
 GPU Fish Ecosystem ghi "1M agents @ 60 FPS · RTX 4060".
 
 **Master gốc 130 MB chưa commit** — tự lưu trữ ngoài repo như bản gpu-ecosystem.
+
+---
+
+## 9. Web Games (Three.js) — đã thêm (2026-09-17)
+
+Section mới **`<WebGames />`** trong [page.js](src/app/page.js), đặt ngay sau Hero —
+tức là mục nội dung đầu tiên của site, trước cả About. Có `id="web-games"`, link trong
+nav bar (vị trí đầu) và một link phụ trong Hero.
+
+Bốn game portrait nên card dùng `aspect-[9/16]` và modal dùng nhánh `portrait: true`
+(khung giới hạn chiều cao thay vì khung 16:9) — tránh đúng lỗi black bars đã sửa ở QSS.
+
+**Refactor kèm theo:** `LazyVideo`, `MetricReadout`, `CardMedia` và toàn bộ modal được
+tách từ [Projects.jsx](src/components/Projects.jsx) sang
+[ProjectMedia.jsx](src/components/ProjectMedia.jsx) để hai section dùng chung — sửa style
+card/modal giờ chỉ sửa một chỗ.
+
+**Video:** 4 file gốc tổng **54 MB**, có cả audio track (trang luôn phát muted nên audio
+là byte thừa). Nén lại, bỏ tiếng:
+
+```
+ffmpeg -i <src> -an -c:v libx264 -crf 26 -preset slow -pix_fmt yuv420p -movflags +faststart <out>
+```
+
+`mergedrop3d.mp4` gốc dài **190 giây** — quá dài cho một card portfolio — cắt còn 45s
+(`-ss 130 -t 45`, đoạn các quả cầu đã merge lớn, đọc ra luật chơi ngay).
+
+Kết quả: 54 MB → **4.2 MB** tổng. Poster lấy từ bản đã nén, để ở `public/posters/threejs/`
+theo đúng quy ước `posterFor()` (`/videos/x.mp4` → `/posters/x.jpg`).
+
+**Bản gốc 4 file không commit** — tự lưu trữ ngoài repo như gpu-ecosystem và rio.
+
+### FILL — link chơi thử
+
+Chủ site xác nhận **sẽ có link deploy** (itch.io / Vercel / GitHub Pages) nhưng chưa có.
+Code đã chừa sẵn: thêm `link` (và `linkLabel` nếu muốn đổi chữ) vào object game trong
+[WebGames.jsx](src/components/WebGames.jsx) là nút hiện ra ở cả card lẫn modal:
+
+```js
+link: "https://...",
+linkLabel: "Play in browser"   // optional, mặc định đã là "Play in browser"
+```
+
+Chưa điền thì không render nút nào — không có placeholder chết.
+
+| Game | File video | Link |
+|---|---|---|
+| Hexa Merge | `threejs/hexa_threejs.mp4` | chưa có |
+| Merge Drop 3D | `threejs/mergedrop3d.mp4` | chưa có |
+| MewShoot | `threejs/mewshoot.mp4` | chưa có |
+| CasualShoot | `threejs/casualshoot.mp4` | chưa có |
+
+### FILL — metric
+
+Bốn card này **chưa có dòng metric** nào. Web game có sẵn số dễ đo và đáng tin:
+FPS trên một máy cụ thể, số rigid body đồng thời lúc stack đầy (Merge Drop), bundle size
+sau gzip, hoặc thời gian tới frame đầu tiên. Đo được thì thêm `metric: { value, label }` —
+component dùng chung nên hiển thị giống hệt các card Unity.
+
+### Mô tả — nguồn gốc
+
+Toàn bộ nội dung card viết từ những gì **nhìn thấy trên HUD trong video** (wave 1/3,
+HP 1000, moves 3/15, combo x2, tier/kills/survival timer...). Không có con số nào suy đoán.
+Stack ghi `Three.js · React Three Fiber · TypeScript · WebGL` theo xác nhận của chủ site —
+nếu hai game pixel (MewShoot, CasualShoot) thật ra không chạy trên Three.js thì sửa tag
+trong `webGames[]`.

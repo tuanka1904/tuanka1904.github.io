@@ -32,6 +32,10 @@ export default function Hero() {
                                 <span className="text-sm font-medium">Selected Works</span>
                                 <span className="h-px w-12 bg-stone-700 group-hover:bg-amber-500 transition-colors"></span>
                             </a>
+                            <a href="#web-games" className="group flex items-center gap-4 text-stone-400 hover:text-stone-100 transition-colors w-fit">
+                                <span className="text-sm font-medium">Web Games &mdash; Three.js</span>
+                                <span className="h-px w-12 bg-stone-800 group-hover:bg-stone-500 transition-colors"></span>
+                            </a>
                             <a href="#about" className="group flex items-center gap-4 text-stone-400 hover:text-stone-100 transition-colors w-fit">
                                 <span className="text-sm font-medium">How I Work</span>
                                 <span className="h-px w-12 bg-stone-800 group-hover:bg-stone-500 transition-colors"></span>

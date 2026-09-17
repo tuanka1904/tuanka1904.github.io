@@ -11,6 +11,7 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     const navLinks = [
+        { name: "Web Games", href: "#web-games" },
         { name: "About", href: "#about" },
         { name: "Work", href: "#projects" },
         { name: "Capabilities", href: "#skills" },
@@ -31,7 +32,7 @@ export default function Navbar() {
                     </div>
 
                     <div className="hidden md:block">
-                        <div className="ml-10 flex items-center space-x-10">
+                        <div className="ml-10 flex items-center space-x-6 lg:space-x-9">
                             {navLinks.map((link) => (
                                 <a
                                     key={link.name}
