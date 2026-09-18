@@ -223,24 +223,34 @@ không có React Three Fiber. Chủ site xác nhận theo màn hình tiêu đề
 `["Three.js", "TypeScript", "Vite", "Web Audio"]`. Ba game web còn lại vẫn ghi R3F — nếu chúng cũng
 là Three.js thuần thì sửa nốt trong `webProjects`.
 
-**Cập nhật 2026-09-18 — CasualShoot:** bản quay mới 488x876, 81.1s, 19.26 MB, có audio, `moov` cuối file.
-Nhạc trọn 81s ở CRF 26 ra 7.05 MB — nặng gấp 4 lần các card web khác, nên **chủ site chọn cắt**: giữ đoạn
-0:30–1:00 (`--ss 30 --t 30`, dày sự kiện nhất: banner SWARM, chain lên ×50, LV.3→LV.6) → **3.16 MB**.
-Poster lấy ở giây 3.8 của bản cắt (= 33.8s bản gốc): banner SWARM “Runners from the treeline”, đàn quái
-đang trúng đòn, chain ×9. Bản gốc ở `_originals/threejs/casualshoot-raw-20260918-041429.mp4` (local, ngoài git).
+**Cập nhật 2026-09-18 — MewShoot (ban đầu bị đặt nhầm tên là CasualShoot):** bản quay mới
+488x876, 81.1s, 19.26 MB, có audio, `moov` cuối file. Nhạc trọn 81s ở CRF 26 ra 7.05 MB — nặng gấp 4 lần
+các card web khác, nên **chủ site chọn cắt**: giữ đoạn 0:30–1:00 (`--ss 30 --t 30`, dày sự kiện nhất:
+banner SWARM, chain lên ×50, LV.3→LV.6) → **3.16 MB**. Poster lấy ở giây 3.8 của bản cắt (= 33.8s bản gốc):
+banner SWARM "Runners from the treeline", đàn quái đang trúng đòn, chain ×9.
+Bản gốc: `_originals/threejs/casualshoot-raw-20260918-041429.mp4` (tên file theo lúc còn nhầm).
 
-**Card viết lại — game đã đổi thể loại.** Mô tả cũ (thủ thành theo lane: wave 1/3, wall HP 1000,
-arrow volley) không còn đúng với build hiện tại. Chủ site xác nhận (2026-09-18) CasualShoot giờ là
-survivor arena. Nội dung mới chỉ viết từ HUD trong video: kill chain có bậc NICE/GREAT/SAVAGE/BRUTAL
-(cao nhất đếm được là ×67), THREAT TIER 0→2, sự kiện SWARM có banner, 2 ô kỹ năng SPACE/R có số lần dùng,
-XP lên LV.7 trong ~70s, HP 100. Subtitle đổi "Wave Defense Shooter" → **"Kill-Chain Survivor"**.
+**⚠️ Sự cố đã xảy ra:** file được copy nhầm vào `casualshoot.mp4` trong khi nội dung là MewShoot. Vì mô tả
+card CasualShoot (thủ thành theo lane) không khớp video, đã kết luận nhầm là "game đổi thể loại" và viết lại
+card CasualShoot theo nội dung MewShoot. Commit `660eba2` mang lỗi này. Chủ site phát hiện, đổi tên file và
+copy lại; đã sửa ở commit sau. **Bài học: video không khớp mô tả card thì khả năng cao là copy nhầm file,
+phải hỏi trước khi viết lại nội dung.**
 
-**⚠️ CasualShoot và MewShoot giờ rất giống nhau** — cùng nhân vật mèo, cùng loại quái, cùng HUD
-SURVIVAL/KILLS/TIER, cùng thể loại survivor. Khác biệt nhìn thấy được: CasualShoot có kill chain, ô kỹ năng
-và sự kiện đặt tên, nền đồng trống; MewShoot không có 3 thứ đó, nền rừng có viền, tier ghi là GROWTH.
-Card hiện tách theo đúng mấy điểm đó, nhưng **hai card cạnh nhau vẫn dễ bị đọc là một game nộp hai lần**.
-Cân nhắc: gộp thành một card (MewShoot = bản đầu, CasualShoot = bản hiện tại), hoặc bỏ bớt một.
-Liên quan: `mewshoot.vercel.app` có `<title>` là "CasualShoot Web V2" (ghi ở trên).
+**Card MewShoot viết lại** theo bản quay mới, chỉ từ HUD: kill chain có bậc NICE/GREAT/SAVAGE/BRUTAL
+(cao nhất đếm được ×67), THREAT TIER 0→2, sự kiện SWARM có banner, 2 ô kỹ năng SPACE/R có số lần dùng,
+XP lên LV.7 trong ~70s, HP 100. Subtitle "Survivor Arena" → **"Kill-Chain Survivor"**.
+
+**Cập nhật 2026-09-18 — CasualShoot (bản đúng):** 490x864, 15.0s, 3.58 MB, có audio, `moov` cuối file
+→ **1.62 MB**, không cắt. Poster ở giây 11.3: đội hình quái ở đỉnh lane đang trúng loạt tên, tường HP
+1000/1000, "Stage 1 – Juicy Demo", Wave 1/3. Bản gốc: `_originals/threejs/casualshoot-raw-20260918-101600.mp4`.
+
+Mô tả card cũ (thủ thành theo lane) **vẫn đúng** nên đã khôi phục nguyên văn. Bản quay này cho thấy thêm
+một thứ chưa từng ghi: **màn chọn power-up khi lên cấp** — Blast Rounds (nổ bán kính 0.6u), Critical Eye
+(+8% crit), Multishot (+1 đạn), mỗi thứ có cấp riêng. Đã thêm thành bullet thứ ba.
+
+Hai game **không** trùng nhau: CasualShoot là thủ thành theo lane (đứng sau tường, bắn lên), MewShoot là
+survivor arena (di chuyển giữa đồng trống). Ghi chú "hai card giống nhau" ở bản trước là hệ quả của vụ
+copy nhầm, không còn đúng. Vẫn còn: `mewshoot.vercel.app` có `<title>` là "CasualShoot Web V2".
 
 **Bản gốc 4 file không commit** — tự lưu trữ ngoài repo như gpu-ecosystem và rio. Bản quay
 Merge Drop 18.7 MB lần này cũng đã bị ghi đè trong repo; chỉ còn một bản sao tạm trong

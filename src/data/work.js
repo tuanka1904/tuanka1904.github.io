@@ -282,15 +282,15 @@ const webProjects = [
     },
     {
         title: "MewShoot",
-        subtitle: "Survivor Arena",
+        subtitle: "Kill-Chain Survivor",
         date: "2026",
         tags: ["Three.js", "WebGL", "React Three Fiber", "TypeScript"],
-        description: "Survivor-style arena run in the browser — an auto-firing hero, enemies closing from every edge, and XP levels stacking on a survival clock.",
-        fullDescription: "A survivor-style arena run built for the browser. The player moves, the shooting is automatic, and pressure comes from enemies streaming in from all four edges of the arena while a survival clock, kill count, and growth tier climb together.",
+        description: "Survivor run scored on chain kills — an auto-firing hero, two charge-based abilities, and announced swarms that raise the threat tier while the multiplier climbs.",
+        fullDescription: "A survivor-style arena run built around a kill chain instead of a wave counter. The hero fires on its own while the player handles positioning and spends two charge-based abilities; kills landed back to back drive a multiplier up through named ranks, and the threat tier steps up as the survival clock runs.",
         bulletPoints: [
-            { title: "Run Loop & Escalation", desc: "Survival timer, kill counter, and a growth tier drive the difficulty curve — enemies spawn off-screen at the arena edges and converge on the player continuously rather than in discrete waves." },
-            { title: "Auto-Combat & Levelling", desc: "The hero fires on its own at nearby targets while the player handles positioning; an XP bar fills into levels several times inside the first minute, feeding the tiered growth track." },
-            { title: "Portrait-First HUD", desc: "HP and XP bars, run stats, and a pause control laid out for a phone viewport — the arena is framed vertically so the readable play area survives on a narrow screen." }
+            { title: "Kill Chain & Rank Ladder", desc: "Uninterrupted kills stack a multiplier that climbs through named ranks — NICE, GREAT, SAVAGE, BRUTAL — reaching ×67 in the captured run. A bar under the counter drains between kills, so holding a rank means staying in contact with the swarm." },
+            { title: "Threat Tiers & Announced Swarms", desc: "Difficulty steps through threat tiers rather than discrete waves, punctuated by named events: a full-screen SWARM banner reading \"Runners from the treeline\" lands a dense pack at once instead of the steady trickle between events." },
+            { title: "Charge-Based Abilities & Levelling", desc: "Two active abilities sit in the HUD on SPACE and R, each carrying its own charge count, alongside an XP bar that levels the hero seven times inside the first seventy seconds against a 100-point HP pool." }
         ],
         role: "Solo Developer",
         timeline: "Live · playable in browser",
@@ -301,15 +301,16 @@ const webProjects = [
     },
     {
         title: "CasualShoot",
-        subtitle: "Kill-Chain Survivor",
+        subtitle: "Wave Defense Shooter",
         date: "2026",
         tags: ["Three.js", "WebGL", "React Three Fiber", "TypeScript"],
-        description: "Survivor run scored on chain kills — an auto-firing hero, two charge-based abilities, and announced swarms that raise the threat tier while the multiplier climbs.",
-        fullDescription: "A survivor-style arena run built around a kill chain instead of a wave counter. The hero fires on its own while the player handles positioning and spends two charge-based abilities; kills landed back to back drive a multiplier up through named ranks, and the threat tier steps up as the survival clock runs.",
+        description: "Stage-based defence shooter — hold the wall against advancing enemy waves with arrow volleys, on a shared HP pool and a three-wave stage structure.",
+        fullDescription: "A lane defence shooter structured around stages rather than an endless run. Enemies advance down a single vertical lane in formation, the player answers with arrow volleys, and the stage is lost when the wall's shared HP pool is drained.",
         bulletPoints: [
-            { title: "Kill Chain & Rank Ladder", desc: "Uninterrupted kills stack a multiplier that climbs through named ranks — NICE, GREAT, SAVAGE, BRUTAL — reaching ×67 in the captured run. A bar under the counter drains between kills, so holding a rank means staying in contact with the swarm." },
-            { title: "Threat Tiers & Announced Swarms", desc: "Difficulty steps through threat tiers rather than discrete waves, punctuated by named events: a full-screen SWARM banner reading \"Runners from the treeline\" lands a dense pack at once instead of the steady trickle between events." },
-            { title: "Charge-Based Abilities & Levelling", desc: "Two active abilities sit in the HUD on SPACE and R, each carrying its own charge count, alongside an XP bar that levels the hero seven times inside the first seventy seconds against a 100-point HP pool." }
+            { title: "Stage & Wave Structure", desc: "Stages break into numbered waves (1/3 onward) against one 1000-point wall HP pool — enemies enter in formation at the top of the lane and push down together." },
+            { title: "Volley Combat & Feedback", desc: "Multi-projectile arrow volleys with hit flashes and impact bursts on contact, so a connecting volley reads instantly against a crowded lane." },
+            { title: "Level-Up Power-Up Draft", desc: "Levelling pauses the stage on a three-way pick — Blast Rounds (impact explosion on a 0.6u radius), Critical Eye (+8% crit chance), or Multishot (+1 projectile) — each carrying its own level, so a run compounds rather than resets." },
+            { title: "Demo-Ready HUD", desc: "A speed toggle and pause control sit directly in the HUD alongside the wave counter and HP bar — the build is set up to be shown, not just played." }
         ],
         role: "Solo Developer",
         timeline: "Live · playable in browser",
