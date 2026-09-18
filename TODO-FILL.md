@@ -228,7 +228,8 @@ là Three.js thuần thì sửa nốt trong `webProjects`.
 các card web khác, nên **chủ site chọn cắt**: giữ đoạn 0:30–1:00 (`--ss 30 --t 30`, dày sự kiện nhất:
 banner SWARM, chain lên ×50, LV.3→LV.6) → **3.16 MB**. Poster lấy ở giây 3.8 của bản cắt (= 33.8s bản gốc):
 banner SWARM "Runners from the treeline", đàn quái đang trúng đòn, chain ×9.
-Bản gốc: `_originals/threejs/casualshoot-raw-20260918-041429.mp4` (tên file theo lúc còn nhầm).
+Bản gốc: `_originals/threejs/mewshoot-raw-20260918-041429.mp4` (đã đổi tên cho đúng game;
+tool đặt tên theo file nguồn nên lúc copy nhầm nó mang tên casualshoot).
 
 **⚠️ Sự cố đã xảy ra:** file được copy nhầm vào `casualshoot.mp4` trong khi nội dung là MewShoot. Vì mô tả
 card CasualShoot (thủ thành theo lane) không khớp video, đã kết luận nhầm là "game đổi thể loại" và viết lại
