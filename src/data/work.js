@@ -241,6 +241,26 @@ const unityProjects = [
  */
 const webProjects = [
     {
+        title: "DoLa Cafe: Purr & Go",
+        subtitle: "Drive-Thru Coffee Arcade",
+        date: "2026",
+        tags: ["Three.js", "TypeScript", "Procedural Geometry", "Web Audio"],
+        description: "Street-side coffee cart run against the morning rush — read each order, brew it from seven ingredients, and serve cat commuters before the queue at the cart runs out of patience.",
+        fullDescription: "A timing-based cooking arcade set on a Vietnamese street, where the player works a mobile coffee cart as a puppy barista. Customers pull up on motorbikes with a named drink order, the drink is assembled ingredient by ingredient from the panel under the scene, and a correct serve pays out on a rising combo. Every 3D asset and sound is generated in code rather than downloaded. Published on itch.io and playable in the browser.",
+        bulletPoints: [
+            { title: "Order Reading & Brewing", desc: "Each customer arrives with an order named above the cart — Matcha Latte, Iced Milk Coffee, Iced Black Coffee — assembled from a seven-slot ingredient panel (cup, coffee, condensed milk, ice, hot water, fresh milk, matcha) with CLEAR and SERVE under it. Slots light up as they go in, so a wrong drink reads before it is served." },
+            { title: "Combo Economy & Wave Pressure", desc: "A clean serve pops PERFECT! and pays coins against a combo multiplier that climbs with the streak — ×1.1 to ×1.8 across the captured run — while a wave counter raises the rush and three hearts absorb the misses." },
+            { title: "Inspection Evasion Event", desc: "An INSPECTION CAR! alert interrupts service on a 5.5-second timer: pack the three items and tap the stand to pull it in, hold while the vehicle passes, then roll it back out — a full stop in the serving loop rather than a score penalty." },
+            { title: "Code-Generated Scene & Audio", desc: "Cart, customers, street and sound are all built procedurally in Three.js and the Web Audio API — no downloaded models or audio files — which keeps the build loading straight into play in the browser. Bilingual English / Vietnamese." }
+        ],
+        role: "Solo Developer",
+        timeline: "Live · playable in browser",
+        video: "/videos/threejs/dolacafe.mp4",
+        portrait: true,
+        link: "https://catfe.itch.io/dolacafe",
+        linkLabel: "Play on itch.io"
+    },
+    {
         title: "StackPuzzle 3D",
         subtitle: "Hexa Tile Match",
         date: "2026",
@@ -426,7 +446,7 @@ export const engines = [
         name: "Web",
         role: "Three.js · TypeScript",
         summary: "Casual games that run straight in the browser — no install, no engine runtime. Every card below is a live build you can play right now.",
-        stack: ["Three.js", "React Three Fiber", "TypeScript", "WebGL", "Rigid-Body Physics"],
+        stack: ["Three.js", "React Three Fiber", "TypeScript", "WebGL", "Rigid-Body Physics", "Procedural Geometry", "Web Audio"],
         cover: "/posters/threejs/hexa_threejs.jpg",
         coverPosition: "center 70%", // portrait poster in a wide tile — frame the hex board, not the tray
         countLabel: "live builds",

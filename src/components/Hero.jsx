@@ -6,11 +6,14 @@ import { FrameCorners } from "@/components/ProjectMedia";
 
 const LABEL = "font-mono text-[11px] uppercase tracking-[0.22em]";
 
+// Derived, not typed in — adding a web build must not leave this stat behind.
+const webBuilds = engines.find((engine) => engine.id === "web").projects.length;
+
 const stats = [
     { value: "8+", label: "Years shipping games" },
     /* FILL: replace with a real performance number once measured — see TODO-FILL.md */
     { value: "1", label: "Tool live on the Unity Asset Store" },
-    { value: "4", label: "Browser games playable now" },
+    { value: String(webBuilds), label: "Browser games playable now" },
     { value: "PC · Mobile · AR · Web", label: "Shipped platforms" },
 ];
 

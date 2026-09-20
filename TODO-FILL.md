@@ -366,3 +366,48 @@ Muốn đổi thì cắt object sang mảng engine đúng trong `work.js`.
   Unreal or web when the project calls for it".
 - Tên file CV vẫn là `Kieu-Anh-Tuan-Unity.pdf` — nếu CV mới cũng đổi hướng thì đổi `CV_HREF`
   trong [Navbar.jsx](src/components/Navbar.jsx).
+
+---
+
+## 11. DoLa Cafe: Purr & Go — đã thêm vào section Web (2026-09-20)
+
+Game thứ 5 của section Web, chủ site tự làm và đã publish trên itch.io
+(https://catfe.itch.io/dolacafe — page title "DoLa Cafe: Purr & Go", mở được khi chưa đăng nhập).
+
+**Media**
+
+```
+python tools/media.py video public/videos/threejs/dolacafe.mp4 dolacafe --dir threejs --poster-at 21
+python tools/media.py poster threejs/dolacafe --at 20.4
+```
+
+- Capture gốc: 490x870, 30 fps, 50.1s, **11.83 MB**, có audio, moov nằm cuối.
+- Sau khi nén: 490x870 (giữ nguyên native như mọi web game), **2.17 MB** (18%), no audio, moov first.
+- Master: `_originals/threejs/dolacafe-raw-20260920-144231.mp4` (gitignore — nhớ backup chỗ khác).
+- Poster: cắt ở **20.4s**. Frame 21s đúng lúc bong bóng đơn hàng vừa tắt nên chỉ còn cái xe đứng yên;
+  20.4s có khách mèo đi xe máy tới + popup PERFECT! + bảng nguyên liệu → nhìn là hiểu game làm gì.
+  Contact sheet: `_originals/frames/dolacafe-sheet.jpg`.
+
+**Layout — lưới Web giờ 5 card**
+
+Nhánh `portrait` trong [Work.jsx](src/components/Work.jsx) trước đây hard-code `lg:grid-cols-4`,
+nên 5 card sẽ để 1 card lẻ ở hàng 2. Card dọc **không** dùng được chiêu "card đầu rộng gấp đôi" của
+`gridLayout` (khung ngang sẽ pillarbox capture dọc), nên thêm hàm `portraitCols(count)`: 5 card → 5 cột.
+Mobile vẫn 2 cột. Thêm/bớt game web nữa thì kiểm tra lại hàm này.
+
+Stat "Browser games playable now" ở [Hero.jsx](src/components/Hero.jsx) trước là số `"4"` gõ tay,
+giờ lấy từ `engines` nên tự cập nhật theo mảng `webProjects`.
+
+**Copy lấy từ đâu**
+
+Tất cả số/chi tiết trên card đều đọc được trong capture: 3 tim, WAVE 1→2, COMBO ×1.1→×1.8,
+popup PERFECT!, 7 nguyên liệu (Cup / Coffee / Condensed milk / Ice / Hot water / Fresh milk / Matcha),
+CLEAR + SERVE, tên đơn (Matcha Latte, Iced Milk Coffee, Iced Black Coffee), nút FOCUS,
+và chuỗi sự kiện "INSPECTION CAR! Pack the 3 items, then tap the stand — 5.5s" →
+"SAFE — STAND PULLED IN!" → "ROLLING THE STAND OUT".
+Hai ý lấy từ trang itch.io của chủ site: asset/audio sinh hoàn toàn bằng code, và song ngữ Anh/Việt.
+
+- `metric`: **không có** — giống 4 card web còn lại, chưa đo gì nên không render dòng readout.
+  Nếu sau này có số thật (ví dụ thời gian load, số draw call, FPS trên máy nào) thì thêm vào.
+- Nút FOCUS có trong HUD nhưng capture không cho thấy nó làm gì → **chưa viết vào copy**.
+  Nếu muốn mô tả Focus mode thì cần chủ site xác nhận nó buff cái gì.

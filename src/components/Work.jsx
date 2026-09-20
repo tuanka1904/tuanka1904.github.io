@@ -23,6 +23,18 @@ function gridLayout(count) {
     return { cols: "sm:grid-cols-2", wide: false };
 }
 
+/*
+ * Phone-shaped tiles can't take the double-width card gridLayout uses to even a row out —
+ * a portrait capture in a wide frame pillarboxes. They get a column count that divides the
+ * set instead: 5 web builds sit in one row of five rather than four plus an orphan.
+ */
+function portraitCols(count) {
+    if (count % 4 === 0) return "grid-cols-2 lg:grid-cols-4";
+    if (count % 3 === 0) return "grid-cols-2 lg:grid-cols-3";
+    if (count === 5) return "grid-cols-2 lg:grid-cols-5";
+    return "grid-cols-2 lg:grid-cols-4";
+}
+
 // Cards act as buttons, so they answer the keyboard like buttons — but only when the
 // card itself has focus, never when Enter is pressed on a link inside it.
 function cardProps(project, open) {
@@ -255,7 +267,7 @@ function EngineSection({ engine, open, tinted }) {
                     <div className={hasHeadline ? "mt-16" : ""}>
                         {hasHeadline && <SubHeading count={grid.length}>More {engine.name} work</SubHeading>}
                         {portrait ? (
-                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+                            <div className={`grid ${portraitCols(grid.length)} gap-4 lg:gap-6`}>
                                 {grid.map((p) => (
                                     <GameCard key={p.title} project={p} open={open} />
                                 ))}
