@@ -34,6 +34,26 @@ const unityProjects = [
         metric: { value: "61-enemy waves", label: "3 escalating waves · 13 ascension levels per run" }
     },
     {
+        title: "Outpost Breach",
+        subtitle: "Third-Person Horde Survival Shooter",
+        date: "2026",
+        tier: "feature",
+        tags: ["Unity 6", "C#", "Netcode for GameObjects", "URP · Render Graph", "Squad AI"],
+        description: "Three-wave horde survival with server-authoritative squad AI, NavMesh-free attack drones, and a full loot-craft-upgrade loop — built on two of my own Unity packages.",
+        fullDescription: "A third-person horde-survival shooter in Unity 6 on URP and Netcode for GameObjects. A squad holds a fortified arena across three escalating waves on a shared pool of team lives, looting downed enemies to craft and upgrade between contacts. Built as a systems showcase: the entire demo — arena, enemy variants, drone airspace lanes, weapon data, loot tables, recipes, wave configuration, NavMesh, menus and build settings — regenerates from a single Editor command, backed by an AI Debug Monitor that visualises each state machine and records human-readable transition reasons.",
+        bulletPoints: [
+            { title: "Squad-Based Enemy AI", desc: "A five-state machine — Patrol, Chase, Attack, Investigate, Dead — fed by four target-acquisition channels: vision, gunfire, incoming damage, and squad alerts. Enemies keep the player's last known position, walk it down when contact breaks, gate engagement on line-of-sight checks, and pass confirmed sightings to neighbours through controlled one-hop alerts." },
+            { title: "NavMesh-Free Drone AI", desc: "Aerial units steer in full 3D rather than on a NavMesh — authored flight bands, hover motion, banking, obstacle avoidance, patrol routes and investigation orbits. Scout drones act as the squad's eyes, revealing the player to nearby ground units, then crash and detonate when shot down." },
+            { title: "Server-Authoritative Combat & Modular Weapons", desc: "Gameplay decisions resolve on the authority, shared state replicates through NetworkVariables, and thin RPCs carry effect intent only — each client rebuilds muzzle flashes, tracers, impacts, explosions and ragdolls locally. Weapons are composed from ScriptableObject data, swappable firing mechanisms and projectile behaviours, with the same assets driving player and enemy guns and pooled projectiles keeping allocations and network traffic down." },
+            { title: "Inventory, Equipment & Crafting", desc: "Catfe Vault Inventory — my own framework, also on this page — drives the field kit, grid backpack, equipment paperdoll, supply containers, loot tables, crafting, upgrades and repairs. The demo ships 13 items, six recipes, and separate loot tables for grunts, snipers and drones; armour protection scales with durability and is capped so it can never read as invulnerability." },
+            { title: "Gameplay-Driven Screen Feedback", desc: "CatfeShader, my URP Render Graph post-processing package, turns gameplay events into screen state: spawn and respawn dissolves, damage vignette, chromatic aberration, heavy-hit glitches, a low-health heartbeat, explosion shockwaves, wave transitions and a victory grade. Every effect is evaluated locally per player, so none of it costs network traffic." }
+        ],
+        role: "Solo Gameplay & Systems Engineer",
+        timeline: "Playable Demo Build",
+        video: "/videos/outpost-breach.mp4",
+        metric: { value: "50 automated tests", label: "EditMode + PlayMode · AI, inventory, waves, win/lose flows" }
+    },
+    {
         title: "GPU Fish Ecosystem",
         subtitle: "GPU-Driven Simulation & Rendering",
         date: "2026",
@@ -435,7 +455,7 @@ export const engines = [
         name: "Unity",
         role: "Primary engine · C#",
         summary: "My main engine for 8+ years — gameplay systems, GPU-driven rendering, and the Editor tools that make a team faster, one of them live on the Asset Store.",
-        stack: ["C#", "URP · Render Graph", "HLSL · Compute", "Editor Scripting", "ScriptableObjects", "NUnit", "AR Foundation"],
+        stack: ["C#", "URP · Render Graph", "HLSL · Compute", "Netcode for GameObjects", "Editor Scripting", "ScriptableObjects", "NUnit", "AR Foundation"],
         cover: "/posters/rio-arcane-warden.jpg",
         countLabel: "projects",
         projects: unityProjects

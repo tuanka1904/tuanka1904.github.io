@@ -411,3 +411,54 @@ Hai ý lấy từ trang itch.io của chủ site: asset/audio sinh hoàn toàn b
   Nếu sau này có số thật (ví dụ thời gian load, số draw call, FPS trên máy nào) thì thêm vào.
 - Nút FOCUS có trong HUD nhưng capture không cho thấy nó làm gì → **chưa viết vào copy**.
   Nếu muốn mô tả Focus mode thì cần chủ site xác nhận nó buff cái gì.
+
+---
+
+## 12. Outpost Breach — đã thêm vào section Unity (2026-09-24)
+
+Card thứ 2 của section Unity, đặt ngay sau Rio: Arcane Warden theo yêu cầu chủ site.
+`tier: "feature"` (Rio giữ `lead`), nên lưới "More Unity work" không đổi số card.
+
+**Media**
+
+```
+python tools/media.py frames public/videos/ai-shoot.mp4 --count 12
+python tools/media.py video public/videos/ai-shoot.mp4 outpost-breach --poster-at 33
+python tools/media.py poster outpost-breach --at 41
+```
+
+- Capture gốc `ai-shoot.mp4`: 1920x1080, 30 fps, 98.7s, **58.89 MB**, có audio, moov first.
+- Sau khi nén: 1280x720, **12.35 MB** (21%), no audio, moov first. Giữ 720p chứ không hạ 540p
+  vì HUD chữ nhỏ (radar "7 CONTACTS · NEAREST 22m", "ARMOR 79% · MEDKIT x2 [H]") — đúng bài học
+  đã rút ra ở Rio.
+- Master: `_originals/ai-shoot-raw-20260924-011726.mp4` (gitignore — nhớ backup chỗ khác).
+- Poster: cắt ở **41s**. Frame 33s đúng lúc nhân vật chỉ đứng ngắm, không có địch trong khung;
+  41s có tracer đang bắn, 2 địch trúng đạn + 1 xác nằm, số damage `-8`, `x4 STREAK`,
+  kill feed và toast nhặt đồ (`+2 Scrap Metal`, `+1 Combat Boots`) → 1 frame là hiểu game làm gì.
+  Contact sheet: `_originals/frames/ai-shoot-sheet.jpg`.
+
+**Copy lấy từ đâu**
+
+Đọc được trực tiếp trong capture: LIVES 3, WAVE 1/3 → 3/3, đếm HOSTILES, "DRONE INBOUND",
+SCORE, streak multiplier x2 → x5, floating damage numbers, kill feed ("ELIMINATED GRUNT RIFLE",
+"ELIMINATED SNIPER TOWER"), Tactical Radar, thanh armor/health/ammo, màn FIELD KIT // LOADOUT
+(EQUIPPED 5/5, BACKPACK 5/30, WORKBENCH + nút CRAFT), loot toast, drone bay trong khung,
+và vignette đỏ / glitch lúc trúng đòn nặng.
+
+Phần còn lại **lấy nguyên từ mô tả chủ site gửi kèm**, không phải suy ra từ video:
+5 state AI + 4 kênh phát hiện mục tiêu, one-hop alert, drone steering 3D không dùng NavMesh,
+kiến trúc vũ khí bằng ScriptableObject dùng chung player/enemy, 13 item + 6 recipe + loot table
+riêng cho grunt/sniper/drone, armour cap theo durability, danh sách hiệu ứng CatfeShader,
+1 lệnh Editor regenerate toàn bộ demo, và AI Debug Monitor.
+
+- `metric`: **`50 automated tests`** — số chủ site tự khai (EditMode + PlayMode). Không đo được
+  từ video; nếu muốn thay bằng số đo hiệu năng (FPS với bao nhiêu agent, ms/frame) thì cần chủ site chạy đo.
+- **Chưa viết vào copy** vì capture không chứng minh được và chủ site chưa xác nhận số cụ thể:
+  - Multiplayer thật sự chạy nhiều client — capture là 1 người chơi. Copy chỉ nói tới mô hình
+    server-authoritative (đúng như chủ site mô tả), không nói "co-op X người".
+  - **Unity Relay** có trong stack chủ site liệt kê nhưng không thấy UI join/host trong capture → bỏ khỏi `tags`.
+  - Số enemy mỗi wave: HUD chỉ đếm số hostile **còn sống** (1→7), không phải tổng spawn → không viết con số nào.
+- Thêm `"Netcode for GameObjects"` vào `engines[unity].stack` — stack Unity trước đó chưa có
+  tín hiệu networking nào.
+- Card này nhắc tới 2 package khác của chủ site (**Catfe Vault Inventory**, **CatfeShader**) và
+  cả hai đều đã là card riêng trong cùng section Unity — copy viết theo hướng đó ("also on this page").
