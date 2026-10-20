@@ -302,7 +302,7 @@ def main():
 
     p = sub.add_parser("video", help="compress a raw capture into public/videos and cut its poster")
     p.add_argument("src", help="raw capture (may already sit inside public/ - it gets moved to _originals/)")
-    p.add_argument("name", help="output file name without extension, e.g. mergedrop3d")
+    p.add_argument("name", help="output file name without extension, e.g. mewshoot")
     p.add_argument("--dir", default="", help="subfolder under public/videos, e.g. threejs for web games")
     p.add_argument("--poster-at", type=float, help="poster timestamp in seconds (default: middle of the clip)")
     p.add_argument("--crf", default=str(CRF), help=f"x264 quality, higher = smaller (default {CRF})")
@@ -312,7 +312,7 @@ def main():
     p.set_defaults(func=cmd_video)
 
     p = sub.add_parser("poster", help="re-cut the poster of a video already in public/videos")
-    p.add_argument("video", help="e.g. threejs/mergedrop3d or /videos/shader.mp4")
+    p.add_argument("video", help="e.g. threejs/mewshoot or /videos/shader.mp4")
     p.add_argument("--at", type=float, required=True, help="timestamp in seconds")
     p.set_defaults(func=cmd_poster)
 

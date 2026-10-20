@@ -26,7 +26,7 @@ function gridLayout(count) {
 /*
  * Phone-shaped tiles can't take the double-width card gridLayout uses to even a row out —
  * a portrait capture in a wide frame pillarboxes. They get a column count that divides the
- * set instead: 5 web builds sit in one row of five rather than four plus an orphan.
+ * set instead: five builds sit in one row of five rather than four plus an orphan.
  */
 function portraitCols(count) {
     if (count % 4 === 0) return "grid-cols-2 lg:grid-cols-4";

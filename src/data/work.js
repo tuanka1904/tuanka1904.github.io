@@ -319,27 +319,6 @@ const webProjects = [
         linkLabel: "Play in browser"
     },
     {
-        title: "Merge Drop 3D",
-        subtitle: "Physics Merge Arcade",
-        date: "2026",
-        tags: ["Three.js", "React Three Fiber", "Rigid-Body Physics", "TypeScript"],
-        description: "Drop-and-merge arcade with real rigid bodies — spheres fall into a glass box, equal tiers fuse into the next one, and the stack has to stay below the danger line.",
-        fullDescription: "A drop-and-merge arcade game where the whole board is a physics simulation. Spheres are rigid bodies falling into a transparent container, so every drop resettles the stack instead of snapping to a grid — the failure state is the pile itself rising past the danger line.",
-        bulletPoints: [
-            { title: "Rigid-Body Stacking", desc: "Spheres simulate as physics bodies inside a glass container — each drop rolls, collides, and resettles the existing pile, so no two runs build the same shape." },
-            { title: "Merge & Combo Chain", desc: "Contact between two spheres of the same tier fuses them into the next tier up; chained fusions raise a combo multiplier and spawn floating score popups at the merge point." },
-            { title: "Fever Mode & Tier Discovery", desc: "Fever Mode doubles score for a timed window — opened by a full-screen FEVER! / DOUBLE SCORE banner shown with the current level, then tracked by a ×2 bar counting down under the next-sphere preview. Chained merges get GREAT ×N callouts, and reaching a new sphere tier raises a New Discovery card that names it." },
-            { title: "Aim Guide, Next Preview & Fail Line", desc: "A dashed guide previews the drop column and the next sphere is shown ahead of time, against a red danger line that ends the run when the stack crosses it — score, best, and best combo all persist between sessions." },
-            { title: "Dual Input & Context-Loss Recovery", desc: "Aim by mouse drag or arrow keys, drop on release or spacebar, pause on Esc — and the build recovers from a browser-reclaimed WebGL context instead of dying on it, with sound quality auto-scaling to the device." }
-        ],
-        role: "Solo Developer",
-        timeline: "Live · playable in browser",
-        video: "/videos/threejs/mergedrop3d.mp4",
-        portrait: true,
-        link: "https://mergedrop3d.vercel.app",
-        linkLabel: "Play in browser"
-    },
-    {
         title: "MewShoot",
         subtitle: "Kill-Chain Survivor",
         date: "2026",
@@ -492,7 +471,7 @@ export const engines = [
         name: "Web",
         role: "Three.js · TypeScript",
         summary: "Casual games that run straight in the browser — no install, no engine runtime. Every card below is a live build you can play right now.",
-        stack: ["Three.js", "React Three Fiber", "TypeScript", "WebGL", "Rigid-Body Physics", "Procedural Geometry", "Web Audio"],
+        stack: ["Three.js", "React Three Fiber", "TypeScript", "WebGL", "Procedural Geometry", "Web Audio"],
         cover: "/posters/threejs/hexa_threejs.jpg",
         coverPosition: "center 70%", // portrait poster in a wide tile — frame the hex board, not the tray
         countLabel: "live builds",
