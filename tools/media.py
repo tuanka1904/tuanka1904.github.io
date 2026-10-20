@@ -212,17 +212,22 @@ def cmd_frames(a):
     i = info(video)
     cols = 4
     rows = -(-a.count // cols)
-    step = i["duration"] / a.count
-    target = ORIGINALS / "frames" / f"{video.stem}-sheet.jpg"
+    start = a.start or 0.0
+    end = min(a.end, i["duration"]) if a.end else i["duration"]
+    if end <= start:
+        fail(f"--end ({end}) must be after --start ({start})")
+    step = (end - start) / a.count
+    suffix = f"-{start:g}-{end:g}s" if (a.start or a.end) else ""
+    target = ORIGINALS / "frames" / f"{video.stem}{suffix}-sheet.jpg"
     target.parent.mkdir(parents=True, exist_ok=True)
     ffmpeg(
-        "-i", video, "-frames:v", "1", "-q:v", "3",
+        "-ss", start, "-t", end - start, "-i", video, "-frames:v", "1", "-q:v", "3",
         "-vf", f"fps=1/{step:.4f},scale=360:-2,tile={cols}x{rows}:padding=4:color=black",
         target,
     )
     print(f"sheet   {rel(target)}  ({cols}x{rows}, left-to-right, top-to-bottom)")
     for n in range(a.count):
-        print(f"  #{n + 1:<2} ~{n * step:6.1f}s", end="\n" if (n + 1) % cols == 0 else "")
+        print(f"  #{n + 1:<2} ~{start + n * step:6.1f}s", end="\n" if (n + 1) % cols == 0 else "")
     print()
 
 
@@ -314,6 +319,8 @@ def main():
     p = sub.add_parser("frames", help="contact sheet of evenly spaced frames, for picking a poster time")
     p.add_argument("video")
     p.add_argument("--count", type=int, default=12)
+    p.add_argument("--start", type=float, help="only look at this part of the clip: start second")
+    p.add_argument("--end", type=float, help="only look at this part of the clip: end second")
     p.set_defaults(func=cmd_frames)
 
     p = sub.add_parser("probe", help="size, resolution, audio and moov position of any video")
