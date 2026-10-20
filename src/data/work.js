@@ -7,7 +7,12 @@
  *   "lead"    — the one wide card that opens the section
  *   "feature" — large cards directly under the lead
  *   (none)    — the compact grid
- *   "credit"  — one-line rows at the bottom of the section
+ *   "credit"  — one-line rows for client / studio work, under the cards
+ *   "archive" — one-line rows for personal and R&D work, at the bottom of the section
+ *
+ * "credit" and "archive" rows need a one-line `summary`; they still open the full modal.
+ * Keep the cards (lead + feature + grid) to the work that carries proof — a link, a
+ * measured number, or a capture that shows the claim.
  *
  * metric: the one measured number a card is allowed to show. Never estimate it —
  * leave it null and list the gap in TODO-FILL.md until a real figure exists.
@@ -95,9 +100,30 @@ const unityProjects = [
         metric: { value: "86K objects in 7.3 s", label: "300-scene first index · 0.6 s from cache · i7-12650H" }
     },
     {
+        title: "CatfeShader: Screen Effects for URP",
+        subtitle: "Render Graph Post-Processing Pack",
+        date: "2026",
+        tier: "feature",
+        tags: ["Unity 6", "URP", "Render Graph", "HLSL", "Volume System"],
+        description: "35 fullscreen post-processing effects and 21 preset looks for Unity 6 URP — one renderer feature, every effect a Volume override.",
+        fullDescription: "A fullscreen post-processing pack built on the Unity 6 Render Graph API and driven entirely through the Volume system. The whole pack installs as a single renderer feature; after that every effect is a Volume override, so quality tiers and per-area looks are just different profiles. Every pattern is generated procedurally in HLSL — no textures, no third-party packages.",
+        bulletPoints: [
+            { title: "Render Graph Pass Chain", desc: "Effects composite in a fixed order that follows a real image path (distortion → resampling → stylize → colour → overlay → display), with intermediate targets borrowed from the Render Graph pool. Nothing is queued at all while every intensity sits at 0." },
+            { title: "Analog Signal Simulation", desc: "CRT and VHS are modelled rather than overlaid: phosphor glow, aperture-grille/slot/shadow masks and interlacing on one side; chroma genuinely resampled at tape bandwidth on an eighth-width buffer, edge-enhance overshoot and head-switch tearing on the other." },
+            { title: "Global Masking & Offscreen Chain", desc: "One screen-space and depth-range mask confines every effect at once — keeping a HUD readable or the weapon crisp — and the same stack runs onto a RenderTexture for in-world screens, with buffer-dependent effects skipped and reported." },
+            { title: "Runtime API & Editor Tooling", desc: "One-line gameplay hooks (flash, fade, shockwave-from-world-position), covered scene transitions, and a Timeline-animatable driver, backed by an effect browser, a generated demo scene, a validation pass over every shader, and per-edition package export." }
+        ],
+        role: "Graphics & Tools Engineer",
+        timeline: "Completed",
+        video: "/videos/shader.mp4",
+        metric: { value: "35 effects", label: "21 preset looks · 1 renderer feature · zero textures" }
+    },
+    {
         title: "Mobile Game Framework",
         subtitle: "Casual Mechanics Playground",
         date: "2026",
+        tier: "archive",
+        summary: "One ScriptableObject-driven codebase running two casual genres — a roguelite arena and a multiplier-gate runner.",
         tags: ["Unity", "C#", "ScriptableObjects", "Mobile Optimization"],
         description: "Data-driven Unity framework powering two distinct casual game genres from a single modular codebase.",
         fullDescription: "A data-driven Unity framework built for rapid prototyping and deployment of mobile casual game modes. Two distinct genres run on the same codebase, configured entirely through ScriptableObjects — no per-mode rewrites.",
@@ -115,6 +141,8 @@ const unityProjects = [
         title: "Action Top-Down Framework",
         subtitle: "Gameplay Core · Personal Project",
         date: "2025",
+        tier: "archive",
+        summary: "C# action-shooter core: buffered input, dodge i-frames, and pluggable AI state machines.",
         tags: ["Unity 3D", "C#", "AI State Machines"],
         description: "C# gameplay core for a fast-paced action shooter, built around controller responsiveness.",
         fullDescription: "A self-directed C# logic core for a fast-paced action environment, engineered around input responsiveness and decoupled combat systems.",
@@ -131,6 +159,8 @@ const unityProjects = [
         title: "PolyWorld: Dynamic World Streaming",
         subtitle: "Engine Architecture",
         date: "2026",
+        tier: "archive",
+        summary: "Infinite chunk streaming with NavMesh baked on background threads — 12 ms per chunk, no main-thread stall.",
         tags: ["Unity 3D", "C#", "Async Optimization", "Architecture"],
         description: "Infinite chunk streaming with async background NavMesh baking — no main-thread stalls.",
         fullDescription: "A modular framework for seamless infinite chunk streaming and asynchronous background NavMesh baking inside Unity — worlds stream and stay navigable without ever blocking the game thread.",
@@ -146,27 +176,11 @@ const unityProjects = [
         metric: { value: "12 ms", label: "avg NavMesh bake/chunk · 0 main-thread stall" }
     },
     {
-        title: "CatfeShader: Screen Effects for URP",
-        subtitle: "Render Graph Post-Processing Pack",
-        date: "2026",
-        tags: ["Unity 6", "URP", "Render Graph", "HLSL", "Volume System"],
-        description: "35 fullscreen post-processing effects and 21 preset looks for Unity 6 URP — one renderer feature, every effect a Volume override.",
-        fullDescription: "A fullscreen post-processing pack built on the Unity 6 Render Graph API and driven entirely through the Volume system. The whole pack installs as a single renderer feature; after that every effect is a Volume override, so quality tiers and per-area looks are just different profiles. Every pattern is generated procedurally in HLSL — no textures, no third-party packages.",
-        bulletPoints: [
-            { title: "Render Graph Pass Chain", desc: "Effects composite in a fixed order that follows a real image path (distortion → resampling → stylize → colour → overlay → display), with intermediate targets borrowed from the Render Graph pool. Nothing is queued at all while every intensity sits at 0." },
-            { title: "Analog Signal Simulation", desc: "CRT and VHS are modelled rather than overlaid: phosphor glow, aperture-grille/slot/shadow masks and interlacing on one side; chroma genuinely resampled at tape bandwidth on an eighth-width buffer, edge-enhance overshoot and head-switch tearing on the other." },
-            { title: "Global Masking & Offscreen Chain", desc: "One screen-space and depth-range mask confines every effect at once — keeping a HUD readable or the weapon crisp — and the same stack runs onto a RenderTexture for in-world screens, with buffer-dependent effects skipped and reported." },
-            { title: "Runtime API & Editor Tooling", desc: "One-line gameplay hooks (flash, fade, shockwave-from-world-position), covered scene transitions, and a Timeline-animatable driver, backed by an effect browser, a generated demo scene, a validation pass over every shader, and per-edition package export." }
-        ],
-        role: "Graphics & Tools Engineer",
-        timeline: "Completed",
-        video: "/videos/shader.mp4",
-        metric: { value: "35 effects", label: "21 preset looks · 1 renderer feature · zero textures" }
-    },
-    {
         title: "Catfe Scene Analyzer Suite",
         subtitle: "Editor Tooling & Diagnostics",
         date: "2026",
+        tier: "archive",
+        summary: "Editor diagnostics that score scene renderers by draw-call risk, with one-click instancing and static batching.",
         tags: ["Unity 3D", "C#", "Editor Scripting", "Optimization"],
         description: "Real-time rendering diagnostics and one-click draw-call optimization, built directly into the Unity Editor.",
         fullDescription: "A rendering diagnostic and draw-call optimization suite inside the Unity Editor — it detects bottlenecks in real time and automates scene performance profiling for the whole team.",
@@ -185,6 +199,8 @@ const unityProjects = [
         title: "Catfe Vault Inventory (Catfe.InvPro)",
         subtitle: "Editor & Architecture",
         date: "2026",
+        tier: "archive",
+        summary: "Interface-driven inventory, crafting and equipment framework with NUnit coverage — the kit inside Outpost Breach.",
         tags: ["Editor Scripting", "C#", "Clean Architecture", "NUnit"],
         description: "Decoupled inventory and equipment system with a custom Architect dashboard and full NUnit coverage on core logic.",
         fullDescription: "A decoupled, scalable inventory and equipment system with a custom Architect dashboard that streamlines designer workflows inside the Unity Editor.",
@@ -202,6 +218,8 @@ const unityProjects = [
         title: "AI-Powered Profiler",
         subtitle: "Automated Remediation",
         date: "2026",
+        tier: "archive",
+        summary: "Local LLM (Ollama) wired into the Editor to audit assets and fix misconfigured import settings, fully offline.",
         tags: ["Local LLM", "Remediation", "C#"],
         description: "Local LLM inference wired into Unity to automate technical audits and asset fixes.",
         fullDescription: "Chains local LLM inference (via Ollama) directly into the Unity Editor to act as an automated technical director — scanning, diagnosing, and fixing asset issues without cloud dependencies.",
@@ -228,7 +246,7 @@ const unityProjects = [
             { title: "Custom Shader & Material Authoring", desc: "HLSL/ShaderGraph shaders and particle systems render real-time environmental VFX — water, fire, structural damage — driven by user interaction data." }
         ],
         role: "Technical Artist / AR Engineer",
-        timeline: "Completed",
+        timeline: "Shipped · Dreamchasers Interactive",
         video: "/videos/sg-discovery.mp4"
     },
     {
@@ -379,12 +397,15 @@ const unrealProjects = [
         role: "Core Systems Engineer",
         timeline: "Upcoming Steam Release",
         video: "/videos/ue5-topdown.mp4",
+        link: "https://vnexpress.net/the-thao/gameverse/gamehub/2026/seal-of-exorcism-phu-an-tru-ta-308",
+        linkLabel: "Vietnam GameVerse 2026 entry",
         metric: null /* FILL: entity count / ms per frame / draw calls — see TODO-FILL.md */
     },
     {
         title: "Vinpearl Digital Aquarium",
         subtitle: "Mixed-Reality Ecosystem",
         date: "2023",
+        tier: "feature",
         tags: ["Unreal Engine", "Unity", "Holographic Sync", "BLE"],
         description: "Mixed-reality installation combining BLE indoor positioning, AR gameplay, and frame-accurate hologram sync.",
         fullDescription: "A multi-platform installation integrating BLE beacon mapping, AR gameplay, and cross-display hologram synchronization for a live aquarium exhibit.",
@@ -394,7 +415,7 @@ const unrealProjects = [
             { title: "Location-Based Gameplay Triggering", desc: "Companion app using BLE RSSI trilateration for indoor positioning, triggering localized AR events and state changes as visitors approach exhibit zones." }
         ],
         role: "Lead Interactive Engineer",
-        timeline: "Completed",
+        timeline: "Shipped · Dreamchasers Interactive",
         images: ["/images/vinpearl-1.jpg", "/images/vinpearl-2.jpg"],
         metric: null /* FILL: hologram sync error (ms) or concurrent devices — see TODO-FILL.md */
     },
@@ -402,6 +423,8 @@ const unrealProjects = [
         title: "UE C++: Modular Combat Framework",
         subtitle: "UE5 · Personal Project",
         date: "2024",
+        tier: "archive",
+        summary: "Data-driven UE5 combat in C++: polymorphic AI, DataAsset weapons, and one damage interface for every source.",
         tags: ["Unreal Engine", "C++", "Architecture"],
         description: "Data-driven combat architecture in C++, built to extend without modifying engine source.",
         fullDescription: "A self-directed core logic framework written in C++, exploring how far a combat architecture can scale without touching engine source. Personal project, not a shipped title.",
@@ -418,6 +441,7 @@ const unrealProjects = [
         title: "HomeTeam NS",
         subtitle: "AR Avatar Fitting System",
         date: "2023",
+        tier: "feature",
         tags: ["Unity", "Unreal", "AR", "Skeletal Tracking"],
         description: "AR mirror for real-time virtual uniform fitting driven by skeletal pose tracking.",
         fullDescription: "An AR mirror experience using real-time skeletal pose estimation to map and align virtual uniform meshes onto users as they move.",
@@ -426,13 +450,14 @@ const unrealProjects = [
             { title: "Occlusion & Rendering Optimization", desc: "Occlusion handling and depth-sorting shaders keep rendering order correct between the physical user and virtual meshes." }
         ],
         role: "Interactive & AR Engineer",
-        timeline: "Completed",
+        timeline: "Shipped · Dreamchasers Interactive",
         images: ["/images/hometeam-1.jpg"]
     },
     {
         title: "Christmas Wonderland Metaverse",
         subtitle: "Multiplayer Metaverse Platform",
         date: "2021",
+        tier: "credit",
         summary: "Node.js multiplayer backend and UE mobile build optimization for a cross-platform live-events world.",
         tags: ["Unreal Engine", "Node.js", "Multiplayer", "Optimization"],
         description: "Cross-platform multiplayer metaverse with live events, backed by a Node.js real-time server.",
@@ -443,7 +468,7 @@ const unrealProjects = [
             { title: "Interactive Gameplay Systems", desc: "Login flows, gacha reward systems, and a real-time minimap with dynamic POI tracking." }
         ],
         role: "Core Gameplay & Optimization",
-        timeline: "Completed",
+        timeline: "Shipped · Dreamchasers Interactive",
         images: ["/images/christmas-1.jpg", "/images/christmas-2.jpg"]
     }
 ];

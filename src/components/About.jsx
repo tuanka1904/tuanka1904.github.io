@@ -5,6 +5,7 @@ export default function About() {
         { label: "Focus", value: "Gameplay systems, performance, and Editor tooling" },
         { label: "Engines", value: "Unity (C#) primary · Unreal Engine 4/5 (C++/BP) · Three.js (TypeScript)" },
         { label: "Location", value: "Ho Chi Minh City, Vietnam — remote or relocate" },
+        { label: "Catfe Studio", value: "My own label — publisher of Quick Scene Switcher (Unity Asset Store) and DoLa Cafe (itch.io)" },
     ];
 
     return (
@@ -33,20 +34,11 @@ export default function About() {
 
                     <div className="md:col-span-7 max-w-none md:pt-[76px]">
                         <p className="text-xl md:text-2xl text-stone-200 font-light leading-relaxed mb-8">
-                            I am a game developer specializing in scalable game architecture and deep performance work. For over 8 years I have built and profiled systems in Unity (C#), with production Unreal Engine work in C++ and Blueprint alongside it, shipping commercial titles on PC, mobile, and AR/MR &mdash; and, more recently, casual games that run straight in the browser on Three.js.
-                        </p>
-                        <p className="text-stone-300 font-light leading-relaxed mb-6">
-                            My core expertise spans end-to-end gameplay engineering &mdash; data-driven combat and inventory frameworks, AI and state-machine architecture, async streaming systems, and the profiling work that keeps them inside frame budget on low-end hardware. Beyond runtime code, I design custom Editor toolchains, CI/CD publishing pipelines, and AI-augmented profiling workflows that compress iteration cycles across an entire team.
+                            I build gameplay systems and the tools around them &mdash; Unity (C#) for over eight years, production Unreal (C++/Blueprint) alongside it, and lately casual games that run straight in the browser on Three.js.
                         </p>
                         <p className="text-stone-300 font-light leading-relaxed">
-                            That same systems thinking carries past the game loop into the layer that makes a build a product: third-party SDK integration, ad mediation and IAP wiring, analytics and remote config. A frame budget and an ARPDAU curve are both instrumentation problems &mdash; measure first, then change one thing at a time.
+                            I work measure-first: profile, change one thing, profile again. That is how a million GPU agents hold 60 FPS, and how an Editor tool can index 300 scenes without opening one.
                         </p>
-
-                        <blockquote className="mt-10 border-l-2 border-amber-500 pl-6">
-                            <p className="text-stone-200 font-light text-lg leading-relaxed m-0">
-                                &ldquo;From profiling draw-call bottlenecks on constrained mobile GPUs, to designing decoupled interface-driven architectures with full NUnit coverage &mdash; I build systems that scale from prototype to production without rewrites.&rdquo;
-                            </p>
-                        </blockquote>
                     </div>
                 </div>
             </div>

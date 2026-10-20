@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDownRight } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { engines } from "@/data/work";
 import { FrameCorners } from "@/components/ProjectMedia";
 
@@ -10,9 +10,12 @@ const LABEL = "font-mono text-[11px] uppercase tracking-[0.22em]";
 const webBuilds = engines.find((engine) => engine.id === "web").projects.length;
 
 const stats = [
-    { value: "8+", label: "Years shipping games" },
-    /* FILL: replace with a real performance number once measured — see TODO-FILL.md */
-    { value: "1", label: "Tool live on the Unity Asset Store" },
+    { value: "8+", label: "Years shipping games · since 2017" },
+    {
+        value: "QSS 2.0",
+        label: "Live on the Unity Asset Store",
+        href: "https://assetstore.unity.com/packages/tools/utilities/quick-scene-switcher-384534",
+    },
     { value: String(webBuilds), label: "Browser games playable now" },
     { value: "PC · Mobile · AR · Web", label: "Shipped platforms" },
 ];
@@ -78,7 +81,15 @@ export default function Hero() {
                 <dl className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6 mt-12 pt-8 border-t border-stone-800/50">
                     {stats.map((stat) => (
                         <div key={stat.label} className="flex flex-col-reverse">
-                            <dt className="text-xs text-stone-400">{stat.label}</dt>
+                            <dt className="text-xs text-stone-400">
+                                {stat.href ? (
+                                    <a href={stat.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-amber-500 transition-colors">
+                                        {stat.label} <ArrowUpRight size={12} />
+                                    </a>
+                                ) : (
+                                    stat.label
+                                )}
+                            </dt>
                             <dd className="text-xl md:text-2xl font-medium text-stone-100 tracking-tight mb-1">{stat.value}</dd>
                         </div>
                     ))}

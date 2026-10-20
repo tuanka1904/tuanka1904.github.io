@@ -1,32 +1,28 @@
 "use client";
 
 export default function Skills() {
+    // Every group points at the section holding the work that backs it up.
     const categories = [
         {
-            title: "Engines",
-            skills: ["Unity 3D (C#)", "Unreal Engine 4/5 (C++/BP)", "Three.js · React Three Fiber (TypeScript)", "Profiling & Optimization", "NUnit Test Coverage"]
+            title: "Engines & Platforms",
+            skills: ["Unity (C#)", "Unreal Engine 4/5 (C++/Blueprint)", "Three.js · React Three Fiber (TypeScript)", "Mobile, PC, web and AR installations"],
+            proof: [{ label: "Vinpearl", href: "#unreal" }, { label: "Web builds", href: "#web" }],
         },
         {
-            title: "Architecture",
-            skills: ["AI & Behavior Trees", "State Machines", "Core Game Loops", "Data-Driven Design"]
+            title: "Gameplay Architecture",
+            skills: ["AI, behavior trees & state machines", "Data-driven design (ScriptableObjects / DataAssets)", "Server-authoritative netcode", "NUnit test coverage"],
+            proof: [{ label: "Outpost Breach", href: "#unity" }, { label: "Seal of Exorcism", href: "#unreal" }],
         },
         {
-            title: "Graphics & GPU",
-            skills: ["Compute shaders (HLSL)", "GPU-driven & indirect rendering", "URP & shader authoring (ShaderGraph)", "Draw-call batching & GPU instancing"]
+            title: "Graphics & Performance",
+            skills: ["Compute shaders (HLSL)", "GPU-driven & indirect rendering", "URP Render Graph post-processing", "CPU/GPU profiling, batching & instancing"],
+            proof: [{ label: "GPU Fish Ecosystem", href: "#unity" }, { label: "CatfeShader", href: "#unity" }],
         },
         {
             title: "Tooling & Backend",
-            skills: ["Editor Tooling", "PlayFab & Node.js", "Python Automation", "Local LLM Pipeline"]
+            skills: ["Unity Editor tooling", "PlayFab & Node.js", "Python automation", "Local LLM pipeline"],
+            proof: [{ label: "Quick Scene Switcher", href: "#unity" }, { label: "Christmas Wonderland", href: "#unreal" }],
         },
-        {
-            /* FILL: keep only the lines you have actually shipped — delete the rest (see TODO-FILL.md) */
-            title: "Monetization & LiveOps",
-            skills: ["Ad mediation (AppLovin MAX / LevelPlay)", "In-app bidding & waterfall tuning", "IAP & game economy design", "Analytics & remote config"]
-        },
-        {
-            title: "Platforms",
-            skills: ["Multi-platform (Mobile / PC / Web)", "VR/AR Development", "Swift & Java", "Hardware (Arduino/RPi)"]
-        }
     ];
 
     return (
@@ -38,9 +34,9 @@ export default function Skills() {
                         <span className="h-px flex-grow bg-stone-800/60" aria-hidden="true" />
                     </h2>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-800/50 border border-stone-800/50 rounded-lg overflow-hidden">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-stone-800/50 border border-stone-800/50 rounded-lg overflow-hidden">
                         {categories.map((category) => (
-                            <div key={category.title} className="bg-[#0f0d0c] p-7">
+                            <div key={category.title} className="bg-[#0f0d0c] p-7 flex flex-col">
                                 <h3 className="text-stone-100 text-base font-medium mb-5 pb-4 border-b border-stone-800/60">
                                     {category.title}
                                 </h3>
@@ -51,6 +47,15 @@ export default function Skills() {
                                         </li>
                                     ))}
                                 </ul>
+                                <p className="mt-auto pt-6 text-xs text-stone-500">
+                                    See{" "}
+                                    {category.proof.map((p, i) => (
+                                        <span key={p.label}>
+                                            {i > 0 && " · "}
+                                            <a href={p.href} className="text-stone-300 hover:text-amber-500 transition-colors">{p.label}</a>
+                                        </span>
+                                    ))}
+                                </p>
                             </div>
                         ))}
                     </div>

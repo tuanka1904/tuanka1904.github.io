@@ -210,12 +210,36 @@ function SubHeading({ children, count }) {
     );
 }
 
+// One-line rows for work that doesn't get a card: client credits and the personal archive.
+// Each row still opens the full modal.
+function ListRows({ projects, open }) {
+    return (
+        <ul className="border-t border-stone-800/60">
+            {projects.map((p) => (
+                <li key={p.title}>
+                    <button
+                        type="button"
+                        onClick={() => open(p)}
+                        className="group w-full text-left py-5 border-b border-stone-800/60 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 hover:bg-stone-900/30 transition-colors px-2 -mx-2"
+                    >
+                        <span className="font-mono text-sm text-stone-500 shrink-0 w-12">{p.date}</span>
+                        <span className="text-stone-100 font-medium shrink-0 sm:w-72">{p.title}</span>
+                        <span className="text-sm text-stone-400 font-light leading-relaxed flex-grow">{p.summary}</span>
+                        <ArrowRight size={16} className="hidden sm:block shrink-0 text-stone-600 group-hover:text-amber-500 transition-colors" />
+                    </button>
+                </li>
+            ))}
+        </ul>
+    );
+}
+
 function EngineSection({ engine, open, tinted }) {
     const { projects } = engine;
     const lead = projects.find((p) => p.tier === "lead");
     const features = projects.filter((p) => p.tier === "feature");
     const grid = projects.filter((p) => !p.tier);
     const credits = projects.filter((p) => p.tier === "credit");
+    const archive = projects.filter((p) => p.tier === "archive");
     const portrait = grid.length > 0 && grid.every((p) => p.portrait);
     const hasHeadline = Boolean(lead) || features.length > 0;
     const layout = gridLayout(grid.length);
@@ -284,23 +308,15 @@ function EngineSection({ engine, open, tinted }) {
 
                 {credits.length > 0 && (
                     <div className="mt-16">
-                        <SubHeading count={credits.length}>Earlier production credits</SubHeading>
-                        <ul className="border-t border-stone-800/60">
-                            {credits.map((p) => (
-                                <li key={p.title}>
-                                    <button
-                                        type="button"
-                                        onClick={() => open(p)}
-                                        className="group w-full text-left py-5 border-b border-stone-800/60 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 hover:bg-stone-900/30 transition-colors px-2 -mx-2"
-                                    >
-                                        <span className="font-mono text-sm text-stone-500 shrink-0 w-12">{p.date}</span>
-                                        <span className="text-stone-100 font-medium shrink-0 sm:w-72">{p.title}</span>
-                                        <span className="text-sm text-stone-400 font-light leading-relaxed flex-grow">{p.summary}</span>
-                                        <ArrowRight size={16} className="hidden sm:block shrink-0 text-stone-600 group-hover:text-amber-500 transition-colors" />
-                                    </button>
-                                </li>
-                            ))}
-                        </ul>
+                        <SubHeading count={credits.length}>Production credits</SubHeading>
+                        <ListRows projects={credits} open={open} />
+                    </div>
+                )}
+
+                {archive.length > 0 && (
+                    <div className="mt-16">
+                        <SubHeading count={archive.length}>Archive &middot; personal &amp; R&amp;D</SubHeading>
+                        <ListRows projects={archive} open={open} />
                     </div>
                 )}
             </div>

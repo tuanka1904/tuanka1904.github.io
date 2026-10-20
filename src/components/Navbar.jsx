@@ -3,7 +3,7 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-/* FILL: real CV file — drop it at public/cv/Kieu-Anh-Tuan-Unity.pdf (see TODO-FILL.md) */
+/* Contact imports this too — rename the PDF here only. */
 export const CV_HREF = "/cv/Kieu-Anh-Tuan-Unity.pdf";
 
 const navLinks = [
