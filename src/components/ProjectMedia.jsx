@@ -1,12 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useEffect } from "react";
 import { X, ArrowUpRight, Play } from "lucide-react";
 
 export const posterFor = (video) => video.replace("/videos/", "/posters/").replace(".mp4", ".jpg");
 
-export function LazyVideo({ src, className }) {
+/*
+ * Plays on hover (or keyboard focus on the card) where there is a pointer that can hover.
+ * Touch screens have no hover, so there the clip plays while it is mostly on screen instead —
+ * unless the visitor asked for reduced motion or data saving, in which case it stays a poster
+ * and a tap on the card opens the modal player.
+ */
+function canAutoplayInView() {
+    if (typeof window === "undefined") return false;
+    if (window.matchMedia("(hover: hover)").matches) return false;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+    return !navigator.connection?.saveData;
+}
+
+export function LazyVideo({ src, label, className }) {
     const videoRef = useRef(null);
     const loadedRef = useRef(false);
 
@@ -17,16 +30,40 @@ export function LazyVideo({ src, className }) {
         loadedRef.current = true;
     }, [src]);
 
-    const handleMouseEnter = useCallback(() => {
+    const play = useCallback(() => {
         const video = videoRef.current;
         if (!video) return;
         ensureLoaded();
         video.play().catch(() => {});
     }, [ensureLoaded]);
 
-    const handleMouseLeave = useCallback(() => {
+    const pause = useCallback(() => {
         videoRef.current?.pause();
     }, []);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        if (canAutoplayInView()) {
+            const observer = new IntersectionObserver(
+                ([entry]) => (entry.isIntersecting ? play() : pause()),
+                { threshold: 0.6 }
+            );
+            observer.observe(video);
+            return () => observer.disconnect();
+        }
+
+        // Keyboard users tab onto the card, not the video — follow the card's focus.
+        const card = video.closest("[role=button]");
+        if (!card) return;
+        card.addEventListener("focus", play);
+        card.addEventListener("blur", pause);
+        return () => {
+            card.removeEventListener("focus", play);
+            card.removeEventListener("blur", pause);
+        };
+    }, [play, pause]);
 
     return (
         <video
@@ -36,8 +73,9 @@ export function LazyVideo({ src, className }) {
             playsInline
             preload="none"
             poster={posterFor(src)}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            aria-label={label}
+            onMouseEnter={play}
+            onMouseLeave={pause}
             className={className}
         />
     );
@@ -80,8 +118,8 @@ export function CardMedia({ project, aspect, className = "" }) {
         <div className={`w-full ${aspect} bg-[#171412] overflow-hidden relative ${className}`}>
             {project.video ? (
                 <>
-                    <LazyVideo src={project.video} className={mediaClass} />
-                    <span className="absolute bottom-3 right-3 flex items-center gap-1.5 text-[10px] text-stone-300 bg-stone-950/75 backdrop-blur px-2.5 py-1 rounded border border-stone-800/60 pointer-events-none group-hover:opacity-0 transition-opacity">
+                    <LazyVideo src={project.video} label={`${project.title} — gameplay capture`} className={mediaClass} />
+                    <span className="[@media(hover:none)]:hidden absolute bottom-3 right-3 flex items-center gap-1.5 text-[10px] text-stone-300 bg-stone-950/75 backdrop-blur px-2.5 py-1 rounded border border-stone-800/60 pointer-events-none group-hover:opacity-0 transition-opacity">
                         <Play size={9} className="fill-current" /> Hover to play
                     </span>
                 </>
