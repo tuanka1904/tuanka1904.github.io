@@ -51,7 +51,7 @@ const unityProjects = [
             { title: "NavMesh-Free Drone AI", desc: "Aerial units steer in full 3D rather than on a NavMesh — authored flight bands, hover motion, banking, obstacle avoidance, patrol routes and investigation orbits. Scout drones act as the squad's eyes, revealing the player to nearby ground units, then crash and detonate when shot down." },
             { title: "Server-Authoritative Combat & Modular Weapons", desc: "Gameplay decisions resolve on the authority, shared state replicates through NetworkVariables, and thin RPCs carry effect intent only — each client rebuilds muzzle flashes, tracers, impacts, explosions and ragdolls locally. Weapons are composed from ScriptableObject data, swappable firing mechanisms and projectile behaviours, with the same assets driving player and enemy guns and pooled projectiles keeping allocations and network traffic down." },
             { title: "Inventory, Equipment & Crafting", desc: "Catfe Vault Inventory — my own framework, also on this page — drives the field kit, grid backpack, equipment paperdoll, supply containers, loot tables, crafting, upgrades and repairs. The demo ships 13 items, six recipes, and separate loot tables for grunts, snipers and drones; armour protection scales with durability and is capped so it can never read as invulnerability." },
-            { title: "Gameplay-Driven Screen Feedback", desc: "CatfeShader, my URP Render Graph post-processing package, turns gameplay events into screen state: spawn and respawn dissolves, damage vignette, chromatic aberration, heavy-hit glitches, a low-health heartbeat, explosion shockwaves, wave transitions and a victory grade. Every effect is evaluated locally per player, so none of it costs network traffic." }
+            { title: "Gameplay-Driven Screen Feedback", desc: "Gameplay FX from CatfeShaders, my URP Render Graph post-processing packs (also on this page), turns gameplay events into screen state: spawn and respawn dissolves, damage vignette, chromatic aberration, heavy-hit glitches, a low-health heartbeat, explosion shockwaves, wave transitions and a victory grade. Every effect is evaluated locally per player, so none of it costs network traffic." }
         ],
         role: "Solo Gameplay & Systems Engineer",
         timeline: "Playable Demo Build",
@@ -100,23 +100,24 @@ const unityProjects = [
         metric: { value: "86K objects in 7.3 s", label: "300-scene first index · 0.6 s from cache · i7-12650H" }
     },
     {
-        title: "CatfeShader: Screen Effects for URP",
-        subtitle: "Render Graph Post-Processing Pack",
+        title: "CatfeShaders: Retro, Gameplay & Cinematic FX",
+        subtitle: "URP Render Graph Post-Processing Packs",
         date: "2026",
         tier: "feature",
-        tags: ["Unity 6", "URP", "Render Graph", "HLSL", "Volume System"],
-        description: "35 fullscreen post-processing effects and 21 preset looks for Unity 6 URP — one renderer feature, every effect a Volume override.",
-        fullDescription: "A fullscreen post-processing pack built on the Unity 6 Render Graph API and driven entirely through the Volume system. The whole pack installs as a single renderer feature; after that every effect is a Volume override, so quality tiers and per-area looks are just different profiles. Every pattern is generated procedurally in HLSL — no textures, no third-party packages.",
+        tags: ["Unity 6", "URP · Render Graph", "HLSL", "Volume System", "Asset Store"],
+        description: "Three post-processing packs for Unity 6 URP on one Render Graph framework — 35 effects and 21 looks, every effect a Volume override and any of them one line of code from gameplay.",
+        fullDescription: "A family of fullscreen post-processing packs built on the Unity 6 Render Graph API and driven entirely through the Volume system. Add one renderer feature once; after that every effect is a Volume override that blends between Volumes, keys on a Timeline or an Animator, is driven from gameplay in one line, and costs nothing while its intensity sits at 0. One mask confines every effect to part of the screen or a range of distances, and the same stack renders onto a RenderTexture for a screen inside the game. Three themed packs, a free edition and a Complete edition ship from one codebase in one export run, version 1.0.0, now going through Unity Asset Store submission.",
         bulletPoints: [
-            { title: "Render Graph Pass Chain", desc: "Effects composite in a fixed order that follows a real image path (distortion → resampling → stylize → colour → overlay → display), with intermediate targets borrowed from the Render Graph pool. Nothing is queued at all while every intensity sits at 0." },
-            { title: "Analog Signal Simulation", desc: "CRT and VHS are modelled rather than overlaid: phosphor glow, aperture-grille/slot/shadow masks and interlacing on one side; chroma genuinely resampled at tape bandwidth on an eighth-width buffer, edge-enhance overshoot and head-switch tearing on the other." },
-            { title: "Global Masking & Offscreen Chain", desc: "One screen-space and depth-range mask confines every effect at once — keeping a HUD readable or the weapon crisp — and the same stack runs onto a RenderTexture for in-world screens, with buffer-dependent effects skipped and reported." },
-            { title: "Runtime API & Editor Tooling", desc: "One-line gameplay hooks (flash, fade, shockwave-from-world-position), covered scene transitions, and a Timeline-animatable driver, backed by an effect browser, a generated demo scene, a validation pass over every shader, and per-edition package export." }
+            { title: "Three Packs, One Framework", desc: "Retro FX (13 effects, 7 looks, Neon Drive demo), Gameplay FX (12 effects, 6 looks, Outpost demo) and Cinematic FX (12 effects, 6 looks, Karst River demo), plus a free 4-effect edition and Complete — all 35 effects and 21 looks, two of them crossover looks found only there. Every edition carries the same framework scripts, so upgrading adds effects and changes nothing already built, and the two effects shared between packs overwrite the same files instead of duplicating them." },
+            { title: "Retro FX — Modelled, Not Filtered", desc: "CRT curves the glass, glows the phosphor through a blur chain and smears colour the way a composite signal does. VHS resamples chroma at tape bandwidth and lays it back under a sharp picture — the artefact that actually reads as videotape. Old Film steps on the projector's own frame rate, so it looks the same at 30 and at 144 fps, and Datamosh follows the scene's real motion vectors." },
+            { title: "Gameplay FX — One Line Per Effect", desc: "CatfeEffects.Flash<CatfeDamageVignette>(), CatfeEffects.Shockwave(worldPosition), CatfeEffects.Set<CatfeHeartbeat>(1 - health / maxHealth) and CatfeTransition.LoadScene(\"Level2\") need no scene setup; the transition covers the screen, loads asynchronously behind it and runs on unscaled time, so it works while the game is paused. The heartbeat is a real lub-dub rather than a sine, and Frost builds Voronoi crystals that refract each facet along its own normal." },
+            { title: "Cinematic FX — Lens and Paint", desc: "Kuwahara is the anisotropic version: a structure tensor finds which way the image runs and stretches the brush along it, and its quality setting lowers resolution rather than brush size. Motion Blur reads URP's motion vectors with a streak clamp so a camera cut never smears the frame; Tilt Shift is a depth-free miniature band or true depth of field; Film Grade ships six lookup tables generated from formulas." },
+            { title: "Release Pipeline", desc: "Render Graph throughout with no Compatibility Mode path. Every export is gated by a validation pass — shader compilation plus a render with every effect enabled — a per-effect visibility measurement on the demo scenes, an import test of each edition into a blank URP project, and player builds on D3D11, D3D12, Vulkan and OpenGL." }
         ],
         role: "Graphics & Tools Engineer",
-        timeline: "Completed",
-        video: "/videos/shader.mp4",
-        metric: { value: "35 effects", label: "21 preset looks · 1 renderer feature · zero textures" }
+        timeline: "Asset Store submission · v1.0.0",
+        video: "/videos/catfeshaders.mp4",
+        metric: { value: "35 effects", label: "21 looks · 3 packs · 1 renderer feature · no third-party textures" }
     },
     {
         title: "Mobile Game Framework",

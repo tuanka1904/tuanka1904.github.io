@@ -16,7 +16,7 @@ export default function Skills() {
         {
             title: "Graphics & Performance",
             skills: ["Compute shaders (HLSL)", "GPU-driven & indirect rendering", "URP Render Graph post-processing", "CPU/GPU profiling, batching & instancing"],
-            proof: [{ label: "GPU Fish Ecosystem", href: "#unity" }, { label: "CatfeShader", href: "#unity" }],
+            proof: [{ label: "GPU Fish Ecosystem", href: "#unity" }, { label: "CatfeShaders", href: "#unity" }],
         },
         {
             title: "Tooling & Backend",
