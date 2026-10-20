@@ -76,22 +76,23 @@ const unityProjects = [
         subtitle: "Published Unity Asset Store Tool",
         date: "2026",
         tier: "feature",
-        tags: ["Editor Scripting", "C#", "Asset Store", "Workflow"],
-        description: "Commercial scene-workflow tool shipped on the Unity Asset Store under Catfe Studio — from code to store listing, end to end.",
-        fullDescription: "A scene-management productivity tool designed, built, and published to the Unity Asset Store as a commercial product under the Catfe Studio publisher account. Compatible with Built-in, URP, and HDRP across Unity 2022.3+, and shipped through Unity's full submission review pipeline.",
+        tags: ["Editor Scripting", "C#", "Background Indexing", "Asset Store"],
+        description: "Commercial Unity Editor tool shipped on the Asset Store under Catfe Studio. Version 2.0 searches inside every scene without opening them — objects, components, broken references, and every place an asset is used.",
+        fullDescription: "A scene-workflow tool designed, built, and published to the Unity Asset Store as a commercial product under the Catfe Studio publisher account. Version 2.0 rebuilds it around a background scene index: every scene and prefab file is read as text, each hierarchy is reconstructed the way the Hierarchy window would show it, and the whole project becomes searchable without opening a single scene. Editor-only and read-only, for Unity 2022.3 LTS through Unity 6.",
         bulletPoints: [
-            { title: "Live Commercial Release", desc: "Passed Unity Asset Store review and released as a paid Extension Asset — versioned, documented, and supported as a real product, not a portfolio prototype." },
-            { title: "Rapid Scene Navigation", desc: "Quick-switch interface with automated visual snapshots of each scene, cutting the constant open-scene friction of multi-scene projects." },
-            { title: "Workspace Persistence", desc: "Saves and restores window layouts and scene sets per task, so context-switching between features costs seconds instead of minutes." },
-            { title: "Lightweight, Zero-Dependency Design", desc: "Entire tool ships in a ~82 KB package with no third-party dependencies — editor-only code that adds nothing to player builds." }
+            { title: "Background Scene Index", desc: "Reads every .unity and .prefab file under Assets as YAML on a background thread and rebuilds each hierarchy with prefab instances expanded — nested prefabs, variants and overrides applied. Results are cached per file, so a save re-reads only that file and re-checks the scenes that depend on it." },
+            { title: "Find in Scenes & Where Used", desc: "Name and component queries (boss t:AudioSource) run across every saved scene and come back grouped by scene with build status; right-click any asset to list every scene and object that uses it, directly or through another asset — a texture via its material. Enter opens the scene and selects the object." },
+            { title: "Scene Health Without a Scan", desc: "Missing scripts, prefabs and asset references are checked in the background in short slices of editor time and counted by root cause, not by object — one broken prefab placed 200 times is one problem. Where the scene file or the tool's script history records it, the lost class name is shown; it is never guessed." },
+            { title: "Switching & Play From Boot", desc: "A Ctrl+Alt+O fuzzy Quick Open, a thumbnail grid rendered from each scene's camera, workspaces, tags and notes — plus Play from, which sets the Play Mode start scene so Play boots from the Boot scene and reopens the scenes being edited on stop." },
+            { title: "Live Commercial Release", desc: "Passed Unity Asset Store review as a paid Extension Asset, and upgraded in place: 2.0 imports over 1.0 and keeps every user's favorites, workspaces, tags, notes and thumbnails." }
         ],
         role: "Publisher & Tool Developer",
-        timeline: "Live on Asset Store (v1.0)",
+        timeline: "Live on Asset Store (v2.0)",
         video: "/videos/scene-manager.mp4",
         link: "https://assetstore.unity.com/packages/tools/utilities/quick-scene-switcher-384534",
         linkLabel: "View on Asset Store",
         badge: "Live on Asset Store",
-        metric: { value: "82 KB", label: "package · zero dependencies · editor-only" }
+        metric: { value: "86K objects in 7.3 s", label: "300-scene first index · 0.6 s from cache · i7-12650H" }
     },
     {
         title: "Mobile Game Framework",
@@ -149,7 +150,7 @@ const unityProjects = [
         subtitle: "Render Graph Post-Processing Pack",
         date: "2026",
         tags: ["Unity 6", "URP", "Render Graph", "HLSL", "Volume System"],
-        description: "24 fullscreen post-processing effects for Unity 6 URP — one renderer feature, every effect a Volume override.",
+        description: "35 fullscreen post-processing effects and 21 preset looks for Unity 6 URP — one renderer feature, every effect a Volume override.",
         fullDescription: "A fullscreen post-processing pack built on the Unity 6 Render Graph API and driven entirely through the Volume system. The whole pack installs as a single renderer feature; after that every effect is a Volume override, so quality tiers and per-area looks are just different profiles. Every pattern is generated procedurally in HLSL — no textures, no third-party packages.",
         bulletPoints: [
             { title: "Render Graph Pass Chain", desc: "Effects composite in a fixed order that follows a real image path (distortion → resampling → stylize → colour → overlay → display), with intermediate targets borrowed from the Render Graph pool. Nothing is queued at all while every intensity sits at 0." },
@@ -160,7 +161,7 @@ const unityProjects = [
         role: "Graphics & Tools Engineer",
         timeline: "Completed",
         video: "/videos/shader.mp4",
-        metric: { value: "24 effects", label: "16 preset looks · 1 renderer feature · zero textures" }
+        metric: { value: "35 effects", label: "21 preset looks · 1 renderer feature · zero textures" }
     },
     {
         title: "Catfe Scene Analyzer Suite",

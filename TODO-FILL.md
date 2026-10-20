@@ -56,7 +56,7 @@ thì **không render dòng nào cả** — không có placeholder giả, nhưng 
 
 - GPU Fish Ecosystem — `1M agents @ 60 FPS · RTX 4060 · scales to 2M · 6 indirect draw calls`
 - PolyWorld — `12 ms avg NavMesh bake/chunk · 0 main-thread stall`
-- Quick Scene Switcher — `82 KB package · zero dependencies · editor-only`
+- Quick Scene Switcher — `86K objects in 7.3 s · 300-scene first index · 0.6 s from cache · i7-12650H` (benchmark trong doc QSS 2.0, xem mục 13)
 
 Format trong code:
 
@@ -462,3 +462,63 @@ riêng cho grunt/sniper/drone, armour cap theo durability, danh sách hiệu ứ
   tín hiệu networking nào.
 - Card này nhắc tới 2 package khác của chủ site (**Catfe Vault Inventory**, **CatfeShader**) và
   cả hai đều đã là card riêng trong cùng section Unity — copy viết theo hướng đó ("also on this page").
+
+---
+
+## 13. Quick Scene Switcher 2.0 + trailer mới của CatfeShader (2026-10-20)
+
+Chủ site thả vào `update content temp/` (thư mục untracked, **không commit**):
+`QSS V2/QSS_2.0_Store_Video.mp4`, `QSS V2/QSS_2.0_Documentation.docx`, `Catfe Shader/Trailer - Complete.mp4`.
+
+**Media** — encode đè lên đúng tên cũ để `posterFor()` và `video:` trong work.js không phải đổi.
+
+```
+python tools/media.py frames "update content temp/QSS V2/QSS_2.0_Store_Video.mp4" --count 16
+python tools/media.py frames "update content temp/Catfe Shader/Trailer - Complete.mp4" --count 16
+python tools/media.py video "update content temp/QSS V2/QSS_2.0_Store_Video.mp4" scene-manager --poster-at 5.5
+python tools/media.py video "update content temp/Catfe Shader/Trailer - Complete.mp4" shader --poster-at 8.8
+python tools/media.py poster shader --at 9.4
+```
+
+| File | Trước | Sau |
+|---|---|---|
+| `scene-manager.mp4` (QSS) | bản v1: 960x540, 90.2s, 4.17 MB, **có audio** | 1280x720, 41.4s, **2.97 MB** (raw 1080p 12.14 MB → 24%), no audio, moov first |
+| `shader.mp4` (CatfeShader) | 1280x720, 56.2s, **22.00 MB** (bị `check` cảnh báo) | 1280x720, 23.5s, **4.30 MB** (raw 1080p 52.59 MB, moov ở cuối → 8%), no audio, moov first |
+
+- Giữ 720p cho cả hai: video QSS toàn chữ UI Editor nhỏ; đã xem lại poster, chữ vẫn đọc được.
+- Poster QSS **5.5s**: cửa sổ chính 2.0 — lưới scene theo folder, badge "3 problems" trên Test_Broken,
+  panel INSIDE THIS SCENE, caption "Every scene, and what's inside it."
+- Poster CatfeShader **9.4s**: so sánh split trước/sau của Thermal Scan look. Lúc đầu cắt 8.8s nhưng
+  đường wipe mới đi được ~20% nên gần như chỉ thấy ảnh gốc.
+- Contact sheet: `_originals/frames/QSS_2.0_Store_Video-sheet.jpg`, `_originals/frames/Trailer - Complete-sheet.jpg`.
+- Master vẫn nằm ở `update content temp/` — tool không chuyển file nằm ngoài `public/`. Nhớ backup chỗ khác.
+- `check` hết 2 cảnh báo cũ: audio trên `scene-manager.mp4` và dung lượng `shader.mp4` (22 MB).
+
+**QSS — copy viết lại theo doc 2.0**
+
+Mọi tính năng và con số trên card lấy từ `QSS_2.0_Documentation.docx` (version 2.0.0, Unity 2022.3 LTS → Unity 6,
+editor-only, read-only): index nền đọc YAML của .unity/.prefab, Find in Scenes (`boss t:AudioSource`),
+Where Used in Scenes (kể cả gián tiếp "via Ground.mat"), Scene Health đếm theo root cause
+(ví dụ 1 prefab đặt 200 lần = 1 problem), tên script bị mất lấy từ file scene hoặc ScriptHistory và
+không bao giờ đoán, Quick Open Ctrl+Alt+O, thumbnail render từ camera của scene, workspace/tag/note,
+Play from (Play Mode start scene), nâng cấp đè lên 1.0 giữ nguyên dữ liệu người dùng.
+`timeline` → `Live on Asset Store (v2.0)`.
+
+- `metric` mới: **`86K objects in 7.3 s`** · `300-scene first index · 0.6 s from cache · i7-12650H` —
+  lấy từ mục 12 Performance của doc (đo 15/10/2026, Unity 2022.3.62f3, i7-12650H, 32 GB RAM,
+  300 scene × 180 GameObject → 86,027 GameObject, 70 MB file scene). Cùng bảng đó còn có:
+  query 34 ms sau khi Scene Health check xong (348 ms ngay sau lần index đầu), ~2 ms main thread khi save 1 scene.
+- **Đã bỏ** `82 KB · zero dependencies`: đó là số của v1, doc 2.0 không nhắc dung lượng package hay dependency.
+  FILL: nếu muốn giữ, gửi dung lượng .unitypackage của 2.0.
+- Link Asset Store giữ nguyên URL cũ (cùng listing). Hero vẫn ghi "1 Tool live on the Unity Asset Store" — vẫn đúng.
+
+**CatfeShader — số theo trailer mới**
+
+Trailer ghi rõ trên màn hình "35 screen effects for URP, in one package" và "35 effects · 21 looks ·
+Built for Unity 6 Render Graph" → `description` và `metric` đổi **24 → 35 effects, 16 → 21 preset looks**.
+
+- FILL: `1 renderer feature` và `zero textures` (trong `metric.label` và `fullDescription`) là chủ site xác nhận
+  cho bản 24 hiệu ứng. Trailer có hiệu ứng mới (giọt mưa trên ống kính, Ink Sketch, Miniature, Depth of Field)
+  — cần chủ site xác nhận bản 35 hiệu ứng vẫn **không dùng texture** và vẫn **1 renderer feature**; nếu không thì sửa cả hai chỗ.
+- Bullet points chưa đổi: trailer không cho thấy gì mâu thuẫn, nhưng cũng không liệt kê tính năng mới nào để viết thêm.
+
