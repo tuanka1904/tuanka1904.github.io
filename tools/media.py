@@ -8,6 +8,7 @@ Rules and the reasoning behind every default live in WORKFLOW.md.
     python tools/media.py frames <video> [--count 12]
     python tools/media.py probe  <file> [<file> ...]
     python tools/media.py check
+    python tools/media.py og
 
 Needs ffmpeg + ffprobe on PATH. Standard library only.
 """
@@ -277,6 +278,19 @@ def cmd_check(_):
     sys.exit(1 if errors else 0)
 
 
+def cmd_og(_):
+    # The card itself is laid out in tools/og.mjs (next/og); this only renders and compresses it.
+    if shutil.which("node") is None:
+        fail("node not found on PATH")
+    ORIGINALS.mkdir(exist_ok=True)
+    png = ORIGINALS / "og.png"
+    subprocess.run(["node", str(ROOT / "tools" / "og.mjs"), str(png)], check=True, cwd=ROOT)
+    out = PUBLIC / "og.jpg"
+    ffmpeg("-i", png, "-q:v", "3", out)
+    size = out.stat().st_size
+    print(f"og      {rel(out)}  1200x630  {size // 1024} KB" + ("  (over 300 KB - previews may drop it)" if size > 300 * 1024 else ""))
+
+
 def main():
     parser = argparse.ArgumentParser(description="Portfolio media tool - see WORKFLOW.md")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -308,6 +322,9 @@ def main():
 
     p = sub.add_parser("check", help="audit every video, poster and media path referenced in src/")
     p.set_defaults(func=cmd_check)
+
+    p = sub.add_parser("og", help="render the 1200x630 link-preview card into public/og.jpg")
+    p.set_defaults(func=cmd_og)
 
     sys.stdout.reconfigure(line_buffering=True)  # keep our lines in order with ffmpeg's
     args = parser.parse_args()
