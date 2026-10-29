@@ -10,7 +10,7 @@ const LABEL = "font-mono text-[11px] uppercase tracking-[0.22em]";
 const webBuilds = engines.find((engine) => engine.id === "web").projects.length;
 
 const stats = [
-    { value: "8+", label: "Years shipping games · since 2017" },
+    { value: "8+", label: "Years professional experience · since 2017" },
     {
         value: "QSS 2.0",
         label: "Live on the Unity Asset Store",
@@ -40,7 +40,7 @@ export default function Hero() {
                     </h1>
 
                     <p className="text-lg text-stone-300 max-w-2xl leading-relaxed font-light mt-8">
-                        8+ years shipping games &mdash; Unity (C#) as my main engine, production Unreal (C++/Blueprint) alongside it, and casual games that run straight in the browser on Three.js. Gameplay systems, performance profiling, and the Editor tools that speed up a whole team.
+                        8+ years of professional experience, shipping games since 2020 &mdash; Unity (C#) as my main engine, production Unreal (C++/Blueprint) alongside it, and casual games that run straight in the browser on Three.js. Gameplay systems, performance profiling, and the Editor tools that speed up a whole team.
                     </p>
                 </div>
 

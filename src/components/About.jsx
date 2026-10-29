@@ -34,7 +34,7 @@ export default function About() {
 
                     <div className="md:col-span-7 max-w-none md:pt-[76px]">
                         <p className="text-xl md:text-2xl text-stone-200 font-light leading-relaxed mb-8">
-                            I build gameplay systems and the tools around them &mdash; Unity (C#) for over eight years, production Unreal (C++/Blueprint) alongside it, and lately casual games that run straight in the browser on Three.js.
+                            I build gameplay systems and the tools around them &mdash; Unity (C#) as my main engine, production Unreal (C++/Blueprint) alongside it, and lately casual games that run straight in the browser on Three.js.
                         </p>
                         <p className="text-stone-300 font-light leading-relaxed">
                             I work measure-first: profile, change one thing, profile again. That is how a million GPU agents hold 60 FPS, and how an Editor tool can index 300 scenes without opening one.

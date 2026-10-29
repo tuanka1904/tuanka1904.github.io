@@ -40,6 +40,15 @@ export default function Contact() {
                                 Download CV
                             </a>
                         </div>
+                        <p className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-stone-400">
+                            <a href="https://www.linkedin.com/in/tuanka19" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:text-amber-500 transition-colors">
+                                LinkedIn <ArrowUpRight size={14} />
+                            </a>
+                            <a href="https://github.com/tuanka1904" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:text-amber-500 transition-colors">
+                                GitHub <ArrowUpRight size={14} />
+                            </a>
+                            <a href="mailto:tuanka1904@gmail.com" className="hover:text-amber-500 transition-colors">tuanka1904@gmail.com</a>
+                        </p>
                     </div>
                 </div>
             </div>

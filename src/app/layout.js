@@ -15,7 +15,7 @@ export const metadata = {
   metadataBase: new URL("https://tuanka1904.github.io"),
   title: "Kieu Anh Tuan — Game Developer · Unity, Unreal & Web",
   description:
-    "Game developer with 8+ years shipping games: Unity (C#) gameplay systems, GPU rendering and Editor tooling; production Unreal (C++/BP); and live browser games in Three.js. Published tools on the Unity Asset Store.",
+    "Game developer with 8+ years of professional experience: Unity (C#) gameplay systems, GPU rendering and Editor tooling; production Unreal (C++/BP); and live browser games in Three.js. Published tools on the Unity Asset Store.",
   keywords: ["Game Developer", "Unity Developer", "Unreal Engine", "C#", "C++", "Three.js", "WebGL", "Game Systems", "Performance Optimization", "Editor Tooling", "Web Games"],
   openGraph: {
     title: "Kieu Anh Tuan — Game Developer · Unity, Unreal & Web",

@@ -6,6 +6,7 @@ export default function Footer() {
                 <div className="flex gap-8 mt-6 md:mt-0">
                     <a href="mailto:tuanka1904@gmail.com" className="hover:text-amber-500 transition-colors">Email</a>
                     <a href="https://www.linkedin.com/in/tuanka19" target="_blank" rel="noreferrer" className="hover:text-amber-500 transition-colors">LinkedIn</a>
+                    <a href="https://github.com/tuanka1904" target="_blank" rel="noreferrer" className="hover:text-amber-500 transition-colors">GitHub</a>
                     <a href="#top" className="hover:text-amber-500 transition-colors">Back to Top &uarr;</a>
                 </div>
             </div>
