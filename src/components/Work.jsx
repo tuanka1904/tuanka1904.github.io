@@ -32,6 +32,8 @@ function portraitCols(count) {
     if (count % 4 === 0) return "grid-cols-2 lg:grid-cols-4";
     if (count % 3 === 0) return "grid-cols-2 lg:grid-cols-3";
     if (count === 5) return "grid-cols-2 lg:grid-cols-5";
+    // Two phone tiles sit centred rather than leaving half a four-column row empty.
+    if (count === 2) return "grid-cols-2 lg:grid-cols-4 lg:[&>*:first-child]:col-start-2";
     return "grid-cols-2 lg:grid-cols-4";
 }
 

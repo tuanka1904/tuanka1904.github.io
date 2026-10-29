@@ -275,7 +275,7 @@ const unityProjects = [
 ];
 
 /*
- * Browser games. The lead card and the Ember Gate feature card are landscape trailers; the
+ * Browser games. The lead card and the Ember Gate and MewShoot feature cards are landscape trailers; the
  * grid games are portrait captures, so those cards are phone-shaped on purpose. All five are deployed, so every
  * card carries a live link; nothing here claims a number that is not visible on screen
  * in the capture, in the shipped build, or in the project's test run.
@@ -343,25 +343,6 @@ const webProjects = [
         linkLabel: "Play in browser"
     },
     {
-        title: "MewShoot",
-        subtitle: "Kill-Chain Survivor",
-        date: "2026",
-        tags: ["Three.js", "WebGL", "React Three Fiber", "TypeScript"],
-        description: "Survivor run scored on chain kills — an auto-firing hero, two charge-based abilities, and announced swarms that raise the threat tier while the multiplier climbs.",
-        fullDescription: "A survivor-style arena run built around a kill chain instead of a wave counter. The hero fires on its own while the player handles positioning and spends two charge-based abilities; kills landed back to back drive a multiplier up through named ranks, and the threat tier steps up as the survival clock runs.",
-        bulletPoints: [
-            { title: "Kill Chain & Rank Ladder", desc: "Uninterrupted kills stack a multiplier that climbs through named ranks — NICE, GREAT, SAVAGE, BRUTAL — reaching ×67 in the captured run. A bar under the counter drains between kills, so holding a rank means staying in contact with the swarm." },
-            { title: "Threat Tiers & Announced Swarms", desc: "Difficulty steps through threat tiers rather than discrete waves, punctuated by named events: a full-screen SWARM banner reading \"Runners from the treeline\" lands a dense pack at once instead of the steady trickle between events." },
-            { title: "Charge-Based Abilities & Levelling", desc: "Two active abilities sit in the HUD on SPACE and R, each carrying its own charge count, alongside an XP bar that levels the hero seven times inside the first seventy seconds against a 100-point HP pool." }
-        ],
-        role: "Solo Developer",
-        timeline: "Live · playable in browser",
-        video: "/videos/threejs/mewshoot.mp4",
-        portrait: true,
-        link: "https://mewshoot.vercel.app",
-        linkLabel: "Play in browser"
-    },
-    {
         title: "Ember Gate",
         subtitle: "Cinematic Wave Defense",
         date: "2026",
@@ -382,6 +363,29 @@ const webProjects = [
         link: "https://casualshoot.vercel.app",
         linkLabel: "Play in browser",
         metric: { value: "94 kills", label: "in one Wildfire Rail sweep, from the captured run" }
+    },
+    {
+        title: "MewShoot",
+        subtitle: "Kill-Chain Survivor",
+        date: "2026",
+        tier: "feature",
+        tags: ["Three.js", "TypeScript", "WebGL", "Web Audio", "Vitest"],
+        description: "Twin-stick forest survivor starring Ember, a fox ranger. Aim and fire by hand, dash through a charger's telegraph, chain kills into a multiplier and evolve your gun until the Orc Chieftain arrives at the four-minute mark.",
+        fullDescription: "A survivor-style arena run in a hand-drawn forest. Ember aims and fires manually (mouse, or the right stick on touch) while the left hand handles movement, a short invulnerable dash and a kill-charged ultimate nova. Kills landed inside a rolling window stack a multiplier that scales exp and gold, so staying in contact with the horde is rewarded. A first guardian arrives at 1:10, events interrupt the trickle, and at 4:00 the Orc Chieftain is queued at the player's position. Defeating that boss wins the run. The trailer is recorded from the game itself: a script plays the run, steps the real renderer one frame at a time in headless Chrome, and the soundtrack is mixed from the game's own music and a log of its events.",
+        bulletPoints: [
+            { title: "Kill Chain & Evolutions", desc: "Kills inside a three-second window stack a multiplier that steps through NICE, GREAT, SAVAGE, BRUTAL, RAMPAGE and UNSTOPPABLE. Fifteen upgrade lines are on offer, and maxing one unlocks an evolution that replaces it: Bullet Storm adds three projectiles, Railgun pierces everything, Blade Storm, Tesla Field and Cluster Bomb change the weapon again. An unlocked evolution always takes a slot in the next level-up so it is never buried." },
+            { title: "Enemies With Their Own Rules", desc: "Nine enemy types, each with a behaviour rather than a stat line. Slingers hold their range and telegraph each bolt. A Bloodcharger winds up, dashes faster than the player can run, then is stunned and takes 50% more damage. Powder Kegs light a fuse and their blast hurts other enemies. A Brood Ogre bursts into three runners. Any of them can spawn as a gold elite with far more health and a bigger payout." },
+            { title: "Bosses in Three Phases", desc: "The Goblin King and the Orc Chieftain both fight in three phases: ground slams with a visible telegraph, radial bullet bursts, then an enrage with summoned minions. A warning banner and a music swell land nine seconds before a guardian arrives, and horde events pause while one is alive." },
+            { title: "Crowd Navigation", desc: "Enemies steer with shared flow fields built per body size, so large units do not take narrow routes between trees and buildings. Fields refresh at most five times a second, and a direct clear path skips the grid. A benchmark with 200 concurrent enemies asserts an 8 ms p95 simulation budget (simulation only, not GPU)." },
+            { title: "Kill-Cam & Adaptive Score", desc: "Killing a guardian drops the simulation to 35% speed, the Chieftain's last hit holds 22% for almost two seconds, and the ultimate takes a short dip. Particles and the HUD run at the same dilated speed. Three 96-second music stems (forest calm, pursuit, boss) crossfade as the run escalates." },
+            { title: "Scripted, Frame-Exact Trailer", desc: "A ?trailer mode swaps the menu for a director script: an autopilot that kites, dashes and spends the ultimate, staged hordes and level-ups, camera keys and title cards. Every output frame advances the simulation, the CSS animations and the timers by exactly 1/60 s. Note that the capture is staged: the pilot runs a boosted build against a denser spawn curve, and the Chieftain's health bar is paced against the clock." }
+        ],
+        role: "Solo Developer",
+        timeline: "Live · playable in browser",
+        video: "/videos/threejs/mewshoot.mp4",
+        link: "https://mewshoot.vercel.app",
+        linkLabel: "Play in browser",
+        metric: { value: "125 unit tests", label: "Vitest · archetypes, bosses, navigation, loot and survival rules" }
     }
 ];
 
