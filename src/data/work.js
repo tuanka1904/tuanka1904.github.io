@@ -275,11 +275,34 @@ const unityProjects = [
 ];
 
 /*
- * Browser games, all portrait captures — the cards are phone-shaped on purpose.
- * All four are deployed, so every card carries a live link; nothing here claims a
- * number that is not visible on screen in the capture or in the shipped build.
+ * Browser games. The lead card is a landscape trailer; the grid games are portrait
+ * captures, so those cards are phone-shaped on purpose. All five are deployed, so every
+ * card carries a live link; nothing here claims a number that is not visible on screen
+ * in the capture, in the shipped build, or in the project's test run.
  */
 const webProjects = [
+    {
+        title: "Merge Drop 3D: Gravity Well",
+        subtitle: "Orbital Merge Arcade",
+        date: "2026",
+        tier: "lead",
+        tags: ["Three.js", "TypeScript", "Rapier 2D (WASM)", "Vitest", "Web Audio"],
+        description: "A fruit-merge game with a gravity well instead of a box. Shots curve around a glowing core and land on a planet that keeps growing. Matching fruit merge into the next size up, and the run ends if the planet grows past the outer ring.",
+        fullDescription: "A rebuild of my earlier box-drop merge game. A static core pulls every fruit towards it with a constant force. The launcher sits below the ring and shoots upwards, so shots arc, sometimes orbit, and then join the planet. The game skips the menu and opens on a planet that is already mid-game, so the very first shot sets off five merges in a row. It's built with Three.js and Rapier 2D physics (WASM) in strict TypeScript. The game rules are unit tested, and the trailer is recorded by a script that steps the real game one frame at a time.",
+        bulletPoints: [
+            { title: "Radial Gravity & Curved Aim", desc: "The physics world has no gravity of its own. Before each 1/60 s physics step, every fruit gets a pull towards the core. The aiming line runs the same calculation, so the moving dots show the exact path the shot will take. They turn gold when the shot will hit a fruit of the same kind." },
+            { title: "Opening on the Best Moment", desc: "There is no menu. The camera flies in from space to a planet that is already in play. While it loads, the background fruit settle in a hidden physics run. Then a column of fruit is placed so that the first straight shot chains Grape → Lime → Orange → Apple → Pear → Peach and unlocks a new fruit." },
+            { title: "Game Feel", desc: "Each fruit squashes and wobbles on a spring when it gets hit hard enough. In a merge, both fruit fly into the merge point and the new one pops in, slightly too big, then settles. Nearby fruit hop off the planet's surface. Bigger merges give a longer freeze, a stronger camera punch and a larger shockwave ring. All sound is generated in code, and each merge in a chain plays the next note of a five-note scale." },
+            { title: "Pressure & Pacing", desc: "Bigger fruit join the shot queue as the run goes on, and the same fruit never comes three times in a row. A chain meter drains between merges, and a strip of all ten fruit plus a New Fruit banner give goals beyond the score. A fruit past the ring blinks red, with a countdown next to it and a heartbeat sound. At game over, the planet breaks apart from the outside in." },
+            { title: "Tooling", desc: "The game rules (merging, scoring, flight path, the opening setup and the shot queue) are plain TypeScript with no engine code, tested with Vitest at 100% line coverage. A ?debug=1 panel adjusts gravity and feel settings live. The trailer is recorded by a Playwright script on a paused clock: each video frame moves the game forward by exactly 1/60 s, and ffmpeg encodes the result at 1080p60." }
+        ],
+        role: "Solo Developer",
+        timeline: "Live · playable in browser",
+        video: "/videos/threejs/mergedrop3d.mp4",
+        link: "https://mergedrop3d.vercel.app",
+        linkLabel: "Play in browser",
+        metric: { value: "57 unit tests", label: "Vitest · 100% line coverage on the game rules" }
+    },
     {
         title: "DoLa Cafe: Purr & Go",
         subtitle: "Drive-Thru Coffee Arcade",
@@ -472,7 +495,7 @@ export const engines = [
         name: "Web",
         role: "Three.js · TypeScript",
         summary: "Casual games that run straight in the browser — no install, no engine runtime. Every card below is a live build you can play right now.",
-        stack: ["Three.js", "React Three Fiber", "TypeScript", "WebGL", "Procedural Geometry", "Web Audio"],
+        stack: ["Three.js", "React Three Fiber", "TypeScript", "WebGL", "Rapier Physics (WASM)", "Procedural Geometry", "Web Audio"],
         cover: "/posters/threejs/hexa_threejs.jpg",
         coverPosition: "center 70%", // portrait poster in a wide tile — frame the hex board, not the tray
         countLabel: "live builds",

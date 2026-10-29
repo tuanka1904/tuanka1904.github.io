@@ -25,7 +25,7 @@ const amber = "#f59e0b";
 const proof = [
     ["1M agents @ 60 FPS", "GPU Fish Ecosystem"],
     ["86K objects in 7.3 s", "Quick Scene Switcher 2.0"],
-    ["4 live builds", "Three.js browser games"],
+    ["5 live builds", "Three.js browser games"],
 ];
 
 const card = h(
