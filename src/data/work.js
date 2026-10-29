@@ -512,6 +512,7 @@ export const engines = [
         cover: "/posters/threejs/hexa_threejs.jpg",
         coverPosition: "center 70%", // portrait poster in a wide tile — frame the hex board, not the tray
         countLabel: "live builds",
+        layout: "showcase",
         projects: webProjects
     },
     {

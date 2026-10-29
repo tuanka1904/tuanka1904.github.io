@@ -111,11 +111,24 @@ export function FrameCorners() {
     );
 }
 
-export function CardMedia({ project, aspect, className = "" }) {
-    const mediaClass = "w-full h-full object-cover";
+/*
+ * `fit` keeps every card's media frame the same shape: a phone-shaped capture is shown whole,
+ * centred over a blurred copy of its own poster, instead of being cropped or changing the card size.
+ */
+export function CardMedia({ project, aspect, className = "", fit = false }) {
+    const contain = fit && project.portrait;
+    const mediaClass = contain ? "relative w-full h-full object-contain" : "w-full h-full object-cover";
 
     return (
         <div className={`w-full ${aspect} bg-[#171412] overflow-hidden relative ${className}`}>
+            {contain && project.video && (
+                <img
+                    src={posterFor(project.video)}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full object-cover scale-125 blur-2xl opacity-50"
+                />
+            )}
             {project.video ? (
                 <>
                     <LazyVideo src={project.video} label={`${project.title} — gameplay capture`} className={mediaClass} />

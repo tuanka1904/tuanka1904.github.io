@@ -157,6 +157,36 @@ function FeatureCard({ project, open }) {
     );
 }
 
+// Every card in a showcase grid is the same shape: 16:9 media, fixed text rhythm, footer pinned to the bottom.
+function ShowcaseCard({ project, open }) {
+    return (
+        <article {...cardProps(project, open)} className={`${CARD} h-full`}>
+            <CardMedia project={project} aspect="aspect-video" fit className="border-b border-stone-800/60" />
+            <div className="p-6 flex flex-col flex-grow">
+                <Meta project={project} className="mb-3" />
+                <h3 className="text-xl font-medium text-stone-100 mb-3 tracking-tight leading-snug">{project.title}</h3>
+                <p className="text-stone-300 font-light text-sm leading-relaxed mb-6 line-clamp-4">{project.description}</p>
+
+                <div className="mt-auto pt-5 border-t border-stone-800/60 space-y-4">
+                    <div className="min-h-[2.75rem]">
+                        <MetricReadout metric={project.metric} />
+                    </div>
+                    <Tags tags={project.tags} limit={4} />
+                    <div className="flex items-center justify-between gap-4 pt-1">
+                        <p className="text-xs text-stone-400">
+                            {project.role} <span className="text-stone-600">·</span> {project.timeline}
+                        </p>
+                        <ProjectLink
+                            project={project}
+                            className="shrink-0 inline-flex items-center gap-1.5 text-xs font-medium text-amber-500 hover:text-amber-400 transition-colors"
+                        />
+                    </div>
+                </div>
+            </div>
+        </article>
+    );
+}
+
 // A wide card spans two columns at double the aspect, so its media stays level with its row.
 function GridCard({ project, open, wide }) {
     return (
@@ -245,6 +275,9 @@ function EngineSection({ engine, open, tinted }) {
     const portrait = grid.length > 0 && grid.every((p) => p.portrait);
     const hasHeadline = Boolean(lead) || features.length > 0;
     const layout = gridLayout(grid.length);
+    // A showcase engine ignores the lead / feature / grid tiers below the lead: everything else is one uniform grid.
+    const showcase = engine.layout === "showcase";
+    const showcaseRest = showcase ? projects.filter((p) => p !== lead) : [];
 
     return (
         <section id={engine.id} className={`py-24 md:py-32 border-t border-stone-800/50 ${tinted ? "bg-[#100e0d]" : "bg-[#0c0a09]"}`}>
@@ -281,7 +314,15 @@ function EngineSection({ engine, open, tinted }) {
 
                 {lead && <LeadCard project={lead} open={open} />}
 
-                {features.length > 0 && (
+                {showcase && showcaseRest.length > 0 && (
+                    <div className={`grid sm:grid-cols-2 gap-6 ${lead ? "mt-6" : ""}`}>
+                        {showcaseRest.map((p) => (
+                            <ShowcaseCard key={p.title} project={p} open={open} />
+                        ))}
+                    </div>
+                )}
+
+                {!showcase && features.length > 0 && (
                     <div className={`grid ${features.length === 1 ? "" : "lg:grid-cols-2"} gap-6 ${lead ? "mt-6" : ""}`}>
                         {features.map((p) => (
                             <FeatureCard key={p.title} project={p} open={open} />
@@ -289,7 +330,7 @@ function EngineSection({ engine, open, tinted }) {
                     </div>
                 )}
 
-                {grid.length > 0 && (
+                {!showcase && grid.length > 0 && (
                     <div className={hasHeadline ? "mt-16" : ""}>
                         {hasHeadline && <SubHeading count={grid.length}>More {engine.name} work</SubHeading>}
                         {portrait ? (
