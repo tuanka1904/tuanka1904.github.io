@@ -275,7 +275,7 @@ const unityProjects = [
 ];
 
 /*
- * Browser games. The lead card and the Ember Gate and MewShoot feature cards are landscape trailers; the
+ * Browser games. The lead card and the Ember Gate and Wildseal feature cards are landscape trailers; the
  * grid games are portrait captures, so those cards are phone-shaped on purpose. All five are deployed, so every
  * card carries a live link; nothing here claims a number that is not visible on screen
  * in the capture, in the shipped build, or in the project's test run.
@@ -365,7 +365,7 @@ const webProjects = [
         metric: { value: "94 kills", label: "in one Wildfire Rail sweep, from the captured run" }
     },
     {
-        title: "MewShoot",
+        title: "Wildseal",
         subtitle: "Kill-Chain Survivor",
         date: "2026",
         tier: "feature",
@@ -382,7 +382,7 @@ const webProjects = [
         ],
         role: "Solo Developer",
         timeline: "Live · playable in browser",
-        video: "/videos/threejs/mewshoot.mp4",
+        video: "/videos/threejs/wildseal.mp4",
         link: "https://mewshoot.vercel.app",
         linkLabel: "Play in browser",
         metric: { value: "125 unit tests", label: "Vitest · archetypes, bosses, navigation, loot and survival rules" }
