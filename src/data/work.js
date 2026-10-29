@@ -304,24 +304,31 @@ const webProjects = [
         metric: { value: "57 unit tests", label: "Vitest · 100% line coverage on the game rules" }
     },
     {
-        title: "DoLa Cafe: Purr & Go",
-        subtitle: "Drive-Thru Coffee Arcade",
+        title: "DoLa Game Series",
+        subtitle: "Three Browser Mini-Games",
         date: "2026",
-        tags: ["Three.js", "TypeScript", "Procedural Geometry", "Web Audio"],
-        description: "Street-side coffee cart run against the morning rush — read each order, brew it from seven ingredients, and serve cat commuters before the queue at the cart runs out of patience.",
-        fullDescription: "A timing-based cooking arcade set on a Vietnamese street, where the player works a mobile coffee cart as a puppy barista. Customers pull up on motorbikes with a named drink order, the drink is assembled ingredient by ingredient from the panel under the scene, and a correct serve pays out on a rising combo. Every 3D asset and sound is generated in code rather than downloaded. Published on itch.io and playable in the browser.",
+        tags: ["Three.js", "TypeScript", "Web Audio", "itch.io"],
+        description: "Three free browser games starring Dola, a puppy in a mint bucket hat: a drive-thru coffee cart, a 3D street runner chasing a stolen hat, and a stack-and-ride delivery bike.",
+        fullDescription: "The DoLa series is three small 3D games built with Three.js for the browser. They share one mascot, one pastel Vietnamese-street look, English and Vietnamese text, a Morning / Noon / Afternoon switch and saved progress, but each one is a different loop: serving a rush at a coffee cart, running down a street after a stolen hat, and balancing a tower of orders on a delivery bike. All three are published free on itch.io under Catfe Studio and play straight from the page.",
         bulletPoints: [
-            { title: "Order Reading & Brewing", desc: "Each customer arrives with an order named above the cart — Matcha Latte, Iced Milk Coffee, Iced Black Coffee — assembled from a seven-slot ingredient panel (cup, coffee, condensed milk, ice, hot water, fresh milk, matcha) with CLEAR and SERVE under it. Slots light up as they go in, so a wrong drink reads before it is served." },
-            { title: "Combo Economy & Wave Pressure", desc: "A clean serve pops PERFECT! and pays coins against a combo multiplier that climbs with the streak — ×1.1 to ×1.8 across the captured run — while a wave counter raises the rush and three hearts absorb the misses." },
-            { title: "Inspection Evasion Event", desc: "An INSPECTION CAR! alert interrupts service on a 5.5-second timer: pack the three items and tap the stand to pull it in, hold while the vehicle passes, then roll it back out — a full stop in the serving loop rather than a score penalty." },
-            { title: "Code-Generated Scene & Audio", desc: "Cart, customers, street and sound are all built procedurally in Three.js and the Web Audio API — no downloaded models or audio files — which keeps the build loading straight into play in the browser. Bilingual English / Vietnamese." }
+            { title: "DoLa Cafe: Purr & Go", desc: "A drive-thru coffee arcade. Each customer pulls up with a named drink order: tap the ingredients, hit SERVE and chain PERFECT serves into a combo multiplier. A Focus meter triggers slow motion, new stand levels unlock new drinks and a Lucky Draw, and an INSPECTION CAR! event gives you a few seconds to pack the stand and pull it onto the curb. Every 3D model, animation and sound is generated in code." },
+            { title: "DoLa: Flying Hat", desc: "A 3D street runner. A gust steals Dola's hat and the poodle next door gives chase. Tap to jump, swipe to change lane, and catch the hat in its lane (jump if it flies high). Coffee beans and a streak of clean dodges feed the score, a streak of clean clears slows the poodles, and later gusts and a second poodle raise the pressure. Streets get harder as you clear them, and there is a daily endless challenge." },
+            { title: "DoLa Delivery: Stack & Go", desc: "A stack-and-ride delivery game. Tap to drop trays onto a swaying stack, with a bonus tray for a full order, then hold to ride and drag to steer through the alleys using turn-by-turn hints. Bumps cost cups, a balance meter shows how close the tower is to tipping, and the tips you bank pay for Garage upgrades: a tighter strap, soft shocks, a wider rack and a cooler box." },
+            { title: "Shared Look & Saves", desc: "All three open on a title screen with the same mascot, a pastel street palette, an English / Vietnamese toggle and a time-of-day switch. Stars, coffee beans, tips and best runs are saved in the browser, so each game keeps its own progress between sessions." },
+            { title: "About the Video", desc: "The video is edited from scripted play-throughs recorded in headless Chrome: a bot presses the real controls (ingredient buttons, taps, swipes and holds) while the page is captured, and the best moments are cut together with a title card, a framed clip per game and an end card." }
         ],
         role: "Solo Developer",
         timeline: "Live · playable in browser",
-        video: "/videos/threejs/dolacafe.mp4",
+        video: "/videos/threejs/dolaseries.mp4",
         portrait: true,
-        link: "https://catfe.itch.io/dolacafe",
-        linkLabel: "Play on itch.io"
+        link: "https://catfe.itch.io",
+        linkLabel: "Play on itch.io",
+        links: [
+            { label: "Play DoLa Cafe", href: "https://catfe.itch.io/dolacafe" },
+            { label: "Play Flying Hat", href: "https://catfe.itch.io/dola-flying-hat" },
+            { label: "Play Stack & Go", href: "https://catfe.itch.io/dola-delivery" }
+        ],
+        metric: { value: "3 games", label: "free on itch.io, playable in the browser" }
     },
     {
         title: "StackPuzzle 3D",

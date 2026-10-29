@@ -5,7 +5,7 @@ export default function About() {
         { label: "Focus", value: "Gameplay systems, performance, and Editor tooling" },
         { label: "Engines", value: "Unity (C#) primary · Unreal Engine 4/5 (C++/BP) · Three.js (TypeScript)" },
         { label: "Location", value: "Ho Chi Minh City, Vietnam — remote or relocate" },
-        { label: "Catfe Studio", value: "My own label — publisher of Quick Scene Switcher (Unity Asset Store) and DoLa Cafe (itch.io)" },
+        { label: "Catfe Studio", value: "My own label — publisher of Quick Scene Switcher (Unity Asset Store) and the DoLa game series (itch.io)" },
     ];
 
     return (

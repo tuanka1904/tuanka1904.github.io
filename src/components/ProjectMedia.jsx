@@ -208,15 +208,31 @@ export function ProjectModal({ project, onClose }) {
                             </p>
                             <h2 className="text-2xl md:text-3xl font-medium text-stone-100 tracking-tight mb-5">{project.title}</h2>
                             <MetricReadout metric={project.metric} />
-                            {project.link && (
-                                <a
-                                    href={project.link}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="inline-flex items-center gap-2 mt-5 text-sm font-medium text-stone-950 bg-amber-500 hover:bg-amber-400 px-4 py-2 rounded-md transition-colors"
-                                >
-                                    {project.linkLabel || "View Project"} <ArrowUpRight size={15} />
-                                </a>
+                            {project.links && project.links.length > 0 ? (
+                                <div className="flex flex-wrap gap-3 mt-5">
+                                    {project.links.map((item) => (
+                                        <a
+                                            key={item.href}
+                                            href={item.href}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex items-center gap-2 text-sm font-medium text-stone-950 bg-amber-500 hover:bg-amber-400 px-4 py-2 rounded-md transition-colors"
+                                        >
+                                            {item.label} <ArrowUpRight size={15} />
+                                        </a>
+                                    ))}
+                                </div>
+                            ) : (
+                                project.link && (
+                                    <a
+                                        href={project.link}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline-flex items-center gap-2 mt-5 text-sm font-medium text-stone-950 bg-amber-500 hover:bg-amber-400 px-4 py-2 rounded-md transition-colors"
+                                    >
+                                        {project.linkLabel || "View Project"} <ArrowUpRight size={15} />
+                                    </a>
+                                )
                             )}
                         </div>
 
