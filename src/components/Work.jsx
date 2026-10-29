@@ -280,7 +280,7 @@ function EngineSection({ engine, open, tinted }) {
                 {lead && <LeadCard project={lead} open={open} />}
 
                 {features.length > 0 && (
-                    <div className={`grid lg:grid-cols-2 gap-6 ${lead ? "mt-6" : ""}`}>
+                    <div className={`grid ${features.length === 1 ? "" : "lg:grid-cols-2"} gap-6 ${lead ? "mt-6" : ""}`}>
                         {features.map((p) => (
                             <FeatureCard key={p.title} project={p} open={open} />
                         ))}

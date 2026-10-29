@@ -275,8 +275,8 @@ const unityProjects = [
 ];
 
 /*
- * Browser games. The lead card is a landscape trailer; the grid games are portrait
- * captures, so those cards are phone-shaped on purpose. All five are deployed, so every
+ * Browser games. The lead card and the CasualShoot feature card are landscape trailers; the
+ * grid games are portrait captures, so those cards are phone-shaped on purpose. All five are deployed, so every
  * card carries a live link; nothing here claims a number that is not visible on screen
  * in the capture, in the shipped build, or in the project's test run.
  */
@@ -363,23 +363,25 @@ const webProjects = [
     },
     {
         title: "CasualShoot",
-        subtitle: "Wave Defense Shooter",
+        subtitle: "Cinematic Wave Defense",
         date: "2026",
-        tags: ["Three.js", "WebGL", "React Three Fiber", "TypeScript"],
-        description: "Stage-based defence shooter — hold the wall against advancing enemy waves with arrow volleys, on a shared HP pool and a three-wave stage structure.",
-        fullDescription: "A lane defence shooter structured around stages rather than an endless run. Enemies advance down a single vertical lane in formation, the player answers with arrow volleys, and the stage is lost when the wall's shared HP pool is drained.",
+        tier: "feature",
+        tags: ["Three.js", "TypeScript", "GLSL", "Web Audio", "Vitest"],
+        description: "Hold the gate against a horde marching in from the right. The showcase scene, Last Stand at Ember Gate, runs 90 seconds from the first wave to a Colossus boss. When the gate is about to fall, time slows to a crawl and a Wildfire Rail beam sweeps the field.",
+        fullDescription: "A side-view defence shooter: the player holds a fortress gate on the left while formations of enemies advance from the right. Besides the stage mode, I built a scripted, playable set piece called Last Stand at Ember Gate. A director script sequences the horde, a ground ambush, an omen, the Rootguard Colossus boss and a finale, and the game reacts with camera work, colour grading and audio. The trailer was recorded from the engine itself, frame by frame, with no outside footage.",
         bulletPoints: [
-            { title: "Stage & Wave Structure", desc: "Stages break into numbered waves (1/3 onward) against one 1000-point wall HP pool — enemies enter in formation at the top of the lane and push down together." },
-            { title: "Volley Combat & Feedback", desc: "Multi-projectile arrow volleys with hit flashes and impact bursts on contact, so a connecting volley reads instantly against a crowded lane." },
-            { title: "Level-Up Power-Up Draft", desc: "Levelling pauses the stage on a three-way pick — Blast Rounds (impact explosion on a 0.6u radius), Critical Eye (+8% crit chance), or Multishot (+1 projectile) — each carrying its own level, so a run compounds rather than resets." },
-            { title: "Demo-Ready HUD", desc: "A speed toggle and pause control sit directly in the HUD alongside the wave counter and HP bar — the build is set up to be shown, not just played." }
+            { title: "Last Stand & Wildfire Rail", desc: "Once per battle, when the gate drops to 25% or takes a would-be fatal hit, it survives, time slows to 0.14x and the Wildfire Rail comes online. Hold to charge, release to sweep a beam across the field. The arc is fitted to where the enemies are, and the rail breaks the boss but leaves the last shot to the gun." },
+            { title: "Rootguard Colossus", desc: "The boss paints a lane on the ground, then charges down it. Damage dealt during the wind-up and the charge fills a BREAK meter, and a full meter stops the charge. Below 42% health it enrages once and makes a charge that cannot be broken." },
+            { title: "Scripted Director", desc: "The set piece is data: beats with timelines, exit conditions and formations (wedge, block, line, pincer, ground ambush), run on the fixed 60 Hz tick. The same seed and the same inputs always play out the same, and an autopilot clears the scene on every tested seed." },
+            { title: "Cinematic Layer", desc: "Slow motion is a time envelope on top of the speed toggle, and rendering interpolates between ticks so it glides. One post-processing pass handles grade, vignette, chromatic aberration, flash and a refracting shockwave. All particles are drawn in a single instanced call." },
+            { title: "Frame-Exact Capture", desc: "The trailer is rendered offline: each output frame advances the simulation, the camera and the CSS animations by exactly 1/60 s. Audio is logged as timestamped cues and mixed afterwards with an OfflineAudioContext, so sound and picture line up to the sample. The cut is anchored to gameplay events, so a new seed re-edits itself." }
         ],
         role: "Solo Developer",
         timeline: "Live · playable in browser",
         video: "/videos/threejs/casualshoot.mp4",
-        portrait: true,
         link: "https://casualshoot.vercel.app",
-        linkLabel: "Play in browser"
+        linkLabel: "Play in browser",
+        metric: { value: "94 kills", label: "in one Wildfire Rail sweep, from the captured run" }
     }
 ];
 
