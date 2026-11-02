@@ -387,6 +387,8 @@ const webProjects = [
             { title: "Bosses in Three Phases", desc: "The Goblin King and the Orc Chieftain both fight in three phases: ground slams with a visible telegraph, radial bullet bursts, then an enrage with summoned minions. A warning banner and a music swell land nine seconds before a guardian arrives, and horde events pause while one is alive." },
             { title: "Crowd Navigation", desc: "Enemies steer with shared flow fields built per body size, so large units do not take narrow routes between trees and buildings. Fields refresh at most five times a second, and a direct clear path skips the grid. A benchmark with 200 concurrent enemies asserts an 8 ms p95 simulation budget (simulation only, not GPU)." },
             { title: "Kill-Cam & Adaptive Score", desc: "Killing a guardian drops the simulation to 35% speed, the Chieftain's last hit holds 22% for almost two seconds, and the ultimate takes a short dip. Particles and the HUD run at the same dilated speed. Three 96-second music stems (forest calm, pursuit, boss) crossfade as the run escalates." },
+            { title: "Deterministic Replays", desc: "Each run is recorded as its seed, its permanent upgrades and every player command, stamped with the simulation tick it landed on. Feeding those commands into a fresh world reproduces the run bit for bit. A hash of the full game state is stored every simulated second, so playback can prove it matches and report the first tick where it does not. Replays play back at up to 4x, export as JSON and load back from the menu. A golden test re-simulates recorded runs headless in CI, and removing a single dash from a recording makes it fail within one simulated second." },
+            { title: "Daily Trail, Achievements & Settings", desc: "A daily seed gives everyone the same forest for the day, played without camp upgrades. Fifteen achievements are tracked from game events and pop up during the run, and a test checks that tracking them never changes the simulation. Gold earned in runs buys permanent upgrades at camp. Settings cover volume, screen-shake strength, flashes and damage numbers. An F3 overlay shows frame time, simulation cost per tick, draw calls, pooled entity counts and the live state hash." },
             { title: "Scripted, Frame-Exact Trailer", desc: "A ?trailer mode swaps the menu for a director script: an autopilot that kites, dashes and spends the ultimate, staged hordes and level-ups, camera keys and title cards. Every output frame advances the simulation, the CSS animations and the timers by exactly 1/60 s. Note that the capture is staged: the pilot runs a boosted build against a denser spawn curve, and the Chieftain's health bar is paced against the clock." }
         ],
         role: "Solo Developer",
@@ -394,7 +396,7 @@ const webProjects = [
         video: "/videos/threejs/wildseal.mp4",
         link: "https://mewshoot.vercel.app",
         linkLabel: "Play in browser",
-        metric: { value: "125 unit tests", label: "Vitest · archetypes, bosses, navigation, loot and survival rules" }
+        metric: { value: "141 unit tests", label: "Vitest · golden replays, archetypes, bosses, navigation and survival rules" }
     }
 ];
 
