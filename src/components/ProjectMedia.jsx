@@ -202,6 +202,22 @@ export function ProjectModal({ project, onClose }) {
                                 />
                             </div>
                         )}
+                        {project.extraVideos?.map((item) => (
+                            <figure key={item.src} className="w-full border-t border-stone-800/60">
+                                <div className="w-full aspect-video">
+                                    <video
+                                        src={item.src}
+                                        poster={posterFor(item.src)}
+                                        controls
+                                        muted
+                                        playsInline
+                                        preload="metadata"
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
+                                <figcaption className="px-6 py-3 text-xs text-stone-400 leading-relaxed bg-[#131110]">{item.label}</figcaption>
+                            </figure>
+                        ))}
                         {project.images && project.images.length > 0 && (
                             <div className="w-full flex flex-col">
                                 {project.images.map((img, idx) => (

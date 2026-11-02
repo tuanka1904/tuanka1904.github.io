@@ -357,11 +357,13 @@ const webProjects = [
         date: "2026",
         tier: "feature",
         tags: ["Three.js", "TypeScript", "GLSL", "Web Audio", "Vitest"],
-        description: "Hold the gate against a horde marching in from the right. The showcase scene, Last Stand, runs 90 seconds from the first wave to a Colossus boss. When the gate is about to fall, time slows to a crawl and a Wildfire Rail beam sweeps the field.",
+        description: "Hold the gate against a horde marching in from the right. Enemies have roles (shields, healers, bombers, a blinking Warlock) and skills combine into synergies. The showcase scene, Last Stand, runs 90 seconds to a Colossus boss: when the gate is about to fall, time slows to a crawl and a Wildfire Rail beam sweeps the field.",
         fullDescription: "A side-view defence shooter: the player holds a fortress gate on the left while formations of enemies advance from the right. Besides the stage mode, I built a scripted, playable set piece called Last Stand. A director script sequences the horde, a ground ambush, an omen, the Rootguard Colossus boss and a finale, and the game reacts with camera work, colour grading and audio. The trailer was recorded from the engine itself, frame by frame, with no outside footage.",
         bulletPoints: [
             { title: "Last Stand & Wildfire Rail", desc: "Once per battle, when the gate drops to 25% or takes a would-be fatal hit, it survives, time slows to 0.14x and the Wildfire Rail comes online. Hold to charge, release to sweep a beam across the field. The arc is fitted to where the enemies are, and the rail breaks the boss but leaves the last shot to the gun." },
             { title: "Rootguard Colossus", desc: "The boss paints a lane on the ground, then charges down it. Damage dealt during the wind-up and the charge fills a BREAK meter, and a full meter stops the charge. Below 42% health it enrages once and makes a charge that cannot be broken." },
+            { title: "Enemy Roles With Counters", desc: "Shieldbearers stop plain shots but pierce, blasts and the Rail go straight through; Shamans trail the horde and heal it, out of auto-aim's reach, so they have to be focused; Powder Rootlings run in and detonate on the gate. Each role is a small behaviour class on one shared interface, tuned from JSON, and each is introduced on its own stage before they mix." },
+            { title: "Skill Synergies", desc: "Chain Reaction (Ricochet + Blast Rounds) makes enemies killed by an explosion detonate in turn, with a shrinking radius and a hard cap. Executioner and Overload work the same way. Synergies are data, so the level-up card can say which one it would complete before you pick it." },
             { title: "Scripted Director", desc: "The set piece is data: beats with timelines, exit conditions and formations (wedge, block, line, pincer, ground ambush), run on the fixed 60 Hz tick. The same seed and the same inputs always play out the same, and an autopilot clears the scene on every tested seed." },
             { title: "Cinematic Layer", desc: "Slow motion is a time envelope on top of the speed toggle, and rendering interpolates between ticks so it glides. One post-processing pass handles grade, vignette, chromatic aberration, flash and a refracting shockwave. All particles are drawn in a single instanced call." },
             { title: "Frame-Exact Capture", desc: "The trailer is rendered offline: each output frame advances the simulation, the camera and the CSS animations by exactly 1/60 s. Audio is logged as timestamped cues and mixed afterwards with an OfflineAudioContext, so sound and picture line up to the sample. The cut is anchored to gameplay events, so a new seed re-edits itself." }
@@ -369,6 +371,9 @@ const webProjects = [
         role: "Solo Developer",
         timeline: "Live · playable in browser",
         video: "/videos/threejs/casualshoot.mp4",
+        extraVideos: [
+            { src: "/videos/threejs/casualshoot-roots.mp4", label: "Roots of War: shields, shamans, bombers and the Warlock, with Chain Reaction and Overload. Same director, a second scene." }
+        ],
         link: "https://casualshoot.vercel.app",
         linkLabel: "Play in browser",
         metric: { value: "94 kills", label: "in one Wildfire Rail sweep, from the captured run" }
